@@ -15,12 +15,12 @@ enum WheatherEndPoints{
     
     static let search = "http://api.weatherapi.com/v1/current.json?"
     
-    case searchURLString(Double, Double)
+    case searchURLString(Double, Double, Int)
     
     var baseURL: String {
         switch self {
-            case .searchURLString(let lon, let lat):
-                return WheatherEndPoints.search + "key=\(WheatherAPI.apiKey)" + "&q=" + "lon=\(lon)" + "&lat=\(lat)"
+            case .searchURLString(let lon, let lat, let days):
+                return WheatherEndPoints.search + "key=\(WheatherAPI.apiKey)" + "&q=" + "\(lat)" + ",\(lon)" + "&days=\(days)"
         }
     }
     
@@ -30,6 +30,6 @@ enum WheatherEndPoints{
     
 }
 
-func getWheatherURL(lon: Double, lat: Double)->URL{
-    return WheatherEndPoints.searchURLString(lon,lat).url
+func getWheatherURL(lon: Double, lat: Double, days: Int)->URL{
+    return WheatherEndPoints.searchURLString(lon,lat, days).url
 }

@@ -6,21 +6,52 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeController: UIViewController{
+    
+    // MARK: - Outlets
+    
+    @IBOutlet var backgroundImageView: UIImageView!
+    @IBOutlet var homeCollectionView: UICollectionView!
+    
+    
+    // MARK: - Properties
     var yelpFetcher = YelpFetcher()
     var wheatherFetcher = WheatherFetcher()
+    let collectionDataSource = HomeCollectionDataSource()
+    let collectionDelegate = HomeCollectionDelegate()
+    let modifiyViews = modifyLayersFunctions()
+    override var prefersStatusBarHidden: Bool {
+         return true
+       }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = getYelpURL(lat: 37.786882, lon: -122.399972, category: "resturants")
-        let wURL = getWheatherURL(lon: -122.399972, lat: 37.786882)
+        // MARK: - Delegation
+        homeCollectionView.delegate = collectionDelegate
+        homeCollectionView.dataSource = collectionDataSource
         
-        print("wURL: \(wURL)")
+        backgroundImageView.image = UIImage(named: "foodWallpaper1")
+        modifiyViews.modifyViewLayer(image: &backgroundImageView)
         
-        wheatherFetcher.fetchWheatherResults(url: wURL) { (current, error) in
-            print("GEgeGe:  \(current!)")
+        let wheatherUrl = getWheatherURL(lon: -122.399972, lat: 37.786882, days: 7)
+        let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "resturant")
+        
+        wheatherFetcher.fetchWheatherResults(url: wheatherUrl) { (current, error) in
+            print("GEgeGe:  \(current!.location.name)")
+        }
+        
+        yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in            
+            self.collectionDataSource.yelpData = result!.businesses
+            
+            print("ID: \(result!.businesses[1].id)")
+            
+            DispatchQueue.main.async {
+                self.homeCollectionView.reloadSections(IndexSet(integer: 0))
+            }
+            
         }
     }
 

@@ -15,7 +15,7 @@ enum PhotoError: Error{
 class YelpFetcher{
     
     
-    func fetchYelpResults(url: URL, completion: @escaping ([Business]?, Error?) -> ()){
+    func fetchYelpResults(url: URL, completion: @escaping (YelpResults?, Error?) -> ()){
         
         // Creating request
         var request = URLRequest(url: url)
@@ -34,7 +34,7 @@ class YelpFetcher{
                 let yelpFeed = try decoder.decode(YelpResults.self, from: data!)
                 
                 DispatchQueue.global(qos: .background).async {
-                    completion(yelpFeed.businesses, error)
+                    completion(yelpFeed, error)
                 }
                 
             } catch{

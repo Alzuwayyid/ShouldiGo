@@ -10,9 +10,8 @@ import UIKit
 class WheatherFetcher{
     
     
-    func fetchWheatherResults(url: URL, completion: @escaping (Current?, Error?) -> ()){
+    func fetchWheatherResults(url: URL, completion: @escaping (WheatherResults?, Error?) -> ()){
         // Session and task
-        
         var request = URLRequest(url: url)
         request.setValue("Bearer \(WheatherAPI.apiKey)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
@@ -28,7 +27,7 @@ class WheatherFetcher{
                 let wheatherFeed = try decoder.decode(WheatherResults.self, from: data!)
                 
                 DispatchQueue.global(qos: .background).async {
-                    completion(wheatherFeed.current, error)
+                    completion(wheatherFeed, error)
                 }
                 
             } catch{
