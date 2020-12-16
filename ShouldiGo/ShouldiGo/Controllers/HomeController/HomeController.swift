@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeController.swift
 //  ShouldiGo
 //
 //  Created by Mohammed on 16/12/2020.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    
+class HomeController: UIViewController{
     var yelpFetcher = YelpFetcher()
     var wheatherFetcher = WheatherFetcher()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +25,5 @@ class ViewController: UIViewController {
     }
 
     
-
+    
 }
-

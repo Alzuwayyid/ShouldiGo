@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		109F5F09258A0F1300B5E31C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F08258A0F1300B5E31C /* AppDelegate.swift */; };
 		109F5F0B258A0F1300B5E31C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F0A258A0F1300B5E31C /* SceneDelegate.swift */; };
-		109F5F0D258A0F1300B5E31C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F0C258A0F1300B5E31C /* ViewController.swift */; };
 		109F5F10258A0F1300B5E31C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 109F5F0E258A0F1300B5E31C /* Main.storyboard */; };
 		109F5F12258A0F1400B5E31C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 109F5F11258A0F1400B5E31C /* Assets.xcassets */; };
 		109F5F15258A0F1400B5E31C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 109F5F13258A0F1400B5E31C /* LaunchScreen.storyboard */; };
@@ -21,6 +20,7 @@
 		109F5F59258A330800B5E31C /* YelpFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F58258A330800B5E31C /* YelpFetcher.swift */; };
 		109F5F5E258A45A000B5E31C /* WheatherFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F5D258A45A000B5E31C /* WheatherFetcher.swift */; };
 		109F5F63258A46A600B5E31C /* WheatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F62258A46A600B5E31C /* WheatherAPI.swift */; };
+		10A385E7258A6C0A00B4E14C /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A385E6258A6C0A00B4E14C /* HomeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,6 @@
 		109F5F05258A0F1300B5E31C /* ShouldiGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShouldiGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109F5F08258A0F1300B5E31C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		109F5F0A258A0F1300B5E31C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		109F5F0C258A0F1300B5E31C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		109F5F0F258A0F1300B5E31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		109F5F11258A0F1400B5E31C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		109F5F14258A0F1400B5E31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		109F5F58258A330800B5E31C /* YelpFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpFetcher.swift; sourceTree = "<group>"; };
 		109F5F5D258A45A000B5E31C /* WheatherFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheatherFetcher.swift; sourceTree = "<group>"; };
 		109F5F62258A46A600B5E31C /* WheatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheatherAPI.swift; sourceTree = "<group>"; };
+		10A385E6258A6C0A00B4E14C /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +116,6 @@
 				109F5F3D258A0F3A00B5E31C /* Controllers */,
 				109F5F08258A0F1300B5E31C /* AppDelegate.swift */,
 				109F5F0A258A0F1300B5E31C /* SceneDelegate.swift */,
-				109F5F0C258A0F1300B5E31C /* ViewController.swift */,
 				109F5F0E258A0F1300B5E31C /* Main.storyboard */,
 				109F5F11258A0F1400B5E31C /* Assets.xcassets */,
 				109F5F13258A0F1400B5E31C /* LaunchScreen.storyboard */,
@@ -163,6 +162,7 @@
 		109F5F3D258A0F3A00B5E31C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				10A385E5258A6B9200B4E14C /* HomeController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -208,6 +208,14 @@
 				109F5F53258A319200B5E31C /* wheatherJsonResults.swift */,
 			);
 			path = CodableObjects;
+			sourceTree = "<group>";
+		};
+		10A385E5258A6B9200B4E14C /* HomeController */ = {
+			isa = PBXGroup;
+			children = (
+				10A385E6258A6C0A00B4E14C /* HomeController.swift */,
+			);
+			path = HomeController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,8 +352,8 @@
 				109F5F5E258A45A000B5E31C /* WheatherFetcher.swift in Sources */,
 				109F5F59258A330800B5E31C /* YelpFetcher.swift in Sources */,
 				109F5F41258A130600B5E31C /* YelpAPI.swift in Sources */,
+				10A385E7258A6C0A00B4E14C /* HomeController.swift in Sources */,
 				109F5F63258A46A600B5E31C /* WheatherAPI.swift in Sources */,
-				109F5F0D258A0F1300B5E31C /* ViewController.swift in Sources */,
 				109F5F09258A0F1300B5E31C /* AppDelegate.swift in Sources */,
 				109F5F4C258A316A00B5E31C /* YelpJsonResults.swift in Sources */,
 				109F5F0B258A0F1300B5E31C /* SceneDelegate.swift in Sources */,
