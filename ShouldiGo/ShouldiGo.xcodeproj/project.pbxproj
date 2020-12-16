@@ -19,6 +19,8 @@
 		109F5F4C258A316A00B5E31C /* YelpJsonResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F4B258A316A00B5E31C /* YelpJsonResults.swift */; };
 		109F5F54258A319200B5E31C /* wheatherJsonResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F53258A319200B5E31C /* wheatherJsonResults.swift */; };
 		109F5F59258A330800B5E31C /* YelpFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F58258A330800B5E31C /* YelpFetcher.swift */; };
+		109F5F5E258A45A000B5E31C /* WheatherFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F5D258A45A000B5E31C /* WheatherFetcher.swift */; };
+		109F5F63258A46A600B5E31C /* WheatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F62258A46A600B5E31C /* WheatherAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		109F5F4B258A316A00B5E31C /* YelpJsonResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpJsonResults.swift; sourceTree = "<group>"; };
 		109F5F53258A319200B5E31C /* wheatherJsonResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wheatherJsonResults.swift; sourceTree = "<group>"; };
 		109F5F58258A330800B5E31C /* YelpFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpFetcher.swift; sourceTree = "<group>"; };
+		109F5F5D258A45A000B5E31C /* WheatherFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheatherFetcher.swift; sourceTree = "<group>"; };
+		109F5F62258A46A600B5E31C /* WheatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheatherAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				109F5F40258A130600B5E31C /* YelpAPI.swift */,
+				109F5F62258A46A600B5E31C /* WheatherAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				109F5F58258A330800B5E31C /* YelpFetcher.swift */,
+				109F5F5D258A45A000B5E31C /* WheatherFetcher.swift */,
 			);
 			path = Fetching;
 			sourceTree = "<group>";
@@ -335,8 +341,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				109F5F54258A319200B5E31C /* wheatherJsonResults.swift in Sources */,
+				109F5F5E258A45A000B5E31C /* WheatherFetcher.swift in Sources */,
 				109F5F59258A330800B5E31C /* YelpFetcher.swift in Sources */,
 				109F5F41258A130600B5E31C /* YelpAPI.swift in Sources */,
+				109F5F63258A46A600B5E31C /* WheatherAPI.swift in Sources */,
 				109F5F0D258A0F1300B5E31C /* ViewController.swift in Sources */,
 				109F5F09258A0F1300B5E31C /* AppDelegate.swift in Sources */,
 				109F5F4C258A316A00B5E31C /* YelpJsonResults.swift in Sources */,

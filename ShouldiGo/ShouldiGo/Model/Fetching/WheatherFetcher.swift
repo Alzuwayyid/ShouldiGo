@@ -1,5 +1,5 @@
 //
-//  YelpFetcher.swift
+//  WheatherFetcher.swift
 //  ShouldiGo
 //
 //  Created by Mohammed on 16/12/2020.
@@ -7,22 +7,16 @@
 
 import UIKit
 
-enum PhotoError: Error{
-    case imageCreationError
-    case missingImageURL
-}
-
-class YelpFetcher{
+class WheatherFetcher{
     
     
-    func fetchYelpResults(url: URL, completion: @escaping ([Business]?, Error?) -> ()){
+    func fetchWheatherResults(url: URL, completion: @escaping (Current?, Error?) -> ()){
+        // Session and task
         
-        // Creating request
         var request = URLRequest(url: url)
-        request.setValue("Bearer \(YelpAPI.apiKey)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(WheatherAPI.apiKey)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
         
-        // Session and task
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error{
                 completion(nil,error)
@@ -31,14 +25,14 @@ class YelpFetcher{
             let decoder = JSONDecoder()
             
             do{
-                let yelpFeed = try decoder.decode(YelpResults.self, from: data!)
+                let wheatherFeed = try decoder.decode(WheatherResults.self, from: data!)
                 
                 DispatchQueue.global(qos: .background).async {
-                    completion(yelpFeed.businesses, error)
+                    completion(wheatherFeed.current, error)
                 }
                 
             } catch{
-                print("Fetching Yelp results error:  \(error.localizedDescription)")
+                print("Fetching Wheather results error:  \(error.localizedDescription)")
             }
             
         }.resume()

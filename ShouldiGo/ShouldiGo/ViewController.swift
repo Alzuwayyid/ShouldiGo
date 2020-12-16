@@ -9,15 +9,18 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var fetcher = YelpFetcher()
-    
+    var yelpFetcher = YelpFetcher()
+    var wheatherFetcher = WheatherFetcher()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let url = getYelpURL(lat: 37.786882, lon: -122.399972, category: "resturants")
-            
-        fetcher.fetchYelpResults(url: url) { (result, error) in
-            print("Result: GGeGG \(result!)")
+        let wURL = getWheatherURL(lon: -122.399972, lat: 37.786882)
+        
+        print("wURL: \(wURL)")
+        
+        wheatherFetcher.fetchWheatherResults(url: wURL) { (current, error) in
+            print("GEgeGe:  \(current!)")
         }
     }
 
