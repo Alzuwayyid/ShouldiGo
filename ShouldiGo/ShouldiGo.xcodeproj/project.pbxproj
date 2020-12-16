@@ -15,6 +15,10 @@
 		109F5F15258A0F1400B5E31C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 109F5F13258A0F1400B5E31C /* LaunchScreen.storyboard */; };
 		109F5F20258A0F1400B5E31C /* ShouldiGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F1F258A0F1400B5E31C /* ShouldiGoTests.swift */; };
 		109F5F2B258A0F1400B5E31C /* ShouldiGoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F2A258A0F1400B5E31C /* ShouldiGoUITests.swift */; };
+		109F5F41258A130600B5E31C /* YelpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F40258A130600B5E31C /* YelpAPI.swift */; };
+		109F5F4C258A316A00B5E31C /* YelpJsonResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F4B258A316A00B5E31C /* YelpJsonResults.swift */; };
+		109F5F54258A319200B5E31C /* wheatherJsonResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F53258A319200B5E31C /* wheatherJsonResults.swift */; };
+		109F5F59258A330800B5E31C /* YelpFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F58258A330800B5E31C /* YelpFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		109F5F26258A0F1400B5E31C /* ShouldiGoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShouldiGoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		109F5F2A258A0F1400B5E31C /* ShouldiGoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShouldiGoUITests.swift; sourceTree = "<group>"; };
 		109F5F2C258A0F1400B5E31C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		109F5F40258A130600B5E31C /* YelpAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPI.swift; sourceTree = "<group>"; };
+		109F5F4B258A316A00B5E31C /* YelpJsonResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpJsonResults.swift; sourceTree = "<group>"; };
+		109F5F53258A319200B5E31C /* wheatherJsonResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wheatherJsonResults.swift; sourceTree = "<group>"; };
+		109F5F58258A330800B5E31C /* YelpFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +142,9 @@
 		109F5F3B258A0F2400B5E31C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				109F5F49258A30BE00B5E31C /* Store */,
+				109F5F48258A304200B5E31C /* Fetching */,
+				109F5F3E258A12E200B5E31C /* Networking */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -150,6 +161,47 @@
 			children = (
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		109F5F3E258A12E200B5E31C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				109F5F3F258A12EA00B5E31C /* API */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		109F5F3F258A12EA00B5E31C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				109F5F40258A130600B5E31C /* YelpAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		109F5F48258A304200B5E31C /* Fetching */ = {
+			isa = PBXGroup;
+			children = (
+				109F5F58258A330800B5E31C /* YelpFetcher.swift */,
+			);
+			path = Fetching;
+			sourceTree = "<group>";
+		};
+		109F5F49258A30BE00B5E31C /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				109F5F4A258A30F100B5E31C /* CodableObjects */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		109F5F4A258A30F100B5E31C /* CodableObjects */ = {
+			isa = PBXGroup;
+			children = (
+				109F5F4B258A316A00B5E31C /* YelpJsonResults.swift */,
+				109F5F53258A319200B5E31C /* wheatherJsonResults.swift */,
+			);
+			path = CodableObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,8 +334,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				109F5F54258A319200B5E31C /* wheatherJsonResults.swift in Sources */,
+				109F5F59258A330800B5E31C /* YelpFetcher.swift in Sources */,
+				109F5F41258A130600B5E31C /* YelpAPI.swift in Sources */,
 				109F5F0D258A0F1300B5E31C /* ViewController.swift in Sources */,
 				109F5F09258A0F1300B5E31C /* AppDelegate.swift in Sources */,
+				109F5F4C258A316A00B5E31C /* YelpJsonResults.swift in Sources */,
 				109F5F0B258A0F1300B5E31C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
