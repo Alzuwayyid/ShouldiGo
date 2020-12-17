@@ -37,7 +37,6 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
             yelpFetcher.fetchBusniessDetails(url: yelpResultById) {(response, error) in
                 cell.smallLargePreviewImage.setImageFromURL(url: (response?.photos[1])!)
                 cell.smallPreviewImage2.setImageFromURL(url: (response?.photos[2])!)
-                print("tempTemp \(response!.photos)")
             }
         }
         
@@ -45,14 +44,15 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
 
             wheatherFetcher.fetchWheatherResults(url: wheatherUrl) { (results, error) in
                 DispatchQueue.main.async { [self] in
-                    cell.temperatureNum.text = String((results?.current.tempC)!)
+                    cell.temperatureNum.text = "\(String((results?.current.tempC)!))c"
+                    cell.temperatureImage.setImageFromURL(url: getWheatherImageURL(imageURL: (results?.current.condition.icon)!))
                 }
             }
         
         
         cell.titleOfBusiness.text = yelpData[indexPath.row].name
         cell.ratingNumber.text = "\(yelpData[indexPath.row].rating)"
-        cell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) review"
+        cell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) reviews"
         
         return cell
     }

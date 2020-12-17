@@ -38,18 +38,13 @@ class HomeController: UIViewController{
         
         let wheatherUrl = getWheatherURL(lon: -122.399972, lat: 37.786882, days: 3)
         let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "resturant")
-        
-        wheatherFetcher.fetchWheatherResults(url: wheatherUrl) { (results, error) in
-            print("GoGe: \((results?.current.tempC)!)")
-        }
-        
+
         print("Weather URL: \(wheatherUrl)")
         wheatherFetcher.fetchWheatherResults(url: wheatherUrl) { (current, error) in
-            print("GEgeGe:  \(current!.current.tempC)")
+            print("GEgeGe:  \(current!.current.condition.icon)")
         }
         
-        
-        yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in            
+        yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
             self.collectionDataSource.yelpData = result!.businesses
             DispatchQueue.main.async {
                 self.homeCollectionView.reloadSections(IndexSet(integer: 0))
