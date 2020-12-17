@@ -67,7 +67,7 @@ class CollectionViewLayout: UICollectionViewLayout {
         // 4
         let photoHeight = delegate?.collectionView(
           collectionView,
-          heightForPhotoAtIndexPath: indexPath) ?? 180
+          heightForPhotoAtIndexPath: indexPath) ?? 260
         let height = cellPadding * 2 + photoHeight
         let frame = CGRect(x: xOffset[column],
                            y: yOffset[column],

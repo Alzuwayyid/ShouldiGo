@@ -12,8 +12,7 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
     
     var yelpData = [Business]()
     var yelpFetcher = YelpFetcher()
-    
-    //    var wheatherData = [Current]()
+    var wheatherFetcher = WheatherFetcher()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return yelpData.count
@@ -22,7 +21,6 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let reuseIdentifier = "homeCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
-        let dispatchGroup = DispatchGroup()
         
         AF.request(URL(string: yelpData[indexPath.row].imageURL)!,method: .get).response{
             (response) in
@@ -39,16 +37,22 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
             yelpFetcher.fetchBusniessDetails(url: yelpResultById) {(response, error) in
                 cell.smallLargePreviewImage.setImageFromURL(url: (response?.photos[1])!)
                 cell.smallPreviewImage2.setImageFromURL(url: (response?.photos[2])!)
-                print("tempTemp \(response!.photos)")
             }
         }
         
+        let wheatherUrl = getWheatherURL(lon: yelpData[indexPath.row].coordinates.longitude, lat: yelpData[indexPath.row].coordinates.latitude, days: 7)
+
+            wheatherFetcher.fetchWheatherResults(url: wheatherUrl) { (results, error) in
+                DispatchQueue.main.async { [self] in
+                    cell.temperatureNum.text = "\(String((results?.current.tempC)!))c"
+                    cell.temperatureImage.setImageFromURL(url: getWheatherImageURL(imageURL: (results?.current.condition.icon)!))
+                }
+            }
         
         
         cell.titleOfBusiness.text = yelpData[indexPath.row].name
-        cell.temperatureNum.text = "14c"
         cell.ratingNumber.text = "\(yelpData[indexPath.row].rating)"
-        cell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) review"
+        cell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) reviews"
         
         return cell
     }

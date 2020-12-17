@@ -36,22 +36,19 @@ class HomeController: UIViewController{
         backgroundImageView.image = UIImage(named: "foodWallpaper1")
         modifiyViews.modifyViewLayer(image: &backgroundImageView)
         
-        let wheatherUrl = getWheatherURL(lon: -122.399972, lat: 37.786882, days: 7)
+        let wheatherUrl = getWheatherURL(lon: -122.399972, lat: 37.786882, days: 3)
         let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "resturant")
-        
-        
-        
+
+        print("Weather URL: \(wheatherUrl)")
         wheatherFetcher.fetchWheatherResults(url: wheatherUrl) { (current, error) in
-            print("GEgeGe:  \(current!.location.name)")
+            print("GEgeGe:  \(current!.current.condition.icon)")
         }
         
-        
-        yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in            
+        yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
             self.collectionDataSource.yelpData = result!.businesses
             DispatchQueue.main.async {
                 self.homeCollectionView.reloadSections(IndexSet(integer: 0))
             }
-            
         }
     }
 
