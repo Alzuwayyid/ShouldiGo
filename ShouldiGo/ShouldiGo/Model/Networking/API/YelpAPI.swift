@@ -15,13 +15,17 @@ struct YelpAPI{
 enum YelpEndPoints{
     
     static let search = "https://api.yelp.com/v3/businesses/search?"
-    
+    static let fetchBusinessIdDataBaseURL = "https://api.yelp.com/v3/businesses/"
+
     case searchURLString(Double,Double,String)
-    
+    case businessId(String)
+
     var baseURL: String {
         switch self {
             case .searchURLString(let lat, let lon, let category):
                 return YelpEndPoints.search + "term=delis" + "&latitude=\(lat)" + "&longitude=\(lon)" + "&categories=\(category)"
+            case .businessId(let id):
+                return YelpEndPoints.fetchBusinessIdDataBaseURL + "\(id)"
         }
     }
     
@@ -33,5 +37,9 @@ enum YelpEndPoints{
 
 func getYelpURL(lat: Double, lon: Double, category: String)->URL{
     return YelpEndPoints.searchURLString(lat, lon, category).url
+}
+
+func getBusinessIdURL(id: String)->URL{
+    return YelpEndPoints.businessId(id).url
 }
 
