@@ -44,4 +44,32 @@ class YelpFetcher{
         }.resume()
     }
     
+    func fetchBusniessDetails(url: URL, completion: @escaping (BusniessDetailsResponse?, Error?) -> ()){
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(YelpAPI.apiKey)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "GET"
+        
+        // Session and task
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error{
+                completion(nil,error)
+            }
+            
+            let decoder = JSONDecoder()
+            
+            do{
+                let yelpByIdFeed = try decoder.decode(BusniessDetailsResponse.self, from: data!)
+                
+                DispatchQueue.global(qos: .background).async {
+                    completion(yelpByIdFeed, error)
+                }
+                
+            } catch{
+                print("Fetching Yelp data results error:  \(error.localizedDescription)")
+            }
+            
+        }.resume()
+        
+    }
+    
 }

@@ -18,7 +18,7 @@ enum YelpEndPoints{
     static let fetchBusinessIdDataBaseURL = "https://api.yelp.com/v3/businesses/"
 
     case searchURLString(Double,Double,String)
-    case businessId(Int)
+    case businessId(String)
 
     var baseURL: String {
         switch self {
@@ -39,7 +39,7 @@ func getYelpURL(lat: Double, lon: Double, category: String)->URL{
     return YelpEndPoints.searchURLString(lat, lon, category).url
 }
 
-func getBusinessIdURL(id: Int)->URL{
+func getBusinessIdURL(id: String)->URL{
     return YelpEndPoints.businessId(id).url
 }
 
