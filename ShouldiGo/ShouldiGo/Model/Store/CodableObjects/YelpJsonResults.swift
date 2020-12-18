@@ -113,3 +113,8 @@ import UIKit
         let center: Center
     }
 
+extension Business: Equatable{
+    static func == (lhs: Business, rhs: Business)->Bool{
+        return lhs.id == rhs.id && lhs.imageURL == rhs.imageURL && lhs.name == rhs.name && lhs.reviewCount == rhs.reviewCount
+    }
+}

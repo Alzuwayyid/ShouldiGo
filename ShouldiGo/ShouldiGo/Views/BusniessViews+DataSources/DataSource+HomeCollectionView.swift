@@ -36,8 +36,8 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
         DispatchQueue.main.async(group: .none, qos: .userInteractive, flags: .assignCurrentContext) { [self] in
             let yelpResultById = getBusinessIdURL(id: yelpData[indexPath.row].id)
             yelpFetcher.fetchBusniessDetails(url: yelpResultById) {(response, error) in
-                cell.smallLargePreviewImage.setImageFromURL(url: (response?.photos[0])!)
-                cell.smallPreviewImage2.setImageFromURL(url: (response?.photos[1])!)
+                cell.smallLargePreviewImage.setImageFromURL(url: (response?.photos[1])!)
+                cell.smallPreviewImage2.setImageFromURL(url: (response?.photos[2])!)
             }
         }
         

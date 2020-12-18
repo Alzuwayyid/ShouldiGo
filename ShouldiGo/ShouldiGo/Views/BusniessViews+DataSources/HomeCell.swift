@@ -20,6 +20,15 @@ class HomeCollectionViewCell: UICollectionViewCell{
     @IBOutlet var numberOfReviews: UILabel!
     @IBOutlet var temperatureNum: UILabel!
     
+    func update(displaying image: UIImage?){
+        if let imageToDisplay = image {
+            largePreviewImage.image = imageToDisplay
+        }
+        else{
+            largePreviewImage.image = nil
+        }
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.layer.cornerRadius = 10

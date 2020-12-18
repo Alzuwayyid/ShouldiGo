@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryCollectionDataSource: NSObject, UICollectionViewDataSource{
+class CategoryCollectionDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate{
     
     var yelpData = [Business]()
     var yelpFetcher = YelpFetcher()

@@ -24,6 +24,7 @@ class HomeController: UIViewController{
     let categoryCollectionDataSourceAndDelegate = CategoryCollectionDataSource()
     let modifiyViews = modifyLayersFunctions()
     let tags = ["Bakeries","Bars","Resturant","Cafee","Autorepair","Grocery"]
+    var yelpData = [Business]()
 
 
     override var prefersStatusBarHidden: Bool {
@@ -34,10 +35,10 @@ class HomeController: UIViewController{
         super.viewDidLoad()
         
         // MARK: - Delegation
-        homeCollectionView.delegate = homeCollectionDelegate
+        homeCollectionView.delegate = self
         homeCollectionView.dataSource = homeCollectionDataSource
         categoryCollectionView.dataSource = categoryCollectionDataSourceAndDelegate
-        categoryCollectionView.delegate = self
+        categoryCollectionView.delegate = categoryCollectionDataSourceAndDelegate
 
         
         let wheatherUrl = getWheatherURL(lon: -122.399972, lat: 37.786882, days: 3)
@@ -48,6 +49,8 @@ class HomeController: UIViewController{
         
         yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
             self.homeCollectionDataSource.yelpData = result!.businesses
+            self.yelpData = result!.businesses
+            
             DispatchQueue.main.async {
                 self.homeCollectionView.reloadSections(IndexSet(integer: 0))
             }
@@ -71,6 +74,27 @@ extension HomeController: UICollectionViewDelegate{
                 self.homeCollectionView.reloadSections(IndexSet(integer: 0))
             }
         }
-
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath){
+        
+        guard yelpData.count > indexPath.row else{
+            return
+        }
+
+        let photo = yelpData[indexPath.row]
+        yelpFetcher.fetchImage(for: photo) { (result)->Void  in
+            guard let photoIndex = self.yelpData.firstIndex(of: photo), case let .success(image) = result else {
+                return
+            }
+            let photoIndexPath = IndexPath(item: photoIndex, section: 0)
+            // When the request finishes, find the current cell for this photo
+            if let cell = collectionView.cellForItem(at: photoIndexPath) as? HomeCollectionViewCell {
+                cell.update(displaying: image)
+            }
+        }
+    }
+    
+    
 }
