@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import Kingfisher
 
 class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
     
@@ -23,21 +24,27 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
         let reuseIdentifier = "homeCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
         
-        AF.request(URL(string: yelpData[indexPath.row].imageURL)!,method: .get).response{
-            (response) in
-            switch response.result {
-                case .success(let photoData):
-                    cell.largePreviewImage.image = UIImage(data: photoData!, scale: 1)
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
+        let largePreviewImageURL = URL(string: yelpData[indexPath.row].imageURL)
+        DispatchQueue.main.async{
+            cell.largePreviewImage.kf.indicatorType = .activity
+            cell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
         }
-        
+
+
         DispatchQueue.main.async(group: .none, qos: .userInteractive, flags: .assignCurrentContext) { [self] in
             let yelpResultById = getBusinessIdURL(id: yelpData[indexPath.row].id)
             yelpFetcher.fetchBusniessDetails(url: yelpResultById) {(response, error) in
-                cell.smallLargePreviewImage.setImageFromURL(url: (response?.photos[1])!)
-                cell.smallPreviewImage2.setImageFromURL(url: (response?.photos[2])!)
+                
+                let smallLargePreviewImageURL = URL(string: response!.photos[1])
+                let smallPreviewImage2URL = URL(string: response!.photos[2])
+                DispatchQueue.main.async {
+                    cell.smallLargePreviewImage.kf.indicatorType = .activity
+                    cell.smallPreviewImage2.kf.indicatorType = .activity
+
+                    cell.smallLargePreviewImage.kf.setImage(with: smallLargePreviewImageURL)
+                    cell.smallPreviewImage2.kf.setImage(with: smallPreviewImage2URL)
+                }
+
             }
         }
         
