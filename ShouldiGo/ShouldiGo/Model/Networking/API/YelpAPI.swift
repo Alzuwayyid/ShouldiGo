@@ -23,7 +23,7 @@ enum YelpEndPoints{
     var baseURL: String {
         switch self {
             case .searchURLString(let lat, let lon, let category):
-                return YelpEndPoints.search + "term=delis" + "&latitude=\(lat)" + "&longitude=\(lon)" + "&categories=\(category)"
+                return YelpEndPoints.search  + "term=\(category)?" + "&latitude=\(lat)" + "&longitude=\(lon)"
             case .businessId(let id):
                 return YelpEndPoints.fetchBusinessIdDataBaseURL + "\(id)"
         }

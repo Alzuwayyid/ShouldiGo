@@ -21,7 +21,7 @@ import UIKit
 //        let isClosed: Bool
 //        let url: String
         let reviewCount: Int
-//        let categories: [Category]
+        let categories: [Category]
         let rating: Double
         let coordinates: Center
 //        let transactions: [Transaction]
@@ -35,6 +35,7 @@ import UIKit
             case imageURL = "image_url"
             case rating
             case coordinates
+            case categories
 //            case isClosed = "is_closed"
 //            case url
             case reviewCount = "review_count"

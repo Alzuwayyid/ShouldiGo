@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		105ADD29258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD28258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift */; };
-		105ADD31258CE16000CDC7F1 /* Delegate+CategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD30258CE16000CDC7F1 /* Delegate+CategoryCollectionView.swift */; };
 		105ADD36258CE16D00CDC7F1 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD35258CE16D00CDC7F1 /* CategoryCell.swift */; };
 		105ADD3B258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD3A258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift */; };
+		105ADD43258D1B5100CDC7F1 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD42258D1B5100CDC7F1 /* CircleView.swift */; };
 		109F5F09258A0F1300B5E31C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F08258A0F1300B5E31C /* AppDelegate.swift */; };
 		109F5F0B258A0F1300B5E31C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F0A258A0F1300B5E31C /* SceneDelegate.swift */; };
 		109F5F10258A0F1300B5E31C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 109F5F0E258A0F1300B5E31C /* Main.storyboard */; };
@@ -55,9 +55,9 @@
 
 /* Begin PBXFileReference section */
 		105ADD28258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+CategoryCollectionView.swift"; sourceTree = "<group>"; };
-		105ADD30258CE16000CDC7F1 /* Delegate+CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Delegate+CategoryCollectionView.swift"; sourceTree = "<group>"; };
 		105ADD35258CE16D00CDC7F1 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		105ADD3A258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewLayout.swift; sourceTree = "<group>"; };
+		105ADD42258D1B5100CDC7F1 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		109F5F05258A0F1300B5E31C /* ShouldiGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShouldiGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109F5F08258A0F1300B5E31C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		109F5F0A258A0F1300B5E31C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,8 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				105ADD28258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift */,
-				105ADD30258CE16000CDC7F1 /* Delegate+CategoryCollectionView.swift */,
 				105ADD35258CE16D00CDC7F1 /* CategoryCell.swift */,
+				105ADD42258D1B5100CDC7F1 /* CircleView.swift */,
 			);
 			path = "CategoryViews+DataSources";
 			sourceTree = "<group>";
@@ -552,13 +552,13 @@
 			files = (
 				10A38600258A6E7500B4E14C /* HomeCell.swift in Sources */,
 				10A385F3258A6DC000B4E14C /* DataSource+HomeCollectionView.swift in Sources */,
+				105ADD43258D1B5100CDC7F1 /* CircleView.swift in Sources */,
 				109F5F54258A319200B5E31C /* wheatherJsonResults.swift in Sources */,
 				109F5F5E258A45A000B5E31C /* WheatherFetcher.swift in Sources */,
 				109F5F59258A330800B5E31C /* YelpFetcher.swift in Sources */,
 				105ADD36258CE16D00CDC7F1 /* CategoryCell.swift in Sources */,
 				109F5F41258A130600B5E31C /* YelpAPI.swift in Sources */,
 				105ADD3B258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift in Sources */,
-				105ADD31258CE16000CDC7F1 /* Delegate+CategoryCollectionView.swift in Sources */,
 				10A385E7258A6C0A00B4E14C /* HomeController.swift in Sources */,
 				10A385FB258A6DD400B4E14C /* Delegate+HomeCollectionView.swift in Sources */,
 				109F5F63258A46A600B5E31C /* WheatherAPI.swift in Sources */,
