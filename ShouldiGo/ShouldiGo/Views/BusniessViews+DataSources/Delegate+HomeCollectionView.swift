@@ -9,4 +9,7 @@ import UIKit
 
 class HomeCollectionDelegate: NSObject, UICollectionViewDelegate{
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    }
+    
 }

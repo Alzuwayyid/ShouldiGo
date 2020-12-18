@@ -13,10 +13,11 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
     var yelpData = [Business]()
     var yelpFetcher = YelpFetcher()
     var wheatherFetcher = WheatherFetcher()
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return yelpData.count
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let reuseIdentifier = "homeCell"
@@ -48,7 +49,7 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
                     cell.temperatureImage.setImageFromURL(url: getWheatherImageURL(imageURL: (results?.current.condition.icon)!))
                 }
             }
-        
+
         
         cell.titleOfBusiness.text = yelpData[indexPath.row].name
         cell.ratingNumber.text = "\(yelpData[indexPath.row].rating)"
@@ -57,18 +58,9 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
         return cell
     }
     
-    
-    
-    
-    
-    
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
-    
-    
 }
 
 extension UIImageView {
