@@ -13,7 +13,8 @@ enum PhotoError: Error{
 }
 
 class YelpFetcher{
-    
+    private let imageStore = ImageStore()
+
     
     func fetchYelpResults(url: URL, completion: @escaping (YelpResults?, Error?) -> ()){
         
@@ -71,5 +72,61 @@ class YelpFetcher{
         }.resume()
         
     }
+    
+    
+    func fetchImage(for photo: Business, completion: @escaping (Result<UIImage, Error>)->Void){
+        let photoKey = photo.id
+        
+        if let image = imageStore.image(forKey: photoKey){
+            OperationQueue.main.addOperation{
+                completion(.success(image))
+            }
+            return
+        }
+        
+        guard let photoURL = URL(string: photo.imageURL) else{
+            completion(.failure(PhotoError.missingImageURL))
+            return
+        }
+                
+        var request = URLRequest(url: photoURL)
+        request.setValue("Bearer \(YelpAPI.apiKey)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "GET"
+        
+        let task = session.dataTask(with: request){
+            (data, response, error) in
+            
+            
+            let result = self.processImageRequest(data: data, error: error)
+            
+            if case let .success(image) = result{
+                self.imageStore.setImage(image, forKey: photoKey)
+            }
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
+            
+        }
+        task.resume()
+    }
+    
+    let session: URLSession = {
+       let config = URLSessionConfiguration.default
+       return URLSession(configuration: config)
+   }()
+    
+    
+    func processImageRequest(data: Data?, error: Error?)->Result<UIImage, Error> {
+       guard let imageData = data, let image = UIImage(data: imageData) else{
+           // Could not create the image
+           if data == nil {
+               return .failure(error!)
+           }
+           else{
+               return .failure(PhotoError.imageCreationError)
+           }
+       }
+       return .success(image)
+   }
     
 }

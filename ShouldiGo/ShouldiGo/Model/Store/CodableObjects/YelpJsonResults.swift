@@ -16,29 +16,32 @@ import UIKit
 
     // MARK: - Business
     struct Business: Codable {
-        let id, alias, name: String
+        let id, name : String
         let imageURL: String
-        let isClosed: Bool
-        let url: String
+//        let isClosed: Bool
+//        let url: String
         let reviewCount: Int
         let categories: [Category]
         let rating: Double
         let coordinates: Center
-        let transactions: [Transaction]
-        let price: Price?
-        let location: Location
-        let phone, displayPhone: String
-        let distance: Double
+//        let transactions: [Transaction]
+//        let price: Price?
+//        let location: Location
+//        let phone, displayPhone: String
+//        let distance: Double
 
         enum CodingKeys: String, CodingKey {
-            case id, alias, name
+            case id, name
             case imageURL = "image_url"
-            case isClosed = "is_closed"
-            case url
+            case rating
+            case coordinates
+            case categories
+//            case isClosed = "is_closed"
+//            case url
             case reviewCount = "review_count"
-            case categories, rating, coordinates, transactions, price, location, phone
-            case displayPhone = "display_phone"
-            case distance
+//            case categories, rating, coordinates, transactions, price, location, phone
+//            case displayPhone = "display_phone"
+//            case distance
         }
     }
 
@@ -109,11 +112,9 @@ import UIKit
     struct Region: Codable {
         let center: Center
     }
-    
 
-
-
-
-
-
-
+extension Business: Equatable{
+    static func == (lhs: Business, rhs: Business)->Bool{
+        return lhs.id == rhs.id && lhs.imageURL == rhs.imageURL && lhs.name == rhs.name && lhs.reviewCount == rhs.reviewCount
+    }
+}

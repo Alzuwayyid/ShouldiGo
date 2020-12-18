@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		105ADD29258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD28258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift */; };
+		105ADD36258CE16D00CDC7F1 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD35258CE16D00CDC7F1 /* CategoryCell.swift */; };
+		105ADD3B258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD3A258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift */; };
+		105ADD43258D1B5100CDC7F1 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD42258D1B5100CDC7F1 /* CircleView.swift */; };
+		105ADD48258D219E00CDC7F1 /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD47258D219E00CDC7F1 /* PhotoStore.swift */; };
 		109F5F09258A0F1300B5E31C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F08258A0F1300B5E31C /* AppDelegate.swift */; };
 		109F5F0B258A0F1300B5E31C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F0A258A0F1300B5E31C /* SceneDelegate.swift */; };
 		109F5F10258A0F1300B5E31C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 109F5F0E258A0F1300B5E31C /* Main.storyboard */; };
@@ -50,6 +55,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		105ADD28258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+CategoryCollectionView.swift"; sourceTree = "<group>"; };
+		105ADD35258CE16D00CDC7F1 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		105ADD3A258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewLayout.swift; sourceTree = "<group>"; };
+		105ADD42258D1B5100CDC7F1 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		105ADD47258D219E00CDC7F1 /* PhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
 		109F5F05258A0F1300B5E31C /* ShouldiGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShouldiGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109F5F08258A0F1300B5E31C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		109F5F0A258A0F1300B5E31C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +135,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		105ADD27258CE10A00CDC7F1 /* CategoryViews+DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				105ADD28258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift */,
+				105ADD35258CE16D00CDC7F1 /* CategoryCell.swift */,
+				105ADD42258D1B5100CDC7F1 /* CircleView.swift */,
+			);
+			path = "CategoryViews+DataSources";
+			sourceTree = "<group>";
+		};
 		109F5EFC258A0F1300B5E31C = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +214,8 @@
 		109F5F3C258A0F2C00B5E31C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				105ADD27258CE10A00CDC7F1 /* CategoryViews+DataSources */,
+				10A385F1258A6D7500B4E14C /* BusniessViews+DataSources */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,6 +257,7 @@
 		109F5F49258A30BE00B5E31C /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				105ADD47258D219E00CDC7F1 /* PhotoStore.swift */,
 				10A38607258A779900B4E14C /* Helpers */,
 				109F5F4A258A30F100B5E31C /* CodableObjects */,
 			);
@@ -254,27 +277,27 @@
 		10A385E5258A6B9200B4E14C /* HomeController */ = {
 			isa = PBXGroup;
 			children = (
-				10A385F1258A6D7500B4E14C /* Views+DataSources */,
 				10A385E6258A6C0A00B4E14C /* HomeController.swift */,
 			);
 			path = HomeController;
 			sourceTree = "<group>";
 		};
-		10A385F1258A6D7500B4E14C /* Views+DataSources */ = {
+		10A385F1258A6D7500B4E14C /* BusniessViews+DataSources */ = {
 			isa = PBXGroup;
 			children = (
 				10A385F2258A6DC000B4E14C /* DataSource+HomeCollectionView.swift */,
 				10A385FA258A6DD400B4E14C /* Delegate+HomeCollectionView.swift */,
 				10A385FF258A6E7500B4E14C /* HomeCell.swift */,
 			);
-			path = "Views+DataSources";
+			path = "BusniessViews+DataSources";
 			sourceTree = "<group>";
 		};
 		10A38607258A779900B4E14C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				10A38608258A77C500B4E14C /* CollectionViewLayout.swift */,
 				10A38614258A8CF400B4E14C /* ModifyLayersFunctions.swift */,
+				10A38608258A77C500B4E14C /* CollectionViewLayout.swift */,
+				105ADD3A258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -532,17 +555,22 @@
 			files = (
 				10A38600258A6E7500B4E14C /* HomeCell.swift in Sources */,
 				10A385F3258A6DC000B4E14C /* DataSource+HomeCollectionView.swift in Sources */,
+				105ADD43258D1B5100CDC7F1 /* CircleView.swift in Sources */,
 				109F5F54258A319200B5E31C /* wheatherJsonResults.swift in Sources */,
 				109F5F5E258A45A000B5E31C /* WheatherFetcher.swift in Sources */,
 				109F5F59258A330800B5E31C /* YelpFetcher.swift in Sources */,
+				105ADD36258CE16D00CDC7F1 /* CategoryCell.swift in Sources */,
 				109F5F41258A130600B5E31C /* YelpAPI.swift in Sources */,
+				105ADD3B258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift in Sources */,
 				10A385E7258A6C0A00B4E14C /* HomeController.swift in Sources */,
+				105ADD48258D219E00CDC7F1 /* PhotoStore.swift in Sources */,
 				10A385FB258A6DD400B4E14C /* Delegate+HomeCollectionView.swift in Sources */,
 				109F5F63258A46A600B5E31C /* WheatherAPI.swift in Sources */,
 				10A38615258A8CF400B4E14C /* ModifyLayersFunctions.swift in Sources */,
 				109F5F09258A0F1300B5E31C /* AppDelegate.swift in Sources */,
 				109F5F4C258A316A00B5E31C /* YelpJsonResults.swift in Sources */,
 				10A3861A258A984300B4E14C /* BusniessDataResults.swift in Sources */,
+				105ADD29258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift in Sources */,
 				10A38609258A77C500B4E14C /* CollectionViewLayout.swift in Sources */,
 				109F5F0B258A0F1300B5E31C /* SceneDelegate.swift in Sources */,
 			);

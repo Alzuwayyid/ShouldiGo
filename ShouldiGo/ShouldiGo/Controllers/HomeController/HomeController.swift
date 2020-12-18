@@ -12,16 +12,21 @@ class HomeController: UIViewController{
     
     // MARK: - Outlets
     
-    @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var homeCollectionView: UICollectionView!
+    @IBOutlet var categoryCollectionView: UICollectionView!
     
     
     // MARK: - Properties
     var yelpFetcher = YelpFetcher()
     var wheatherFetcher = WheatherFetcher()
-    let collectionDataSource = HomeCollectionDataSource()
-    let collectionDelegate = HomeCollectionDelegate()
+    let homeCollectionDataSource = HomeCollectionDataSource()
+    let homeCollectionDelegate = HomeCollectionDelegate()
+    let categoryCollectionDataSourceAndDelegate = CategoryCollectionDataSource()
     let modifiyViews = modifyLayersFunctions()
+    let tags = ["Bakeries","Bars","Resturant","Cafee","Autorepair","Grocery"]
+    var yelpData = [Business]()
+
+
     override var prefersStatusBarHidden: Bool {
          return true
        }
@@ -30,28 +35,66 @@ class HomeController: UIViewController{
         super.viewDidLoad()
         
         // MARK: - Delegation
-        homeCollectionView.delegate = collectionDelegate
-        homeCollectionView.dataSource = collectionDataSource
-        
-        backgroundImageView.image = UIImage(named: "foodWallpaper1")
-        modifiyViews.modifyViewLayer(image: &backgroundImageView)
+        homeCollectionView.delegate = self
+        homeCollectionView.dataSource = homeCollectionDataSource
+        categoryCollectionView.dataSource = categoryCollectionDataSourceAndDelegate
+        categoryCollectionView.delegate = categoryCollectionDataSourceAndDelegate
+
         
         let wheatherUrl = getWheatherURL(lon: -122.399972, lat: 37.786882, days: 3)
-        let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "resturant")
+        let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "Bakeries")
 
-        print("Weather URL: \(wheatherUrl)")
         wheatherFetcher.fetchWheatherResults(url: wheatherUrl) { (current, error) in
-            print("GEgeGe:  \(current!.current.condition.icon)")
         }
         
         yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
-            self.collectionDataSource.yelpData = result!.businesses
+            self.homeCollectionDataSource.yelpData = result!.businesses
+            self.yelpData = result!.businesses
+            
+            DispatchQueue.main.async {
+                self.homeCollectionView.reloadSections(IndexSet(integer: 0))
+            }
+        }
+        
+    }
+}
+
+
+extension HomeController: UICollectionViewDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        DispatchQueue.global(qos: .userInteractive).async { [self] in
+            categoryCollectionDataSourceAndDelegate.tagsCounter = indexPath.row
+        }
+        
+        let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "\(tags[indexPath.row])")
+        yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
+            self.homeCollectionDataSource.yelpData = result!.businesses
             DispatchQueue.main.async {
                 self.homeCollectionView.reloadSections(IndexSet(integer: 0))
             }
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath){
+        
+        guard yelpData.count > indexPath.row else{
+            return
+        }
 
+        let photo = yelpData[indexPath.row]
+        yelpFetcher.fetchImage(for: photo) { (result)->Void  in
+            guard let photoIndex = self.yelpData.firstIndex(of: photo), case let .success(image) = result else {
+                return
+            }
+            let photoIndexPath = IndexPath(item: photoIndex, section: 0)
+            // When the request finishes, find the current cell for this photo
+            if let cell = collectionView.cellForItem(at: photoIndexPath) as? HomeCollectionViewCell {
+                cell.update(displaying: image)
+            }
+        }
+    }
     
     
 }
