@@ -35,10 +35,10 @@ class HomeController: UIViewController{
         super.viewDidLoad()
         
         // MARK: - Delegation
-        homeCollectionView.delegate = self
+//        homeCollectionView.delegate = self
         homeCollectionView.dataSource = homeCollectionDataSource
         categoryCollectionView.dataSource = categoryCollectionDataSourceAndDelegate
-        categoryCollectionView.delegate = categoryCollectionDataSourceAndDelegate
+        categoryCollectionView.delegate = self
 
         
         let wheatherUrl = getWheatherURL(lon: -122.399972, lat: 37.786882, days: 3)
