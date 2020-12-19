@@ -24,9 +24,5 @@ class CategoryCollectionViewCell: UICollectionViewCell{
         contentView.layer.masksToBounds = true
         contentView.layer.borderWidth = 0.3
         contentView.tintColor = .white
-
-
-
-        
     }
 }

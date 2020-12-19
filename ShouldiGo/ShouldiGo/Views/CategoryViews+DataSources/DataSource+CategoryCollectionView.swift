@@ -9,6 +9,7 @@ import UIKit
 
 class CategoryCollectionDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate{
     
+    // MARK: - Properties
     var yelpData = [Business]()
     var yelpFetcher = YelpFetcher()
     var wheatherFetcher = WheatherFetcher()
