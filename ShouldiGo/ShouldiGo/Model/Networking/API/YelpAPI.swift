@@ -16,9 +16,11 @@ enum YelpEndPoints{
     
     static let search = "https://api.yelp.com/v3/businesses/search?"
     static let fetchBusinessIdDataBaseURL = "https://api.yelp.com/v3/businesses/"
-
+    static let autoCompleteEndPoint = "https://api.yelp.com/v3/autocomplete?"
+    
     case searchURLString(Double,Double,String)
     case businessId(String)
+    case autoCompleteText(String)
 
     var baseURL: String {
         switch self {
@@ -26,6 +28,8 @@ enum YelpEndPoints{
                 return YelpEndPoints.search  + "term=\(category)?" + "&latitude=\(lat)" + "&longitude=\(lon)"
             case .businessId(let id):
                 return YelpEndPoints.fetchBusinessIdDataBaseURL + "\(id)"
+            case .autoCompleteText(let text):
+                return YelpEndPoints.autoCompleteEndPoint + "text=\(text)"
         }
     }
     
@@ -43,3 +47,6 @@ func getBusinessIdURL(id: String)->URL{
     return YelpEndPoints.businessId(id).url
 }
 
+func getAutoCompleteURL(text: String)-> URL{
+    return YelpEndPoints.autoCompleteText(text).url
+}

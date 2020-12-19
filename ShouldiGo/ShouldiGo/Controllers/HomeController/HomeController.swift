@@ -44,7 +44,7 @@ class HomeController: UIViewController{
         searchResultsTableView.delegate = searchTableView
         searchResultsTableView.dataSource = searchTableView
         
-        searchResultsTableView.isHidden = false
+        searchResultsTableView.isHidden = true
 
         // Build Yelp URL
         let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "Bakeries")
@@ -106,15 +106,19 @@ extension HomeController: UISearchBarDelegate/*, UISearchResultsUpdating*/{
 //    func updateSearchResults(for searchController: UISearchController) {
 //        <#code#>
 //    }
-    
+//
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
             searchBar.setShowsCancelButton(true, animated: true)
+            searchResultsTableView.isHidden = false
+
         }
     
         func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
             searchBar.text = ""
             searchBar.setShowsCancelButton(false, animated: true)
             searchBar.resignFirstResponder()
+            searchResultsTableView.isHidden = true
+
         }
     
         func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -135,7 +139,17 @@ extension HomeController: UISearchBarDelegate/*, UISearchResultsUpdating*/{
         print("Searchbutton Clicker")
     }
     
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        <#code#>
-//    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("textChanged: \(searchText)")
+        
+        let autoCompleteURL = getAutoCompleteURL(text: searchText)
+        DispatchQueue.main.async { [self] in
+            yelpFetcher.fetchAutoCompleteResults(url: autoCompleteURL) { (result, error) in
+                searchTableView.autoCompleteArr = result!.terms
+                DispatchQueue.main.async {
+                    self.searchResultsTableView.reloadSections(IndexSet(integer: 0), with: .right)
+                }
+            }
+        }
+    }
 }

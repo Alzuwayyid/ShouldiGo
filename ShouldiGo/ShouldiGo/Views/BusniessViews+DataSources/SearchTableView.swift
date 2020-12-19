@@ -10,17 +10,19 @@ import UIKit
 class SearchTableView: NSObject ,UITableViewDelegate, UITableViewDataSource {
     
     let deleteMeArr = ["Xcode","is","Fucking","Crap"]
+    var autoCompleteArr = [Term]()
+
     @IBOutlet var tableView: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        deleteMeArr.count
+        autoCompleteArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "searchTable"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
-        cell.textLabel?.text = deleteMeArr[indexPath.row]
+        cell.textLabel?.text = "\(autoCompleteArr[indexPath.row].text)"
         return cell
     }
     
