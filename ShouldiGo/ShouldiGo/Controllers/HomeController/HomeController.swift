@@ -14,18 +14,19 @@ class HomeController: UIViewController{
     
     @IBOutlet var homeCollectionView: UICollectionView!
     @IBOutlet var categoryCollectionView: UICollectionView!
-    
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var searchResultsTableView: UITableView!
     
     // MARK: - Properties
-    var yelpFetcher = YelpFetcher()
-    var wheatherFetcher = WheatherFetcher()
     let homeCollectionDataSource = HomeCollectionDataSource()
     let homeCollectionDelegate = HomeCollectionDelegate()
     let categoryCollectionDataSourceAndDelegate = CategoryCollectionDataSource()
     let modifiyViews = modifyLayersFunctions()
     let tags = ["Bakeries","Bars","Resturant","Cafee","Autorepair","Grocery"]
+    let searchTableView = SearchTableView()
+    var yelpFetcher = YelpFetcher()
+    var wheatherFetcher = WheatherFetcher()
     var yelpData = [Business]()
-
 
     override var prefersStatusBarHidden: Bool {
          return true
@@ -39,6 +40,11 @@ class HomeController: UIViewController{
         homeCollectionView.dataSource = homeCollectionDataSource
         categoryCollectionView.dataSource = categoryCollectionDataSourceAndDelegate
         categoryCollectionView.delegate = self
+        searchBar.delegate = self
+        searchResultsTableView.delegate = searchTableView
+        searchResultsTableView.dataSource = searchTableView
+        
+        searchResultsTableView.isHidden = true
 
         // Build Yelp URL
         let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "Bakeries")
@@ -93,4 +99,57 @@ extension HomeController: UICollectionViewDelegate{
 //    }
     
     
+}
+
+extension HomeController: UISearchBarDelegate/*, UISearchResultsUpdating*/{
+    
+//    func updateSearchResults(for searchController: UISearchController) {
+//        <#code#>
+//    }
+//
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+            searchBar.setShowsCancelButton(true, animated: true)
+            searchResultsTableView.isHidden = false
+
+        }
+    
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            searchBar.text = ""
+            searchBar.setShowsCancelButton(false, animated: true)
+            searchBar.resignFirstResponder()
+            searchResultsTableView.isHidden = true
+
+        }
+    
+        func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+            print("Yo")
+            if(searchBar.text ?? "" != ""){
+
+            }
+        }
+    
+        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            searchBar.resignFirstResponder()
+            if let cancelButton : UIButton = searchBar.value(forKey: "cancelButton") as? UIButton{
+                cancelButton.isEnabled = true
+            }
+        }
+    
+    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
+        print("Searchbutton Clicker")
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("textChanged: \(searchText)")
+        
+        let autoCompleteURL = getAutoCompleteURL(text: searchText)
+        DispatchQueue.main.async { [self] in
+            yelpFetcher.fetchAutoCompleteResults(url: autoCompleteURL) { (result, error) in
+                searchTableView.autoCompleteArr = result!.terms
+                DispatchQueue.main.async {
+                    self.searchResultsTableView.reloadSections(IndexSet(integer: 0), with: .right)
+                }
+            }
+        }
+    }
 }
