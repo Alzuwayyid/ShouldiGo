@@ -12,6 +12,8 @@
 		105ADD3B258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD3A258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift */; };
 		105ADD43258D1B5100CDC7F1 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD42258D1B5100CDC7F1 /* CircleView.swift */; };
 		105ADD48258D219E00CDC7F1 /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD47258D219E00CDC7F1 /* PhotoStore.swift */; };
+		105ADD69258E38FD00CDC7F1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD68258E38FD00CDC7F1 /* DetailsViewController.swift */; };
+		105ADD76258E69A200CDC7F1 /* SearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD75258E69A200CDC7F1 /* SearchTableView.swift */; };
 		109F5F09258A0F1300B5E31C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F08258A0F1300B5E31C /* AppDelegate.swift */; };
 		109F5F0B258A0F1300B5E31C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F0A258A0F1300B5E31C /* SceneDelegate.swift */; };
 		109F5F10258A0F1300B5E31C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 109F5F0E258A0F1300B5E31C /* Main.storyboard */; };
@@ -60,6 +62,8 @@
 		105ADD3A258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewLayout.swift; sourceTree = "<group>"; };
 		105ADD42258D1B5100CDC7F1 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		105ADD47258D219E00CDC7F1 /* PhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
+		105ADD68258E38FD00CDC7F1 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		105ADD75258E69A200CDC7F1 /* SearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableView.swift; sourceTree = "<group>"; };
 		109F5F05258A0F1300B5E31C /* ShouldiGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShouldiGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109F5F08258A0F1300B5E31C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		109F5F0A258A0F1300B5E31C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -278,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				10A385E6258A6C0A00B4E14C /* HomeController.swift */,
+				105ADD68258E38FD00CDC7F1 /* DetailsViewController.swift */,
 			);
 			path = HomeController;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				10A385F2258A6DC000B4E14C /* DataSource+HomeCollectionView.swift */,
 				10A385FA258A6DD400B4E14C /* Delegate+HomeCollectionView.swift */,
 				10A385FF258A6E7500B4E14C /* HomeCell.swift */,
+				105ADD75258E69A200CDC7F1 /* SearchTableView.swift */,
 			);
 			path = "BusniessViews+DataSources";
 			sourceTree = "<group>";
@@ -564,6 +570,7 @@
 				105ADD3B258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift in Sources */,
 				10A385E7258A6C0A00B4E14C /* HomeController.swift in Sources */,
 				105ADD48258D219E00CDC7F1 /* PhotoStore.swift in Sources */,
+				105ADD69258E38FD00CDC7F1 /* DetailsViewController.swift in Sources */,
 				10A385FB258A6DD400B4E14C /* Delegate+HomeCollectionView.swift in Sources */,
 				109F5F63258A46A600B5E31C /* WheatherAPI.swift in Sources */,
 				10A38615258A8CF400B4E14C /* ModifyLayersFunctions.swift in Sources */,
@@ -571,6 +578,7 @@
 				109F5F4C258A316A00B5E31C /* YelpJsonResults.swift in Sources */,
 				10A3861A258A984300B4E14C /* BusniessDataResults.swift in Sources */,
 				105ADD29258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift in Sources */,
+				105ADD76258E69A200CDC7F1 /* SearchTableView.swift in Sources */,
 				10A38609258A77C500B4E14C /* CollectionViewLayout.swift in Sources */,
 				109F5F0B258A0F1300B5E31C /* SceneDelegate.swift in Sources */,
 			);
