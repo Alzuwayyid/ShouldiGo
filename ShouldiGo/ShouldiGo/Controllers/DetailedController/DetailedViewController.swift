@@ -16,7 +16,7 @@ class DetailedViewController: UIViewController {
     
     // MARK: - Properties
     let dayDetailsCollectionViewDD = DaysDetailsCollectionViewDataSourceAndDelegate()
-//    let daysCollectionViewDD = DaysCollectionViewDataSourceAndDelegate()
+    let daysCollectionViewDD = DaysCollectionViewDataSourceAndDelegate()
     let wheatherFetcher = WheatherFetcher()
     var latitude = 0.0
     var longitude = 0.0
@@ -24,8 +24,8 @@ class DetailedViewController: UIViewController {
         super.viewDidLoad()
         
         // MARK: - Delegation
-//        daysCollectionView.delegate = daysCollectionViewDD
-//        daysCollectionView.dataSource = daysCollectionViewDD
+        daysCollectionView.delegate = daysCollectionViewDD
+        daysCollectionView.dataSource = daysCollectionViewDD
         daysDetailsCollectionView.delegate = dayDetailsCollectionViewDD
         daysDetailsCollectionView.dataSource = dayDetailsCollectionViewDD
         
@@ -36,8 +36,10 @@ class DetailedViewController: UIViewController {
                 forecast.append(contentsOf: result![index].hour)
             }
             self.dayDetailsCollectionViewDD.details = forecast
+            self.daysCollectionViewDD.details = result!
             DispatchQueue.main.async {
                 self.daysDetailsCollectionView.reloadSections(IndexSet(integer: 0))
+                self.daysCollectionView.reloadSections(IndexSet(integer: 0))
             }
         }
     }

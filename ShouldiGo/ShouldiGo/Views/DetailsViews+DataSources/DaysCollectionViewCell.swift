@@ -7,6 +7,10 @@
 
 import UIKit
 
-//class DaysCollectionViewCell: UICollectionViewCell {
-//    
-//}
+class DaysCollectionViewCell: UICollectionViewCell {
+    // MARK: - IBOutlets
+    @IBOutlet var DayLabel: UILabel!
+    
+}
+    
+

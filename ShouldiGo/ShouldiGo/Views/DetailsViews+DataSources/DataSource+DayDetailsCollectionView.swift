@@ -25,11 +25,18 @@ class DaysDetailsCollectionViewDataSourceAndDelegate: NSObject,UICollectionViewD
         
         // Hour[] gives detailed info about the day
         cell.tempeNum.text = "\(details[indexPath.row].tempC)c"
-        cell.timeLabel.text = "\(details[indexPath.row].time)"
+        cell.timeLabel.text = "\(details[indexPath.row].time.suffix(5))"
         cell.conditionImage.setImageFromURL(url: getWheatherImageURL(imageURL: (details[indexPath.row].condition.icon)))
-        
+                
         return cell
     }
-    
-    
 }
+
+//func militaryTimeToAmPm(text: String)->String{
+//    let hour = Double(text.prefix(2))
+//    if hour! >= 00 && hour! <= 11{
+//        return "\(hour!)" + text.suffix(2) + "AM"
+//    }
+//    
+//    return String(hour!)
+//}
