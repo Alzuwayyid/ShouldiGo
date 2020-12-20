@@ -86,7 +86,7 @@ extension HomeController: UISearchBarDelegate/*, UISearchResultsUpdating*/{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("textChanged: \(searchText)")
         
-        let autoCompleteURL = getAutoCompleteURL(text: searchText)
+        let autoCompleteURL = getAutoCompleteURL(text: searchText.replacingOccurrences(of: " ", with: "-", options: .regularExpression, range: nil))
         DispatchQueue.main.async { [self] in
             yelpFetcher.fetchAutoCompleteResults(url: autoCompleteURL) { (result, error) in
                 self.autoCompleteArr = result!.terms
