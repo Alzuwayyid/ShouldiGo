@@ -73,7 +73,6 @@ class YelpFetcher{
         
     }
     
-    
 //    func fetchImage(for photo: Business, completion: @escaping (Result<UIImage, Error>)->Void){
 //        let photoKey = photo.id
 //

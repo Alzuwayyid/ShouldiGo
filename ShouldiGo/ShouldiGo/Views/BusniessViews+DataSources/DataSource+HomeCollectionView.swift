@@ -48,7 +48,7 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
         }
         
         let wheatherUrl = getWheatherURL(lon: yelpData[indexPath.row].coordinates.longitude, lat: yelpData[indexPath.row].coordinates.latitude, days: 7)
-
+        
         // Download wheather status image
             wheatherFetcher.fetchWheatherResults(url: wheatherUrl) { (results, error) in
                 DispatchQueue.main.async { [self] in
