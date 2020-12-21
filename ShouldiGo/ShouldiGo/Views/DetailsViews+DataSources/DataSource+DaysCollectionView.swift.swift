@@ -20,8 +20,10 @@ class DaysCollectionViewDataSourceAndDelegate: NSObject,UICollectionViewDataSour
         let reuseIdentifier = "daysCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DaysCollectionViewCell
         
-        cell.backgroundColor = .systemGray4
-        cell.DayLabel.text = "\(details[indexPath.row].date)"
+        cell.maxTemp.text = "\(details[indexPath.row].day.maxtempC)c"
+        cell.minTemp.text = "\(details[indexPath.row].day.mintempC)c"
+        cell.wheatherIcon.setImageFromURL(url: getWheatherImageURL(imageURL: (details[indexPath.row].day.condition.icon)))
+        cell.DayLabel.text = "\(details[indexPath.row].date.suffix(5))"
 
                 
         return cell
