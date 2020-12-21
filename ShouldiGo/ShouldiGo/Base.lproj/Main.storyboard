@@ -242,43 +242,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mke-bI-VuA">
-                                <rect key="frame" x="0.0" y="657" width="414" height="55"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="o5c-nH-qEF">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="daysCell" id="hQH-OE-Wei" customClass="DaysCollectionViewCell" customModule="ShouldiGo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-36.5" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gFe-yX-Wv3">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t06-dC-f9C">
-                                                    <rect key="frame" x="46" y="19" width="36" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="t06-dC-f9C" secondAttribute="bottom" constant="88" id="2Hp-KR-OWO"/>
-                                                <constraint firstItem="t06-dC-f9C" firstAttribute="leading" secondItem="gFe-yX-Wv3" secondAttribute="leading" constant="46" id="LMI-AI-d6C"/>
-                                                <constraint firstAttribute="trailing" secondItem="t06-dC-f9C" secondAttribute="trailing" constant="46" id="PNo-0g-qnZ"/>
-                                                <constraint firstItem="t06-dC-f9C" firstAttribute="top" secondItem="gFe-yX-Wv3" secondAttribute="top" constant="19" id="Qh5-aX-KwT"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <connections>
-                                            <outlet property="DayLabel" destination="t06-dC-f9C" id="C97-mF-qIO"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DGF-ga-RSa">
                                 <rect key="frame" x="0.0" y="720" width="414" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -335,18 +298,138 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mke-bI-VuA">
+                                <rect key="frame" x="0.0" y="657" width="414" height="55"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="o5c-nH-qEF">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="daysCell" id="hQH-OE-Wei" customClass="DaysCollectionViewCell" customModule="ShouldiGo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="-36.5" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gFe-yX-Wv3">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t06-dC-f9C">
+                                                    <rect key="frame" x="46" y="19" width="36" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="t06-dC-f9C" secondAttribute="bottom" constant="88" id="2Hp-KR-OWO"/>
+                                                <constraint firstItem="t06-dC-f9C" firstAttribute="leading" secondItem="gFe-yX-Wv3" secondAttribute="leading" constant="46" id="LMI-AI-d6C"/>
+                                                <constraint firstAttribute="trailing" secondItem="t06-dC-f9C" secondAttribute="trailing" constant="46" id="PNo-0g-qnZ"/>
+                                                <constraint firstItem="t06-dC-f9C" firstAttribute="top" secondItem="gFe-yX-Wv3" secondAttribute="top" constant="19" id="Qh5-aX-KwT"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="DayLabel" destination="t06-dC-f9C" id="C97-mF-qIO"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BusniessTitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4T-gD-BbP">
+                                <rect key="frame" x="5" y="53" width="404" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kpp-8K-6Ba">
+                                <rect key="frame" x="0.0" y="107" width="414" height="128"/>
+                                <color key="backgroundColor" name="LightBlue"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2qR-zA-1fL">
+                                <rect key="frame" x="0.0" y="239" width="417" height="128"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hVo-Hl-tVe">
+                                        <rect key="frame" x="0.0" y="0.0" width="208.5" height="128"/>
+                                        <color key="backgroundColor" name="MiskDarkBlue"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hA8-ME-BhB">
+                                        <rect key="frame" x="208.5" y="0.0" width="208.5" height="128"/>
+                                        <color key="backgroundColor" name="RatingLightGreen"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chart.bar.doc.horizontal.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dYB-3z-chT">
+                                <rect key="frame" x="77" y="401.5" width="40" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="LightRed"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPK-jx-vTc">
+                                <rect key="frame" x="77" y="445.5" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="map.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VNb-5N-Irp">
+                                <rect key="frame" x="260" y="400.5" width="40" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="LightRed"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H82-4I-e3T">
+                                <rect key="frame" x="247" y="445.5" width="66" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mappin.and.ellipse" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Eej-U7-6Px">
+                                <rect key="frame" x="20" y="522" width="62" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="DarkGrayForItem"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzD-d5-NFx">
+                                <rect key="frame" x="97" y="539" width="63" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-Wo-cps">
+                                <rect key="frame" x="20" y="584" width="62" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="DarkGrayForItem"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOE-Fp-PZc">
+                                <rect key="frame" x="97" y="601" width="44" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="At1-U1-icE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DGF-ga-RSa" firstAttribute="top" secondItem="At1-U1-icE" secondAttribute="top" constant="676" id="11F-ic-113"/>
+                            <constraint firstItem="Mke-bI-VuA" firstAttribute="top" secondItem="2qR-zA-1fL" secondAttribute="bottom" constant="290" id="1IB-et-cyY"/>
                             <constraint firstItem="DGF-ga-RSa" firstAttribute="leading" secondItem="At1-U1-icE" secondAttribute="leading" id="9YA-sB-F3x"/>
+                            <constraint firstItem="Kpp-8K-6Ba" firstAttribute="leading" secondItem="At1-U1-icE" secondAttribute="leading" id="DPg-4D-9sP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2qR-zA-1fL" secondAttribute="trailing" constant="-23" id="Il1-Mi-Vfk"/>
                             <constraint firstItem="DGF-ga-RSa" firstAttribute="bottom" secondItem="At1-U1-icE" secondAttribute="bottom" constant="-14" id="M8q-iR-WUE"/>
+                            <constraint firstItem="At1-U1-icE" firstAttribute="trailing" secondItem="Y4T-gD-BbP" secondAttribute="trailing" constant="5" id="OZ6-Zj-FWP"/>
+                            <constraint firstItem="At1-U1-icE" firstAttribute="trailing" secondItem="Kpp-8K-6Ba" secondAttribute="trailing" id="RVA-1c-lac"/>
+                            <constraint firstItem="Mke-bI-VuA" firstAttribute="top" secondItem="Y4T-gD-BbP" secondAttribute="bottom" constant="566" id="TvQ-Ld-7Fu"/>
                             <constraint firstItem="DGF-ga-RSa" firstAttribute="top" secondItem="Mke-bI-VuA" secondAttribute="bottom" constant="8" id="UHM-pV-QuX"/>
+                            <constraint firstItem="Y4T-gD-BbP" firstAttribute="top" secondItem="At1-U1-icE" secondAttribute="top" constant="9" id="Wyf-Ix-zkf"/>
+                            <constraint firstItem="2qR-zA-1fL" firstAttribute="leading" secondItem="Kpp-8K-6Ba" secondAttribute="leading" id="Yob-JL-NqZ"/>
                             <constraint firstItem="Mke-bI-VuA" firstAttribute="trailing" secondItem="At1-U1-icE" secondAttribute="trailing" id="ZPq-ob-5SN"/>
                             <constraint firstItem="Mke-bI-VuA" firstAttribute="top" secondItem="At1-U1-icE" secondAttribute="top" constant="613" id="ffM-iy-uuu"/>
+                            <constraint firstItem="2qR-zA-1fL" firstAttribute="top" secondItem="Kpp-8K-6Ba" secondAttribute="bottom" constant="4" id="gpS-WE-eVe"/>
                             <constraint firstItem="Mke-bI-VuA" firstAttribute="leading" secondItem="At1-U1-icE" secondAttribute="leading" id="k2H-Vn-O38"/>
+                            <constraint firstItem="Kpp-8K-6Ba" firstAttribute="top" secondItem="Y4T-gD-BbP" secondAttribute="bottom" constant="16" id="pEO-Ak-h8C"/>
+                            <constraint firstItem="Mke-bI-VuA" firstAttribute="top" secondItem="Kpp-8K-6Ba" secondAttribute="bottom" constant="422" id="tNS-4r-6tz"/>
                             <constraint firstItem="DGF-ga-RSa" firstAttribute="trailing" secondItem="At1-U1-icE" secondAttribute="trailing" id="vKc-pK-BeT"/>
+                            <constraint firstItem="Y4T-gD-BbP" firstAttribute="leading" secondItem="At1-U1-icE" secondAttribute="leading" constant="5" id="y3h-NB-6W8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -378,10 +461,26 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chart.bar.doc.horizontal.fill" catalog="system" width="115" height="128"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="map.fill" catalog="system" width="128" height="110"/>
+        <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="DarkGrayForItem">
             <color red="0.15299999713897705" green="0.14100000262260437" blue="0.16899999976158142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightBlue">
+            <color red="0.0" green="0.5690000057220459" blue="0.70200002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightRed">
+            <color red="1" green="0.18400000035762787" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MiskDarkBlue">
+            <color red="0.15299999713897705" green="0.14100000262260437" blue="0.39599999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RatingLightGreen">
+            <color red="0.0" green="0.72200000286102295" blue="0.016000000759959221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
