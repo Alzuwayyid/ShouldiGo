@@ -24,7 +24,7 @@ class DetailedViewController: UIViewController {
         super.viewDidLoad()
         
         // MARK: - Delegation
-        daysCollectionView.delegate = daysCollectionViewDD
+        daysCollectionView.delegate = self
         daysCollectionView.dataSource = daysCollectionViewDD
         daysDetailsCollectionView.delegate = dayDetailsCollectionViewDD
         daysDetailsCollectionView.dataSource = dayDetailsCollectionViewDD
@@ -45,4 +45,26 @@ class DetailedViewController: UIViewController {
     }
     
 
+}
+
+
+extension DetailedViewController: UICollectionViewDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let ForcastTodayURL = getForcastedWheatherURL(lon: -122.399972, lat: 37.786882 ,days: 3)
+        
+        wheatherFetcher.fetchForcatedWheatherResults(url: ForcastTodayURL) { (result, error) in
+            
+            var forecast = [ForecastHour]()
+            forecast.append(contentsOf: result![indexPath.row].hour)
+            self.dayDetailsCollectionViewDD.details = forecast
+            self.daysCollectionViewDD.details = result!
+            DispatchQueue.main.async {
+                self.daysDetailsCollectionView.reloadSections(IndexSet(integer: 0))
+//                self.daysCollectionView.reloadSections(IndexSet(integer: 0))
+            }
+        }
+    }
+    
 }
