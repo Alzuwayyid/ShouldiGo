@@ -10,6 +10,9 @@ import UIKit
 class DaysCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
     @IBOutlet var DayLabel: UILabel!
+    @IBOutlet var wheatherIcon: UIImageView!
+    @IBOutlet var maxTemp: UILabel!
+    @IBOutlet var minTemp: UILabel!
     
 }
     

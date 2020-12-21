@@ -18,7 +18,7 @@ class DetailedViewController: UIViewController {
     @IBOutlet var ratingLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var phoneNumber: UILabel!
-    @IBOutlet var cityLabel: UILabel!
+    @IBOutlet var categoryLabel: UILabel!
     
     // MARK: - Properties
     let dayDetailsCollectionViewDD = DaysDetailsCollectionViewDataSourceAndDelegate()
@@ -32,6 +32,7 @@ class DetailedViewController: UIViewController {
     var titleText = ""
     var largeImageURL = ""
     var phoneNumberText = ""
+    var categoryText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +50,8 @@ class DetailedViewController: UIViewController {
         titleLabel.text = titleText
         addressLabel.text = addressText
         ratingLabel.text = ratingText
+        categoryLabel.text = categoryText
         largeImage.kf.setImage(with: URL(string: largeImageURL))
-
         largeImage.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMinXMaxYCorner]
         largeImage.layer.masksToBounds = true
         largeImage.layer.cornerRadius = 15
