@@ -26,8 +26,8 @@ import UIKit
         let coordinates: Center
 //        let transactions: [Transaction]
 //        let price: Price?
-//        let location: Location
-//        let phone, displayPhone: String
+        let location: Location
+        let phone, displayPhone: String
 //        let distance: Double
 
         enum CodingKeys: String, CodingKey {
@@ -36,11 +36,13 @@ import UIKit
             case rating
             case coordinates
             case categories
+            case location
+            case phone
 //            case isClosed = "is_closed"
 //            case url
             case reviewCount = "review_count"
 //            case categories, rating, coordinates, transactions, price, location, phone
-//            case displayPhone = "display_phone"
+            case displayPhone = "display_phone"
 //            case distance
         }
     }

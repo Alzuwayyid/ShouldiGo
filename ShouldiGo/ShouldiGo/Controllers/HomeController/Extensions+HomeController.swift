@@ -117,5 +117,25 @@ extension HomeController: UICollectionViewDelegate{
 }
 
 extension HomeController{
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier{
+            case "toDetails":
+                if let selectedIndexPath = homeCollectionView.indexPathsForSelectedItems!.first{
+                    let busTitle = homeCollectionDataSource.yelpData[selectedIndexPath.row].name
+                    let address = homeCollectionDataSource.yelpData[selectedIndexPath.row].location.address1
+                    let ratingNumber = homeCollectionDataSource.yelpData[selectedIndexPath.row].rating
+                    let largeImge = homeCollectionDataSource.yelpData[selectedIndexPath.row].imageURL
+                    let phoneNumber = homeCollectionDataSource.yelpData[selectedIndexPath.row].phone
+                    
+                    let decVC = segue.destination as! DetailedViewController
+                    decVC.phoneNumberText = phoneNumber
+                    decVC.titleText = busTitle
+                    decVC.addressText = address
+                    decVC.ratingText = "\(ratingNumber)"
+                    decVC.largeImageURL = largeImge
+                }
+            default:
+                print("Could not prefrom segue")
+        }
+    }
 }
