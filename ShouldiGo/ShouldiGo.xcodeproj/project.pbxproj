@@ -10,7 +10,6 @@
 		105ADD29258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD28258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift */; };
 		105ADD36258CE16D00CDC7F1 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD35258CE16D00CDC7F1 /* CategoryCell.swift */; };
 		105ADD3B258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD3A258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift */; };
-		105ADD43258D1B5100CDC7F1 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD42258D1B5100CDC7F1 /* CircleView.swift */; };
 		105ADD48258D219E00CDC7F1 /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD47258D219E00CDC7F1 /* PhotoStore.swift */; };
 		105ADD7E258E72F000CDC7F1 /* AutoCompleteJsonResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD7D258E72F000CDC7F1 /* AutoCompleteJsonResults.swift */; };
 		105ADD83258E912E00CDC7F1 /* Extensions+HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD82258E912E00CDC7F1 /* Extensions+HomeController.swift */; };
@@ -20,6 +19,11 @@
 		105ADDC9258FB34900CDC7F1 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADDC8258FB34900CDC7F1 /* DetailedViewController.swift */; };
 		105ADDCE258FB76300CDC7F1 /* DaysCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADDCD258FB76300CDC7F1 /* DaysCollectionViewCell.swift */; };
 		105ADDD3258FB77200CDC7F1 /* DetailedDaysCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADDD2258FB77200CDC7F1 /* DetailedDaysCollectionViewCell.swift */; };
+		105ADDE3259139B800CDC7F1 /* YelpReviewsJsonResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADDE2259139B800CDC7F1 /* YelpReviewsJsonResults.swift */; };
+		105ADDE925913B9100CDC7F1 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADDE825913B9100CDC7F1 /* CommentsViewController.swift */; };
+		105ADDF525913C2100CDC7F1 /* CommentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADDF425913C2100CDC7F1 /* CommentsCollectionViewCell.swift */; };
+		105ADDFA25913D2100CDC7F1 /* CommentsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADDF925913D2100CDC7F1 /* CommentsCollectionViewDataSource.swift */; };
+		105ADDFF2591466700CDC7F1 /* CommentsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADDFE2591466700CDC7F1 /* CommentsCollectionViewLayout.swift */; };
 		109F5F09258A0F1300B5E31C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F08258A0F1300B5E31C /* AppDelegate.swift */; };
 		109F5F0B258A0F1300B5E31C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F0A258A0F1300B5E31C /* SceneDelegate.swift */; };
 		109F5F10258A0F1300B5E31C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 109F5F0E258A0F1300B5E31C /* Main.storyboard */; };
@@ -66,7 +70,6 @@
 		105ADD28258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+CategoryCollectionView.swift"; sourceTree = "<group>"; };
 		105ADD35258CE16D00CDC7F1 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		105ADD3A258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewLayout.swift; sourceTree = "<group>"; };
-		105ADD42258D1B5100CDC7F1 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		105ADD47258D219E00CDC7F1 /* PhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
 		105ADD7D258E72F000CDC7F1 /* AutoCompleteJsonResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteJsonResults.swift; sourceTree = "<group>"; };
 		105ADD82258E912E00CDC7F1 /* Extensions+HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+HomeController.swift"; sourceTree = "<group>"; };
@@ -76,6 +79,11 @@
 		105ADDC8258FB34900CDC7F1 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		105ADDCD258FB76300CDC7F1 /* DaysCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionViewCell.swift; sourceTree = "<group>"; };
 		105ADDD2258FB77200CDC7F1 /* DetailedDaysCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDaysCollectionViewCell.swift; sourceTree = "<group>"; };
+		105ADDE2259139B800CDC7F1 /* YelpReviewsJsonResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpReviewsJsonResults.swift; sourceTree = "<group>"; };
+		105ADDE825913B9100CDC7F1 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		105ADDF425913C2100CDC7F1 /* CommentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCollectionViewCell.swift; sourceTree = "<group>"; };
+		105ADDF925913D2100CDC7F1 /* CommentsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		105ADDFE2591466700CDC7F1 /* CommentsCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCollectionViewLayout.swift; sourceTree = "<group>"; };
 		109F5F05258A0F1300B5E31C /* ShouldiGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShouldiGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109F5F08258A0F1300B5E31C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		109F5F0A258A0F1300B5E31C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,7 +164,6 @@
 			children = (
 				105ADD28258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift */,
 				105ADD35258CE16D00CDC7F1 /* CategoryCell.swift */,
-				105ADD42258D1B5100CDC7F1 /* CircleView.swift */,
 			);
 			path = "CategoryViews+DataSources";
 			sourceTree = "<group>";
@@ -178,6 +185,23 @@
 				105ADDD2258FB77200CDC7F1 /* DetailedDaysCollectionViewCell.swift */,
 			);
 			path = "DetailsViews+DataSources";
+			sourceTree = "<group>";
+		};
+		105ADDE725913B7600CDC7F1 /* CommentsController */ = {
+			isa = PBXGroup;
+			children = (
+				105ADDE825913B9100CDC7F1 /* CommentsViewController.swift */,
+			);
+			path = CommentsController;
+			sourceTree = "<group>";
+		};
+		105ADDF025913BD800CDC7F1 /* CommentsViews+DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				105ADDF925913D2100CDC7F1 /* CommentsCollectionViewDataSource.swift */,
+				105ADDF425913C2100CDC7F1 /* CommentsCollectionViewCell.swift */,
+			);
+			path = "CommentsViews+DataSources";
 			sourceTree = "<group>";
 		};
 		109F5EFC258A0F1300B5E31C = {
@@ -249,6 +273,7 @@
 		109F5F3C258A0F2C00B5E31C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				105ADDF025913BD800CDC7F1 /* CommentsViews+DataSources */,
 				105ADDAE258FB1DC00CDC7F1 /* DetailsViews+DataSources */,
 				105ADD27258CE10A00CDC7F1 /* CategoryViews+DataSources */,
 				10A385F1258A6D7500B4E14C /* BusniessViews+DataSources */,
@@ -259,6 +284,7 @@
 		109F5F3D258A0F3A00B5E31C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				105ADDE725913B7600CDC7F1 /* CommentsController */,
 				105ADDA5258FB01500CDC7F1 /* DetailedController */,
 				10A385E5258A6B9200B4E14C /* HomeController */,
 			);
@@ -309,6 +335,7 @@
 				105ADD9D258FAAD400CDC7F1 /* wheatherForecastResults.swift */,
 				10A38619258A984300B4E14C /* BusniessDataResults.swift */,
 				105ADD7D258E72F000CDC7F1 /* AutoCompleteJsonResults.swift */,
+				105ADDE2259139B800CDC7F1 /* YelpReviewsJsonResults.swift */,
 			);
 			path = CodableObjects;
 			sourceTree = "<group>";
@@ -338,6 +365,7 @@
 				10A38614258A8CF400B4E14C /* ModifyLayersFunctions.swift */,
 				10A38608258A77C500B4E14C /* CollectionViewLayout.swift */,
 				105ADD3A258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift */,
+				105ADDFE2591466700CDC7F1 /* CommentsCollectionViewLayout.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -595,11 +623,15 @@
 			files = (
 				10A38600258A6E7500B4E14C /* HomeCell.swift in Sources */,
 				10A385F3258A6DC000B4E14C /* DataSource+HomeCollectionView.swift in Sources */,
-				105ADD43258D1B5100CDC7F1 /* CircleView.swift in Sources */,
 				105ADDD3258FB77200CDC7F1 /* DetailedDaysCollectionViewCell.swift in Sources */,
+				105ADDE3259139B800CDC7F1 /* YelpReviewsJsonResults.swift in Sources */,
+				105ADDFA25913D2100CDC7F1 /* CommentsCollectionViewDataSource.swift in Sources */,
 				109F5F54258A319200B5E31C /* wheatherJsonResults.swift in Sources */,
 				105ADD7E258E72F000CDC7F1 /* AutoCompleteJsonResults.swift in Sources */,
+				105ADDF525913C2100CDC7F1 /* CommentsCollectionViewCell.swift in Sources */,
+				105ADDFF2591466700CDC7F1 /* CommentsCollectionViewLayout.swift in Sources */,
 				109F5F5E258A45A000B5E31C /* WheatherFetcher.swift in Sources */,
+				105ADDE925913B9100CDC7F1 /* CommentsViewController.swift in Sources */,
 				105ADDBB258FB23100CDC7F1 /* DataSource+DaysCollectionView.swift.swift in Sources */,
 				109F5F59258A330800B5E31C /* YelpFetcher.swift in Sources */,
 				105ADD36258CE16D00CDC7F1 /* CategoryCell.swift in Sources */,

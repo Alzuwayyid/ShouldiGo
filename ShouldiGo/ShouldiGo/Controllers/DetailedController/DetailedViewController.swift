@@ -33,7 +33,8 @@ class DetailedViewController: UIViewController {
     var largeImageURL = ""
     var phoneNumberText = ""
     var categoryText = ""
-    
+    var busID = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -114,6 +115,22 @@ extension DetailedViewController: UICollectionViewDelegate{
                 self.daysDetailsCollectionView.reloadSections(IndexSet(integer: 0))
             }
         }
+    }
+    
+}
+
+
+extension DetailedViewController{
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier{
+            case "commentSegue":
+                let decVC = segue.destination as! CommentsViewController
+                decVC.busID = busID
+            default:
+                print("Could not prefrom segue")
+        }
+
     }
     
 }

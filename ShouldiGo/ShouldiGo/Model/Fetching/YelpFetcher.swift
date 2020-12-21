@@ -128,6 +128,35 @@ class YelpFetcher{
 //       return .success(image)
 //   }
     
+    func fetchYelpReviewsResults(url: URL, completion: @escaping (YelpReviewsResult?, Error?) -> ()){
+        
+        // Creating request
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(YelpAPI.apiKey)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "GET"
+        
+        // Session and task
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error{
+                completion(nil,error)
+            }
+            
+            let decoder = JSONDecoder()
+            
+            do{
+                let yelpFeed = try decoder.decode(YelpReviewsResult.self, from: data!)
+                
+                DispatchQueue.global(qos: .background).async {
+                    completion(yelpFeed, error)
+                }
+                
+            } catch{
+                print("Fetching Yelp Reviews results error:  \(error.localizedDescription)")
+            }
+            
+        }.resume()
+    }
+    
     
     func fetchAutoCompleteResults(url: URL, completion: @escaping (AutoCompleteResults?, Error?) -> ()){
         var request = URLRequest(url: url)
