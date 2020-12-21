@@ -127,7 +127,8 @@ extension HomeController{
                     let largeImge = homeCollectionDataSource.yelpData[selectedIndexPath.row].imageURL
                     let phoneNumber = homeCollectionDataSource.yelpData[selectedIndexPath.row].phone
                     let category = homeCollectionDataSource.yelpData[selectedIndexPath.row].categories[0].title
-                    
+                    let busniessID = homeCollectionDataSource.yelpData[selectedIndexPath.row].id
+                        
                     let decVC = segue.destination as! DetailedViewController
                     decVC.phoneNumberText = phoneNumber
                     decVC.titleText = busTitle
@@ -135,6 +136,7 @@ extension HomeController{
                     decVC.ratingText = "\(ratingNumber)"
                     decVC.largeImageURL = largeImge
                     decVC.categoryText = category
+                    decVC.busID = busniessID
                 }
             default:
                 print("Could not prefrom segue")
