@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DetailedViewController: UIViewController {
 
     // MARK: - IBOutlets
     @IBOutlet var daysDetailsCollectionView: UICollectionView!
     @IBOutlet var daysCollectionView: UICollectionView!
+    @IBOutlet var largeImage: UIImageView!
+    @IBOutlet var addressLabel: UILabel!
+    @IBOutlet var ratingLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var phoneNumber: UILabel!
+    @IBOutlet var cityLabel: UILabel!
     
     // MARK: - Properties
     let dayDetailsCollectionViewDD = DaysDetailsCollectionViewDataSourceAndDelegate()
@@ -19,6 +26,13 @@ class DetailedViewController: UIViewController {
     let wheatherFetcher = WheatherFetcher()
     var latitude = 0.0
     var longitude = 0.0
+    var addressText = ""
+    var nameText = ""
+    var ratingText = ""
+    var titleText = ""
+    var largeImageURL = ""
+    var phoneNumberText = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,8 +44,16 @@ class DetailedViewController: UIViewController {
         
         // MARK: - Adding Lines
         addLines()
-
         
+        phoneNumber.text = phoneNumberText
+        titleLabel.text = titleText
+        addressLabel.text = addressText
+        ratingLabel.text = ratingText
+        largeImage.kf.setImage(with: URL(string: largeImageURL))
+
+        largeImage.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMinXMaxYCorner]
+        largeImage.layer.masksToBounds = true
+        largeImage.layer.cornerRadius = 15
         
         let ForcastTodayURL = getForcastedWheatherURL(lon: -122.399972, lat: 37.786882 ,days: 3)
         wheatherFetcher.fetchForcatedWheatherResults(url: ForcastTodayURL) { (result, error) in
@@ -48,16 +70,21 @@ class DetailedViewController: UIViewController {
         }
     }
     
+    @IBAction func dismissController(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     func addLines(){
-        let horzLineView = UIView(frame: CGRect(x: 50, y: 390, width: 273, height: 1.0))
+        let horzLineView = UIView(frame: CGRect(x: 50, y: 265, width: 273, height: 1.0))
         horzLineView.layer.borderWidth = 1.0
         horzLineView.layer.borderColor = UIColor.white.cgColor
         
-        let secondHorzLineView = UIView(frame: CGRect(x: 40, y: 470, width: 300, height: 1.0))
+        let secondHorzLineView = UIView(frame: CGRect(x: 40, y: 340, width: 300, height: 1.0))
         secondHorzLineView.layer.borderWidth = 1.0
         secondHorzLineView.layer.borderColor = UIColor.white.cgColor
         
-        let vertLineView = UIView(frame: CGRect(x: 180, y: 400, width: 1, height: 55.0))
+        let vertLineView = UIView(frame: CGRect(x: 180, y: 275, width: 1, height: 55.0))
         vertLineView.layer.borderWidth = 1.0
         vertLineView.layer.borderColor = UIColor.white.cgColor
 
