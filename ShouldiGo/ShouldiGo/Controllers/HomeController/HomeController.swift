@@ -45,16 +45,14 @@ class HomeController: UIViewController{
         searchResultsTableView.dataSource = self
         
         searchResultsTableView.isHidden = true
-        
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.post(name: Notification.Name("NoWifi"), object: nil)
-        
+
         // Build Yelp URL
         let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "Bakeries")
         
         // MARK: - Check internt connectivity
         let networkManager = NetworkReachabilityManager()
 
+        
         networkManager?.startListening(onUpdatePerforming: { (status) in
             switch status{
                 case .unknown:

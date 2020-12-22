@@ -48,7 +48,7 @@ class YelpFetcher{
             
         }.resume()
     }
-    
+     
     func fetchBusniessDetails(url: URL, completion: @escaping (BusniessDetailsResponse?, Error?) -> ()){
         var request = URLRequest(url: url)
         request.setValue("Bearer \(YelpAPI.apiKey)", forHTTPHeaderField: "Authorization")
