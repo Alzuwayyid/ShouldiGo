@@ -98,6 +98,10 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
     func configureCellIfNOTConnected(_ Passedcell: HomeCollectionViewCell, indexPath: IndexPath)->UICollectionViewCell{
         let cell = Passedcell
         
+        let largePreviewImageURL = URL(string: yelpData[indexPath.row].imageURL)
+            cell.largePreviewImage.kf.indicatorType = .activity
+            cell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
+        
         cell.titleOfBusiness.text = yelpData[indexPath.row].name
         cell.ratingNumber.text = "\(yelpData[indexPath.row].rating)"
         cell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) reviews"

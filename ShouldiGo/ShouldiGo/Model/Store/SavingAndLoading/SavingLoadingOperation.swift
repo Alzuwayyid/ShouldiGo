@@ -5,13 +5,14 @@
 //  Created by Mohammed on 22/12/2020.
 //
 
-import Foundation
+import UIKit
 
 class SavingLoadingOpearion: Operation{
     var reviewsData = [Review]()
     var forcastedWheatherHourly = [ForecastHour]()
     var yelpBusinessData = [Business]()
-    
+    var imagesArr = [UIImageView]()
+
     enum State: String {
         case isReady
         case isExecuting
@@ -58,7 +59,15 @@ class SavingLoadingOpearion: Operation{
         let documentDirectory = documentsDirecorty.first!
         return documentDirectory.appendingPathComponent("ReviewsData.plist")
     }()
-     
+
+    // MARK: - Images
+    let imagesArchiveURL: URL = {
+        let documentsDirecorty = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = documentsDirecorty.first!
+        return documentDirectory.appendingPathComponent("images.plist")
+    }()
+
+    
     override func main() {
 
     }
@@ -79,6 +88,20 @@ class SavingLoadingOpearion: Operation{
             print("Could not save to the disk")
         }
     }
+    
+    // MARK: - SaveImages
+//    func saveYelpImagesData(){
+//        let encoder = PropertyListEncoder()
+//        do{
+//        let data = try encoder.encode(imagesArr)
+//        try data.write(to: imagesArchiveURL, options: [.atomic])
+//            print("-----> Saved yelpBusinessDataArchive")
+//        }
+//        catch{
+//            print("Could not save to the disk")
+//        }
+//    }
+    
     
     // MARK: - Save Forcasted Wheather
     func saveForcastedWheatherHourly(){

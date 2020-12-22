@@ -11,6 +11,8 @@ class DataStore{
     var reviewsData = [Review]()
     var forcastedWheatherHourly = [ForecastHour]()
     var yelpBusinessData = [Business]()
+    var imagesArr = [UIImageView]()
+    
     
     init(){
         let opearionQueue = OperationQueue()
