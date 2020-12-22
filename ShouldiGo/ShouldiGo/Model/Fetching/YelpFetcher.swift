@@ -32,10 +32,14 @@ class YelpFetcher{
             let decoder = JSONDecoder()
             
             do{
-                let yelpFeed = try decoder.decode(YelpResults.self, from: data!)
-                
+                if let data = data{
+                    let yelpFeed = try decoder.decode(YelpResults.self, from: data)
+                    DispatchQueue.global(qos: .background).async {
+                        completion(yelpFeed, error)
+                    }
+                }
                 DispatchQueue.global(qos: .background).async {
-                    completion(yelpFeed, error)
+                    completion(nil, error)
                 }
                 
             } catch{

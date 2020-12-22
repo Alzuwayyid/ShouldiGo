@@ -32,6 +32,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
             let yelpUrl = getYelpAutoCompletedURL(lat: 37.786882, lon: -122.399972, category: autoCompleteArr[indexPath.row].text)
             yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
                 self.homeCollectionDataSource.yelpData = result!.businesses
+                #warning("You are here")
+                self.dataStore.yelpBusinessData = result!.businesses
                 self.yelpData = result!.businesses
                 DispatchQueue.main.async {
                     self.homeCollectionView.reloadSections(IndexSet(integer: 0))
@@ -109,6 +111,8 @@ extension HomeController: UICollectionViewDelegate{
         let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "\(tags[indexPath.row])")
         yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
             self.homeCollectionDataSource.yelpData = result!.businesses
+            #warning("You are here")
+            self.dataStore.yelpBusinessData = result!.businesses
             DispatchQueue.main.async {
                 self.homeCollectionView.reloadSections(IndexSet(integer: 0))
             }

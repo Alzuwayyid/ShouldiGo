@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SavingOpearion: Operation{
+class SavingLoadingOpearion: Operation{
     var reviewsData = [Review]()
     var forcastedWheatherHourly = [ForecastHour]()
     var yelpBusinessData = [Business]()
@@ -107,18 +107,18 @@ class SavingOpearion: Operation{
     }
     
     // MARK: - Load Yelp Business
-    func loadYelpBusinessData(){
+    func loadYelpBusinessData(completion: @escaping([Business])->()){
         do{
             let data = try Data(contentsOf: yelpBusinessDataArchiveURL)
             let unArchive = PropertyListDecoder()
             let yelpData = try unArchive.decode([Business].self, from: data)
             yelpBusinessData = yelpData
+            completion(yelpData)
         }
         catch{
             print("yelpBusinessData: Encountered some error while loading: \(error)")
         }
         
-        print("all yelpBusinessData items were loaded sucressfully")
     }
     
     // MARK: - Load Hourly Wheather

@@ -25,18 +25,18 @@ class HomeController: UIViewController{
     let tags = ["Bakeries","Bars","Resturant","Cafee","Autorepair","Grocery"]
     var yelpFetcher = YelpFetcher()
     var wheatherFetcher = WheatherFetcher()
+    var dataStore =  DataStore()
     var yelpData = [Business]()
     var autoCompleteArr = [Term]()
-
+    
     override var prefersStatusBarHidden: Bool {
-         return true
-       }
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // MARK: - Delegation
-//        homeCollectionView.delegate = self
         homeCollectionView.dataSource = homeCollectionDataSource
         categoryCollectionView.dataSource = categoryCollectionDataSourceAndDelegate
         categoryCollectionView.delegate = self
@@ -45,17 +45,50 @@ class HomeController: UIViewController{
         searchResultsTableView.dataSource = self
         
         searchResultsTableView.isHidden = true
-
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.post(name: Notification.Name("NoWifi"), object: nil)
+        
         // Build Yelp URL
         let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "Bakeries")
-
-        yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
-            self.homeCollectionDataSource.yelpData = result!.businesses
-            self.yelpData = result!.businesses
-            DispatchQueue.main.async {
-                self.homeCollectionView.reloadSections(IndexSet(integer: 0))
-            }
-        }
         
+        // MARK: - Check internt connectivity
+        let networkManager = NetworkReachabilityManager()
+
+        networkManager?.startListening(onUpdatePerforming: { (status) in
+            switch status{
+                case .unknown:
+                    print("-Unknown")
+                case .notReachable:
+                    self.homeCollectionDataSource.isConnetedToWifi = false
+                    self.dataStore.loadYelpData { (result) in
+                        self.homeCollectionDataSource.yelpData = result
+                        DispatchQueue.main.async {
+                            self.homeCollectionView.reloadSections(IndexSet(integer: 0))
+                        }
+                    }
+                    
+                    print("Not reachable")
+                case .reachable(_):
+                    self.homeCollectionDataSource.isConnetedToWifi = true
+                    self.yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
+                        if let result = result{
+                            self.homeCollectionDataSource.yelpData = result.businesses
+                            self.yelpData = result.businesses
+                            self.dataStore.yelpBusinessData = result.businesses
+                            self.dataStore.saveChanges()
+                        }
+                        DispatchQueue.main.async {
+                            self.homeCollectionView.reloadSections(IndexSet(integer: 0))
+                        }
+
+                    }
+                    print("reachable")
+            }
+        })
+                
     }
 }
+
+
+
