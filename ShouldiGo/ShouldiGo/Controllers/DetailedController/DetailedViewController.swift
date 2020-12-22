@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import MapKit
 
 class DetailedViewController: UIViewController {
 
@@ -74,6 +75,21 @@ class DetailedViewController: UIViewController {
     
     @IBAction func dismissController(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func openAppleMaps(_ sender: UIButton) {
+        let regionDistance:CLLocationDistance = 10000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = nameText
+        mapItem.openInMaps(launchOptions: options)
     }
     
     
