@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
@@ -30,15 +31,43 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         
         if autoCompleteArr.count > 0 {
             let yelpUrl = getYelpAutoCompletedURL(lat: 37.786882, lon: -122.399972, category: autoCompleteArr[indexPath.row].text)
-            yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
-                self.homeCollectionDataSource.yelpData = result!.businesses
-                #warning("You are here")
-                self.dataStore.yelpBusinessData = result!.businesses
-                self.yelpData = result!.businesses
-                DispatchQueue.main.async {
-                    self.homeCollectionView.reloadSections(IndexSet(integer: 0))
+
+            // MARK: - Check internt connectivity
+            let networkManager = NetworkReachabilityManager()
+            
+            networkManager?.startListening(onUpdatePerforming: { (status) in
+                switch status{
+                    case .unknown:
+                        print("-Unknown")
+                    case .notReachable:
+                        self.homeCollectionDataSource.isConnetedToWifi = false
+                        self.dataStore.loadYelpData { (result) in
+                            self.homeCollectionDataSource.yelpData = result
+                            DispatchQueue.main.async {
+                                self.homeCollectionView.reloadSections(IndexSet(integer: 0))
+                            }
+                        }
+                        
+                        print("Not reachable")
+                    case .reachable(_):
+                        self.homeCollectionDataSource.isConnetedToWifi = true
+                        self.yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
+                            if let result = result{
+                                self.homeCollectionDataSource.yelpData = result.businesses
+                                self.yelpData = result.businesses
+                                self.dataStore.yelpBusinessData = result.businesses
+                                self.dataStore.saveChanges()
+                            }
+                            DispatchQueue.main.async {
+                                self.homeCollectionView.reloadSections(IndexSet(integer: 0))
+                            }
+
+                        }
+                        print("reachable")
                 }
-            }
+            })
+            
+            
             self.searchResultsTableView.isHidden = true
         }
     }
@@ -47,11 +76,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
 
 
 extension HomeController: UISearchBarDelegate/*, UISearchResultsUpdating*/{
-    
-//    func updateSearchResults(for searchController: UISearchController) {
-//        <#code#>
-//    }
-//
+
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
             searchBar.setShowsCancelButton(true, animated: true)
             searchResultsTableView.isHidden = false
@@ -109,14 +134,41 @@ extension HomeController: UICollectionViewDelegate{
         }
         
         let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "\(tags[indexPath.row])")
-        yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
-            self.homeCollectionDataSource.yelpData = result!.businesses
-            #warning("You are here")
-            self.dataStore.yelpBusinessData = result!.businesses
-            DispatchQueue.main.async {
-                self.homeCollectionView.reloadSections(IndexSet(integer: 0))
+
+        // MARK: - Check internt connectivity
+        let networkManager = NetworkReachabilityManager()
+        
+        networkManager?.startListening(onUpdatePerforming: { (status) in
+            switch status{
+                case .unknown:
+                    print("-Unknown")
+                case .notReachable:
+                    self.homeCollectionDataSource.isConnetedToWifi = false
+                    self.dataStore.loadYelpData { (result) in
+                        self.homeCollectionDataSource.yelpData = result
+                        DispatchQueue.main.async {
+                            self.homeCollectionView.reloadSections(IndexSet(integer: 0))
+                        }
+                    }
+                    
+                    print("Not reachable")
+                case .reachable(_):
+                    self.homeCollectionDataSource.isConnetedToWifi = true
+                    self.yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
+                        if let result = result{
+                            self.homeCollectionDataSource.yelpData = result.businesses
+                            self.yelpData = result.businesses
+                            self.dataStore.yelpBusinessData = result.businesses
+                            self.dataStore.saveChanges()
+                        }
+                        DispatchQueue.main.async {
+                            self.homeCollectionView.reloadSections(IndexSet(integer: 0))
+                        }
+
+                    }
+                    print("reachable")
             }
-        }
+        })
     }
 }
 
