@@ -5,13 +5,14 @@
 //  Created by Mohammed on 22/12/2020.
 //
 
-import Foundation
+import UIKit
 
-class SavingOpearion: Operation{
+class SavingLoadingOpearion: Operation{
     var reviewsData = [Review]()
     var forcastedWheatherHourly = [ForecastHour]()
     var yelpBusinessData = [Business]()
-    
+    var imagesArr = [UIImageView]()
+
     enum State: String {
         case isReady
         case isExecuting
@@ -58,7 +59,15 @@ class SavingOpearion: Operation{
         let documentDirectory = documentsDirecorty.first!
         return documentDirectory.appendingPathComponent("ReviewsData.plist")
     }()
-     
+
+    // MARK: - Images
+    let imagesArchiveURL: URL = {
+        let documentsDirecorty = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = documentsDirecorty.first!
+        return documentDirectory.appendingPathComponent("images.plist")
+    }()
+
+    
     override func main() {
 
     }
@@ -79,6 +88,20 @@ class SavingOpearion: Operation{
             print("Could not save to the disk")
         }
     }
+    
+    // MARK: - SaveImages
+//    func saveYelpImagesData(){
+//        let encoder = PropertyListEncoder()
+//        do{
+//        let data = try encoder.encode(imagesArr)
+//        try data.write(to: imagesArchiveURL, options: [.atomic])
+//            print("-----> Saved yelpBusinessDataArchive")
+//        }
+//        catch{
+//            print("Could not save to the disk")
+//        }
+//    }
+    
     
     // MARK: - Save Forcasted Wheather
     func saveForcastedWheatherHourly(){
@@ -107,18 +130,18 @@ class SavingOpearion: Operation{
     }
     
     // MARK: - Load Yelp Business
-    func loadYelpBusinessData(){
+    func loadYelpBusinessData(completion: @escaping([Business])->()){
         do{
             let data = try Data(contentsOf: yelpBusinessDataArchiveURL)
             let unArchive = PropertyListDecoder()
             let yelpData = try unArchive.decode([Business].self, from: data)
             yelpBusinessData = yelpData
+            completion(yelpData)
         }
         catch{
             print("yelpBusinessData: Encountered some error while loading: \(error)")
         }
         
-        print("all yelpBusinessData items were loaded sucressfully")
     }
     
     // MARK: - Load Hourly Wheather

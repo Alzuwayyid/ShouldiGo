@@ -11,13 +11,15 @@ class DataStore{
     var reviewsData = [Review]()
     var forcastedWheatherHourly = [ForecastHour]()
     var yelpBusinessData = [Business]()
+    var imagesArr = [UIImageView]()
+    
     
     init(){
         let opearionQueue = OperationQueue()
-        let operation = SavingOpearion()
+        let operation = SavingLoadingOpearion()
         
         operation.loadReviewsData()
-        operation.loadYelpBusinessData()
+//        operation.loadYelpBusinessData()
         operation.loadForcastedWheatherHourly()
         
         opearionQueue.addOperation(operation)
@@ -32,23 +34,45 @@ class DataStore{
         yelpBusinessData.append(data)
     }
     
+    func loadYelpData(completion: @escaping ([Business])->()){
+
+        do {
+            SavingLoadingOpearion().loadYelpBusinessData {
+                (result) in
+                DispatchQueue.global(qos: .background).async {
+                    completion(result)
+                }
+            }
+            
+            print("grwjgmorwload: \(yelpBusinessData)")
+
+            print("All yelpBusinessData items were saved successfully in DataStore")
+            
+        } catch {
+            print("There was an error while saving in DataStore: \(error)")
+        }
+    }
+    
+    
     @objc func saveChanges()->Bool{
         do {
-            let savingOperation = SavingOpearion()
+            let savingOperation = SavingLoadingOpearion()
             savingOperation.yelpBusinessData = self.yelpBusinessData
-            
+
             let operationQueue = OperationQueue()
-//            let operation = SavingOpearion()
             savingOperation.saveYelpBusinessData()
+            print("Direc for yelp saveChanges(): \(savingOperation.yelpBusinessDataArchiveURL)")
             operationQueue.addOperation(savingOperation)
-            
+
             print("All yelpBusinessData items were saved successfully in DataStore")
             return true
-            
+
         } catch {
             print("There was an error while saving in DataStore: \(error)")
             return false
         }
+        return true
     }
     
 }
+

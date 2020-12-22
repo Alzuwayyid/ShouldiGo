@@ -15,8 +15,11 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
     var yelpData = [Business]()
     var yelpFetcher = YelpFetcher()
     var wheatherFetcher = WheatherFetcher()
-
+    var dataStore =  DataStore()
+    var isConnetedToWifi = false
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
         return yelpData.count
     }
     
@@ -24,7 +27,32 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
         let reuseIdentifier = "homeCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
         
-        // Downlaod images and cache them using Kingfisher
+
+        // Animation with borderWidth
+        let layer = cell.layer
+        let animetion = CABasicAnimation(keyPath: #keyPath(CALayer.borderWidth))
+        animetion.fromValue = NSNumber(50)
+        animetion.toValue = -50
+        animetion.duration = 0.90
+
+        layer.add(animetion, forKey: "disappear")
+        
+
+        if isConnetedToWifi{
+            return configureCellIfConnected(cell, indexPath: indexPath)
+        }
+        else{
+            return configureCellIfNOTConnected(cell, indexPath: indexPath)
+        }
+        
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func configureCellIfConnected(_ Passedcell: HomeCollectionViewCell, indexPath: IndexPath)->UICollectionViewCell{
+        var cell = Passedcell
         let largePreviewImageURL = URL(string: yelpData[indexPath.row].imageURL)
         DispatchQueue.main.async{
             cell.largePreviewImage.kf.indicatorType = .activity
@@ -46,7 +74,6 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
                 }
             }
         }
-        
         let wheatherUrl = getWheatherURL(lon: yelpData[indexPath.row].coordinates.longitude, lat: yelpData[indexPath.row].coordinates.latitude, days: 7)
         
         // Download wheather status image
@@ -56,42 +83,32 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
                     cell.temperatureImage.setImageFromURL(url: getWheatherImageURL(imageURL: (results?.current.condition.icon)!))
                 }
             }
-
         
         cell.titleOfBusiness.text = yelpData[indexPath.row].name
         cell.ratingNumber.text = "\(yelpData[indexPath.row].rating)"
         cell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) reviews"
         
-        // Animation with borderWidth
-        let layer = cell.layer
-        let animetion = CABasicAnimation(keyPath: #keyPath(CALayer.borderWidth))
-        animetion.fromValue = NSNumber(50)
-        animetion.toValue = -50
-        animetion.duration = 0.90
-
-        layer.add(animetion, forKey: "disappear")
-        
+        print("test yelp array: \(dataStore.yelpBusinessData)")
         
         return cell
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+    
+    
+    func configureCellIfNOTConnected(_ Passedcell: HomeCollectionViewCell, indexPath: IndexPath)->UICollectionViewCell{
+        let cell = Passedcell
+        
+        let largePreviewImageURL = URL(string: yelpData[indexPath.row].imageURL)
+            cell.largePreviewImage.kf.indicatorType = .activity
+            cell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
+        
+        cell.titleOfBusiness.text = yelpData[indexPath.row].name
+        cell.ratingNumber.text = "\(yelpData[indexPath.row].rating)"
+        cell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) reviews"
+
+        return cell
     }
+    
 }
 
-extension UIImageView {
 
-    func setImageFromURL(url: String) {
-
-        DispatchQueue.global().async {
-
-            let data = NSData.init(contentsOf: NSURL.init(string: url)! as URL)
-            DispatchQueue.main.async {
-
-                let image = UIImage.init(data: data! as Data)
-                self.image = image
-            }
-        }
-    }
-}
