@@ -58,18 +58,20 @@ class DetailedViewController: UIViewController {
         largeImage.layer.masksToBounds = true
         largeImage.layer.cornerRadius = 15
         
-        let ForcastTodayURL = getForcastedWheatherURL(lon: -122.399972, lat: 37.786882 ,days: 3)
+        let ForcastTodayURL = getForcastedWheatherURL(lon: longitude, lat: latitude ,days: 3)
         print("GGggre: \(ForcastTodayURL)")
         wheatherFetcher.fetchForcatedWheatherResults(url: ForcastTodayURL) { (result, error) in
             var forecast = [ForecastHour]()
-            for index in 0...result!.count-1{
-                forecast.append(contentsOf: result![index].hour)
-            }
-            self.dayDetailsCollectionViewDD.details = forecast
-            self.daysCollectionViewDD.details = result!
-            DispatchQueue.main.async {
-                self.daysDetailsCollectionView.reloadSections(IndexSet(integer: 0))
-                self.daysCollectionView.reloadSections(IndexSet(integer: 0))
+            if let result = result{
+                for index in 0...result.count-1{
+                    forecast.append(contentsOf: result[index].hour)
+                }
+                self.dayDetailsCollectionViewDD.details = forecast
+                self.daysCollectionViewDD.details = result
+                DispatchQueue.main.async {
+                    self.daysDetailsCollectionView.reloadSections(IndexSet(integer: 0))
+                    self.daysCollectionView.reloadSections(IndexSet(integer: 0))
+                }
             }
         }
     }

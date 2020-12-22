@@ -51,10 +51,12 @@ class WheatherFetcher{
             let decoder = JSONDecoder()
             
             do{
-                let wheatherFeed = try decoder.decode(WheatherForecastResults.self, from: data!)
-                
-                DispatchQueue.global(qos: .background).async {
-                    completion(wheatherFeed.forecast.forecastday, error)
+                if let data = data{
+                    let wheatherFeed = try decoder.decode(WheatherForecastResults.self, from: data)
+                    
+                    DispatchQueue.global(qos: .background).async {
+                        completion(wheatherFeed.forecast.forecastday, error)
+                    }
                 }
                 
             } catch{
