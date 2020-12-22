@@ -451,6 +451,13 @@
                                     <segue destination="UTO-Av-IY2" kind="presentation" identifier="commentSegue" id="hcn-bg-k4g"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0p-tT-v9f">
+                                <rect key="frame" x="235" y="271" width="65" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="openAppleMaps:" destination="l9X-p6-uos" eventType="touchUpInside" id="2ca-fB-jZr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="At1-U1-icE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

@@ -24,6 +24,8 @@
 		105ADDF525913C2100CDC7F1 /* CommentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADDF425913C2100CDC7F1 /* CommentsCollectionViewCell.swift */; };
 		105ADDFA25913D2100CDC7F1 /* CommentsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADDF925913D2100CDC7F1 /* CommentsCollectionViewDataSource.swift */; };
 		105ADDFF2591466700CDC7F1 /* CommentsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADDFE2591466700CDC7F1 /* CommentsCollectionViewLayout.swift */; };
+		105ADE0825921E7500CDC7F1 /* SavingLoadingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADE0725921E7500CDC7F1 /* SavingLoadingOperation.swift */; };
+		105ADE102592238100CDC7F1 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADE0F2592238100CDC7F1 /* DataStore.swift */; };
 		109F5F09258A0F1300B5E31C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F08258A0F1300B5E31C /* AppDelegate.swift */; };
 		109F5F0B258A0F1300B5E31C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F0A258A0F1300B5E31C /* SceneDelegate.swift */; };
 		109F5F10258A0F1300B5E31C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 109F5F0E258A0F1300B5E31C /* Main.storyboard */; };
@@ -84,6 +86,8 @@
 		105ADDF425913C2100CDC7F1 /* CommentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCollectionViewCell.swift; sourceTree = "<group>"; };
 		105ADDF925913D2100CDC7F1 /* CommentsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		105ADDFE2591466700CDC7F1 /* CommentsCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCollectionViewLayout.swift; sourceTree = "<group>"; };
+		105ADE0725921E7500CDC7F1 /* SavingLoadingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingLoadingOperation.swift; sourceTree = "<group>"; };
+		105ADE0F2592238100CDC7F1 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		109F5F05258A0F1300B5E31C /* ShouldiGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShouldiGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109F5F08258A0F1300B5E31C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		109F5F0A258A0F1300B5E31C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +208,15 @@
 			path = "CommentsViews+DataSources";
 			sourceTree = "<group>";
 		};
+		105ADE0625921E3C00CDC7F1 /* SavingAndLoading */ = {
+			isa = PBXGroup;
+			children = (
+				105ADE0725921E7500CDC7F1 /* SavingLoadingOperation.swift */,
+				105ADE0F2592238100CDC7F1 /* DataStore.swift */,
+			);
+			path = SavingAndLoading;
+			sourceTree = "<group>";
+		};
 		109F5EFC258A0F1300B5E31C = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				109F5F49258A30BE00B5E31C /* Store */,
+				105ADD47258D219E00CDC7F1 /* PhotoStore.swift */,
 				109F5F48258A304200B5E31C /* Fetching */,
 				109F5F3E258A12E200B5E31C /* Networking */,
 			);
@@ -320,7 +334,7 @@
 		109F5F49258A30BE00B5E31C /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				105ADD47258D219E00CDC7F1 /* PhotoStore.swift */,
+				105ADE0625921E3C00CDC7F1 /* SavingAndLoading */,
 				10A38607258A779900B4E14C /* Helpers */,
 				109F5F4A258A30F100B5E31C /* CodableObjects */,
 			);
@@ -631,6 +645,7 @@
 				105ADDF525913C2100CDC7F1 /* CommentsCollectionViewCell.swift in Sources */,
 				105ADDFF2591466700CDC7F1 /* CommentsCollectionViewLayout.swift in Sources */,
 				109F5F5E258A45A000B5E31C /* WheatherFetcher.swift in Sources */,
+				105ADE0825921E7500CDC7F1 /* SavingLoadingOperation.swift in Sources */,
 				105ADDE925913B9100CDC7F1 /* CommentsViewController.swift in Sources */,
 				105ADDBB258FB23100CDC7F1 /* DataSource+DaysCollectionView.swift.swift in Sources */,
 				109F5F59258A330800B5E31C /* YelpFetcher.swift in Sources */,
@@ -639,6 +654,7 @@
 				105ADD3B258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift in Sources */,
 				105ADDC9258FB34900CDC7F1 /* DetailedViewController.swift in Sources */,
 				10A385E7258A6C0A00B4E14C /* HomeController.swift in Sources */,
+				105ADE102592238100CDC7F1 /* DataStore.swift in Sources */,
 				105ADD48258D219E00CDC7F1 /* PhotoStore.swift in Sources */,
 				105ADDB0258FB20900CDC7F1 /* DataSource+DayDetailsCollectionView.swift in Sources */,
 				10A385FB258A6DD400B4E14C /* Delegate+HomeCollectionView.swift in Sources */,
