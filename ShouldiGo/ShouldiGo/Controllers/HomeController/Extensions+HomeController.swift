@@ -24,6 +24,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
             guard autoCompleteArr.count > 0 else{
                 return 0
             }
+            return autoCompleteArr.count
         }
         else if section == 1{
             guard autoCompleteRegion.count > 0 else{
