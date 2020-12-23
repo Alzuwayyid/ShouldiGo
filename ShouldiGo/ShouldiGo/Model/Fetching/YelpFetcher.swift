@@ -183,7 +183,7 @@ class YelpFetcher{
                 }
                 
             } catch{
-                print("Fetching AutoComplete results error:  \(error.localizedDescription)")
+                print("Fetching AutoComplete results error:  \(error)")
             }
             
         }.resume()

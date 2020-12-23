@@ -30,6 +30,8 @@ class HomeController: UIViewController{
     var yelpData = [Business]()
     var autoCompleteArr = [Term]()
     var autoCompleteRegion = [CountryAutoCompletionResult]()
+    var currentCategory = ""
+    var currentLocation = ""
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -49,8 +51,15 @@ class HomeController: UIViewController{
         searchResultsTableView.isHidden = true
 
         // Build Yelp URL
-        let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "Bakeries")
+        if currentCategory == ""{
+            currentCategory = "Bakeries"
+        }
+        if currentLocation == ""{
+            currentLocation = "NYC"
+        }
         
+        let yelpUrl = getBusinessByLocation(location: currentLocation, category: currentCategory)
+
         // MARK: - Check internt connectivity
         let networkManager = NetworkReachabilityManager()
 

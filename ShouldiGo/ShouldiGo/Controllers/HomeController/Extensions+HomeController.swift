@@ -55,8 +55,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0{
             if autoCompleteArr.count > 0 {
-                let yelpUrl = getYelpAutoCompletedURL(lat: 37.786882, lon: -122.399972, category: autoCompleteArr[indexPath.row].text)
-
+                self.currentCategory = autoCompleteArr[indexPath.row].text.replacingOccurrences(of: " ", with: "-", options: .regularExpression, range: nil)
+                let yelpUrl = getBusinessByLocation(location: currentLocation, category: currentCategory)
                 networkManager?.startListening(onUpdatePerforming: { (status) in
                     switch status{
                         case .unknown:
@@ -95,10 +95,9 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 1{
             if autoCompleteRegion.count > 0{
-
-                let location = self.autoCompleteRegion[indexPath.row].name.replacingOccurrences(of: " ", with: "-", options: .regularExpression, range: nil).replacingOccurrences(of: ",", with: "-", options: .regularExpression, range: nil)
+                self.currentLocation = self.autoCompleteRegion[indexPath.row].name.replacingOccurrences(of: " ", with: "-", options: .regularExpression, range: nil).replacingOccurrences(of: ",", with: "-", options: .regularExpression, range: nil)
                 
-                let yelpUrl = getBusinessByLocation(location: location)
+                let yelpUrl = getBusinessByLocation(location: currentLocation, category: self.currentCategory)
                 networkManager?.startListening(onUpdatePerforming: { (status) in
                     switch status{
                         case .unknown:
