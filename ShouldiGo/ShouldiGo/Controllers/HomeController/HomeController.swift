@@ -23,7 +23,7 @@ class HomeController: UIViewController{
     let categoryCollectionDataSourceAndDelegate = CategoryCollectionDataSource()
     let modifiyViews = modifyLayersFunctions()
     let tags = ["Bakeries","Bars","Resturant","Cafee","Autorepair","Grocery"]
-    let sectionsName = ["Categories", "Regions"]
+    let sectionsName = ["Categories", "Locations"]
     var yelpFetcher = YelpFetcher()
     var wheatherFetcher = WheatherFetcher()
     var dataStore =  DataStore()
@@ -80,9 +80,9 @@ class HomeController: UIViewController{
                     self.homeCollectionDataSource.isConnetedToWifi = true
                     self.yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
                         if let result = result{
-                            self.homeCollectionDataSource.yelpData = result.businesses
-                            self.yelpData = result.businesses
-                            self.dataStore.yelpBusinessData = result.businesses
+                            self.homeCollectionDataSource.yelpData = result.businesses!
+                            self.yelpData = result.businesses!
+                            self.dataStore.yelpBusinessData = result.businesses!
                             self.dataStore.saveChanges()
                         }
                         DispatchQueue.main.async {

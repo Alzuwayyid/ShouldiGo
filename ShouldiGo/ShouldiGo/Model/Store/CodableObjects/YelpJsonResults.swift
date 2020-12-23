@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - YelpResults
 struct YelpResults: Codable {
-    let businesses: [Business]
+    let businesses: [Business]?
     let total: Int
     let region: Region
 }
@@ -25,8 +25,8 @@ struct Business: Codable {
     let rating: Double
     let coordinates: Center
     let transactions: [Transaction]
-    let price: Price?
-    let location: Location
+//    let price: Price?
+    let location: Location?
     let phone, displayPhone: String
     let distance: Double
 
@@ -36,7 +36,7 @@ struct Business: Codable {
         case isClosed = "is_closed"
         case url
         case reviewCount = "review_count"
-        case categories, rating, coordinates, transactions, price, location, phone
+        case categories, rating, coordinates, transactions, location, phone
         case displayPhone = "display_phone"
         case distance
     }
@@ -56,10 +56,10 @@ struct Center: Codable {
 struct Location: Codable {
     let address1: String
     let address2, address3: String?
-    let city: City
+    let city: String
     let zipCode: String
-    let country: Country
-    let state: State
+    let country: String
+    let state: String
     let displayAddress: [String]
 
     enum CodingKeys: String, CodingKey {
@@ -82,10 +82,10 @@ enum State: String, Codable {
     case ca = "CA"
 }
 
-enum Price: String, Codable {
-    case empty = "$"
-    case price = "$$"
-}
+//enum Price: String, Codable {
+//    case empty = "$"
+//    case price = "$$"
+//}
 
 enum Transaction: String, Codable {
     case delivery = "delivery"

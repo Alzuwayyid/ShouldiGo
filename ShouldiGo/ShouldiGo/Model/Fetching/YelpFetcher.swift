@@ -43,7 +43,7 @@ class YelpFetcher{
                 }
                 
             } catch{
-                print("Fetching Yelp results error:  \(error.localizedDescription)")
+                print("Fetching Yelp results error:  \(error)")
             }
             
         }.resume()
@@ -155,7 +155,7 @@ class YelpFetcher{
                 }
                 
             } catch{
-                print("Fetching Yelp Reviews results error:  \(error.localizedDescription)")
+                print("Fetching Yelp Reviews results error:  \(error)")
             }
             
         }.resume()
