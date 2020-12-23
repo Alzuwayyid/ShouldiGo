@@ -46,6 +46,7 @@
 		10A38609258A77C500B4E14C /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A38608258A77C500B4E14C /* CollectionViewLayout.swift */; };
 		10A38615258A8CF400B4E14C /* ModifyLayersFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A38614258A8CF400B4E14C /* ModifyLayersFunctions.swift */; };
 		10A3861A258A984300B4E14C /* BusniessDataResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A38619258A984300B4E14C /* BusniessDataResults.swift */; };
+		10E37D9E2593A21400D9B5F3 /* CountryAutoCompletionJsonResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E37D9D2593A21400D9B5F3 /* CountryAutoCompletionJsonResults.swift */; };
 		3473C5B72B616314A767D52D /* Pods_ShouldiGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841051D07BFA628AB6657A51 /* Pods_ShouldiGo.framework */; };
 		9E54B3439A48A81C2C2C6932 /* Pods_ShouldiGo_ShouldiGoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99223BBF4EDEF4B889C39C1C /* Pods_ShouldiGo_ShouldiGoUITests.framework */; };
 		AD4771E5DEFE4608A99440D8 /* Pods_ShouldiGoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5650D1DF39AA78F0E8F8B86 /* Pods_ShouldiGoTests.framework */; };
@@ -114,6 +115,7 @@
 		10A38608258A77C500B4E14C /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 		10A38614258A8CF400B4E14C /* ModifyLayersFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyLayersFunctions.swift; sourceTree = "<group>"; };
 		10A38619258A984300B4E14C /* BusniessDataResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusniessDataResults.swift; sourceTree = "<group>"; };
+		10E37D9D2593A21400D9B5F3 /* CountryAutoCompletionJsonResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryAutoCompletionJsonResults.swift; sourceTree = "<group>"; };
 		1FFF9D460F7580D0B9CB783A /* Pods-ShouldiGo-ShouldiGoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShouldiGo-ShouldiGoUITests.release.xcconfig"; path = "Target Support Files/Pods-ShouldiGo-ShouldiGoUITests/Pods-ShouldiGo-ShouldiGoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		531EAEC4071BD76D8C2015EF /* Pods-ShouldiGoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShouldiGoTests.release.xcconfig"; path = "Target Support Files/Pods-ShouldiGoTests/Pods-ShouldiGoTests.release.xcconfig"; sourceTree = "<group>"; };
 		53CDC48BEB295FC344B2DBE0 /* Pods-ShouldiGo-ShouldiGoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShouldiGo-ShouldiGoUITests.debug.xcconfig"; path = "Target Support Files/Pods-ShouldiGo-ShouldiGoUITests/Pods-ShouldiGo-ShouldiGoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				10A38619258A984300B4E14C /* BusniessDataResults.swift */,
 				105ADD7D258E72F000CDC7F1 /* AutoCompleteJsonResults.swift */,
 				105ADDE2259139B800CDC7F1 /* YelpReviewsJsonResults.swift */,
+				10E37D9D2593A21400D9B5F3 /* CountryAutoCompletionJsonResults.swift */,
 			);
 			path = CodableObjects;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				105ADE0825921E7500CDC7F1 /* SavingLoadingOperation.swift in Sources */,
 				105ADDE925913B9100CDC7F1 /* CommentsViewController.swift in Sources */,
 				105ADDBB258FB23100CDC7F1 /* DataSource+DaysCollectionView.swift.swift in Sources */,
+				10E37D9E2593A21400D9B5F3 /* CountryAutoCompletionJsonResults.swift in Sources */,
 				109F5F59258A330800B5E31C /* YelpFetcher.swift in Sources */,
 				105ADD36258CE16D00CDC7F1 /* CategoryCell.swift in Sources */,
 				109F5F41258A130600B5E31C /* YelpAPI.swift in Sources */,

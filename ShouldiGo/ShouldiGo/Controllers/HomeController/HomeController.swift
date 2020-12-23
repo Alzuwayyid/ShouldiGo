@@ -23,11 +23,15 @@ class HomeController: UIViewController{
     let categoryCollectionDataSourceAndDelegate = CategoryCollectionDataSource()
     let modifiyViews = modifyLayersFunctions()
     let tags = ["Bakeries","Bars","Resturant","Cafee","Autorepair","Grocery"]
+    let sectionsName = ["Categories", "Locations"]
     var yelpFetcher = YelpFetcher()
     var wheatherFetcher = WheatherFetcher()
     var dataStore =  DataStore()
     var yelpData = [Business]()
     var autoCompleteArr = [Term]()
+    var autoCompleteRegion = [CountryAutoCompletionResult]()
+    var currentCategory = ""
+    var currentLocation = ""
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -47,12 +51,18 @@ class HomeController: UIViewController{
         searchResultsTableView.isHidden = true
 
         // Build Yelp URL
-        let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "Bakeries")
+        if currentCategory == ""{
+            currentCategory = "Bakeries"
+        }
+        if currentLocation == ""{
+            currentLocation = "NYC"
+        }
         
+        let yelpUrl = getBusinessByLocation(location: currentLocation, category: currentCategory)
+
         // MARK: - Check internt connectivity
         let networkManager = NetworkReachabilityManager()
 
-        
         networkManager?.startListening(onUpdatePerforming: { (status) in
             switch status{
                 case .unknown:
@@ -71,9 +81,9 @@ class HomeController: UIViewController{
                     self.homeCollectionDataSource.isConnetedToWifi = true
                     self.yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
                         if let result = result{
-                            self.homeCollectionDataSource.yelpData = result.businesses
-                            self.yelpData = result.businesses
-                            self.dataStore.yelpBusinessData = result.businesses
+                            self.homeCollectionDataSource.yelpData = result.businesses!
+                            self.yelpData = result.businesses!
+                            self.dataStore.yelpBusinessData = result.businesses!
                             self.dataStore.saveChanges()
                         }
                         DispatchQueue.main.async {
