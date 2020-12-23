@@ -21,6 +21,7 @@ class CategoryCollectionDataSource: NSObject, UICollectionViewDataSource, UIColl
         return 6
     }
     
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let reuseIdentifier = "CategoryCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCollectionViewCell
