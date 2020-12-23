@@ -15,10 +15,13 @@ enum WheatherEndPoints{
     
     static let search = "http://api.weatherapi.com/v1/current.json?"
     static let foreCastSearch = "http://api.weatherapi.com/v1/forecast.json?"
+    static let autoComplete = "http://api.weatherapi.com/v1/search.json?"
     static let http = "http:"
+    
     case searchURLString(Double, Double, Int)
     case forcastURL(Double, Double, Int)
     case wheatherImageURL(String)
+    case autoCompleteURL(String)
     
     var baseURL: String {
         switch self {
@@ -28,6 +31,8 @@ enum WheatherEndPoints{
                 return WheatherEndPoints.http + "\(imageURL)"
             case .forcastURL(let lon, let lat, let days):
                 return WheatherEndPoints.foreCastSearch + "key=\(WheatherAPI.apiKey)" + "&q=" + "\(lat)" + ",\(lon)" + "&days=\(days)"
+            case .autoCompleteURL(let locationName):
+                return WheatherEndPoints.autoComplete + "key=\(WheatherAPI.apiKey)" + "&q=\(locationName)"
         }
     }
     
@@ -50,4 +55,8 @@ func getWheatherURL(lon: Double, lat: Double, days: Int)->URL{
 
 func getForcastedWheatherURL(lon: Double, lat: Double, days: Int)->URL{
     return WheatherEndPoints.forcastURL(lon,lat, days).url
+}
+
+func getAutoCompleteURL(locationName: String)->URL{
+    return WheatherEndPoints.autoCompleteURL(locationName).url
 }
