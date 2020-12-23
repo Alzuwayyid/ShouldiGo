@@ -8,8 +8,11 @@
 import UIKit
 
 struct YelpAPI{
-   static let clientId = "blotHY6hW3C8NGLvaVBQNg"
-   static let apiKey = "oPsg-iC559Lpu1Flh6qxRtC8z84tMNHJ-e0mBhxxZw-lQxa78erFfCqg-c2SZXqNmL0bRUC4xdtXo8fIybLsNIEejaqQZFd-_oKuVvHm87doaLbX1psTN0ZxQdvZX3Yx"
+//   static let clientId = "blotHY6hW3C8NGLvaVBQNg"
+//   static let apiKey = "oPsg-iC559Lpu1Flh6qxRtC8z84tMNHJ-e0mBhxxZw-lQxa78erFfCqg-c2SZXqNmL0bRUC4xdtXo8fIybLsNIEejaqQZFd-_oKuVvHm87doaLbX1psTN0ZxQdvZX3Yx"
+    
+    static let clientId = "HpOlnhat6pf7BKE8Fj6JsQ"
+    static let apiKey = "9CeLwpPSi77RPZRq2jJF-UHQPeu8PsZuwGEUPD-32Xy170976HbZAXRzbzD3k1Q7IpIQVIuVrJjTIiN48PdpbZgbteaRC_BqA1dtUlc69S7cOqnDwJh-iO0UZYjjX3Yx"
 }
 
 enum YelpEndPoints{

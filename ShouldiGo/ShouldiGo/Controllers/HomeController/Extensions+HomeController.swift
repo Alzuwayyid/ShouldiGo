@@ -105,8 +105,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                         case .notReachable:
                             self.homeCollectionDataSource.isConnetedToWifi = false
                             self.dataStore.loadYelpData { (result) in
-                                self.homeCollectionDataSource.yelpData = result
                                 DispatchQueue.main.async {
+                                    self.homeCollectionDataSource.yelpData = result
                                     self.homeCollectionView.reloadSections(IndexSet(integer: 0))
                                 }
                             }
