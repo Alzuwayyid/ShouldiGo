@@ -22,7 +22,7 @@ class HomeController: UIViewController{
     let homeCollectionDelegate = HomeCollectionDelegate()
     let categoryCollectionDataSourceAndDelegate = CategoryCollectionDataSource()
     let modifiyViews = modifyLayersFunctions()
-    let tags = ["Bakeries","Bars","Resturant","Cafee","Autorepair","Grocery"]
+    let tags = ["Bakeries","Mall","Resturant","Cafee","Autorepair","Grocery"]
     let sectionsName = ["Categories", "Locations"]
     var yelpFetcher = YelpFetcher()
     var wheatherFetcher = WheatherFetcher()
