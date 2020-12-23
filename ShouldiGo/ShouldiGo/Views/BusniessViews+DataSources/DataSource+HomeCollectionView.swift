@@ -61,7 +61,9 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
             DispatchQueue.main.async(group: .none, qos: .background, flags: .assignCurrentContext) { [self] in
                 let yelpResultById = getBusinessIdURL(id: yelpData[indexPath.row].id)
                 yelpFetcher.fetchBusniessDetails(url: yelpResultById) {(response, error) in
-                    Passedcell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
+                    DispatchQueue.main.async {
+                        Passedcell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
+                    }
                     if let response = response?.photos{
                         if response.count > 1{
                             let smallLargePreviewImageURL = URL(string: response[1])
@@ -100,7 +102,9 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
         let cell = Passedcell
         
         let largePreviewImageURL = URL(string: yelpData[indexPath.row].imageURL)
+        DispatchQueue.main.async {
             cell.largePreviewImage.kf.indicatorType = .activity
+        }
             cell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
         
         cell.titleOfBusiness.text = yelpData[indexPath.row].name

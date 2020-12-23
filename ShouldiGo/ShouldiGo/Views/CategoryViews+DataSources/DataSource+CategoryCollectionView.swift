@@ -14,7 +14,7 @@ class CategoryCollectionDataSource: NSObject, UICollectionViewDataSource, UIColl
     var yelpFetcher = YelpFetcher()
     var wheatherFetcher = WheatherFetcher()
     let colorsArr = ["LightBlue", "LightRed", "MiskDarkBlue", "MiskPurple"]
-    let tags = ["Bakeries","Bars","Resturant","Cafee","Autorepair","Grocery"]
+    let tags = ["Bakeries","Mall","Resturant","Cafee","Autorepair","Grocery"]
     var tagsCounter = 0
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
