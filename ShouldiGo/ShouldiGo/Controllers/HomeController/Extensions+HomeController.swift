@@ -75,7 +75,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
 
 
 
-extension HomeController: UISearchBarDelegate/*, UISearchResultsUpdating*/{
+extension HomeController: UISearchBarDelegate{
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
             searchBar.setShowsCancelButton(true, animated: true)

@@ -19,7 +19,7 @@ struct BusniessDetailsResponse: Codable {
 //    let rating: Double
 //    let location: BusniessLocation
 //    let coordinates: Coordinates
-    let photos: [String]
+    let photos: [String]?
 //    let price: String
 //    let hours: [Hour]
 //    let specialHours: [SpecialHour]

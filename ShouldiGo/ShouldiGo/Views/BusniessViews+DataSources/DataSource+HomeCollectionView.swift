@@ -52,25 +52,24 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
     }
     
     func configureCellIfConnected(_ Passedcell: HomeCollectionViewCell, indexPath: IndexPath)->UICollectionViewCell{
-        var cell = Passedcell
         let largePreviewImageURL = URL(string: yelpData[indexPath.row].imageURL)
         DispatchQueue.main.async{
-            cell.largePreviewImage.kf.indicatorType = .activity
-            cell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
+            Passedcell.largePreviewImage.kf.indicatorType = .activity
+            Passedcell.smallLargePreviewImage.kf.indicatorType = .activity
+            Passedcell.smallPreviewImage2.kf.indicatorType = .activity
+            
             DispatchQueue.main.async(group: .none, qos: .background, flags: .assignCurrentContext) { [self] in
                 let yelpResultById = getBusinessIdURL(id: yelpData[indexPath.row].id)
                 yelpFetcher.fetchBusniessDetails(url: yelpResultById) {(response, error) in
-                    
-                    let smallLargePreviewImageURL = URL(string: response!.photos[1])
-                    let smallPreviewImage2URL = URL(string: response!.photos[2])
-                    DispatchQueue.main.async {
-                        cell.smallLargePreviewImage.kf.indicatorType = .activity
-                        cell.smallPreviewImage2.kf.indicatorType = .activity
-
-                        cell.smallLargePreviewImage.kf.setImage(with: smallLargePreviewImageURL)
-                        cell.smallPreviewImage2.kf.setImage(with: smallPreviewImage2URL)
+                    Passedcell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
+                    if let response = response?.photos{
+                        let smallLargePreviewImageURL = URL(string: response[1])
+                        let smallPreviewImage2URL = URL(string: response[2])
+                        DispatchQueue.main.async {
+                            Passedcell.smallLargePreviewImage.kf.setImage(with: smallLargePreviewImageURL)
+                            Passedcell.smallPreviewImage2.kf.setImage(with: smallPreviewImage2URL)
+                        }
                     }
-
                 }
             }
         }
@@ -79,18 +78,18 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
         // Download wheather status image
             wheatherFetcher.fetchWheatherResults(url: wheatherUrl) { (results, error) in
                 DispatchQueue.main.async { [self] in
-                    cell.temperatureNum.text = "\(String((results?.current.tempC)!))c"
-                    cell.temperatureImage.setImageFromURL(url: getWheatherImageURL(imageURL: (results?.current.condition.icon)!))
+                    Passedcell.temperatureNum.text = "\(String((results?.current.tempC)!))c"
+                    Passedcell.temperatureImage.setImageFromURL(url: getWheatherImageURL(imageURL: (results?.current.condition.icon)!))
                 }
             }
         
-        cell.titleOfBusiness.text = yelpData[indexPath.row].name
-        cell.ratingNumber.text = "\(yelpData[indexPath.row].rating)"
-        cell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) reviews"
+        Passedcell.titleOfBusiness.text = yelpData[indexPath.row].name
+        Passedcell.ratingNumber.text = "\(yelpData[indexPath.row].rating)"
+        Passedcell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) reviews"
         
         print("test yelp array: \(dataStore.yelpBusinessData)")
         
-        return cell
+        return Passedcell
     }
     
     
