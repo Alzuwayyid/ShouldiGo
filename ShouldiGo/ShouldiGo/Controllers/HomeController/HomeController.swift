@@ -69,14 +69,6 @@ class HomeController: UIViewController{
                     
                     print("Not reachable")
                 case .reachable(_):
-                    
-                    
-                    let deleteThisURL = URL(string: "http://api.weatherapi.com/v1/search.json?key=2897f5267bb74f0cb0b133633201612&q=usa")
-                    self.wheatherFetcher.fetchAutoCompletedResults(url: deleteThisURL!) { (result, error) in
-                        print("lonr: \(result![5].name) long \(result![0].lat)")
-                    }
-                    
-                    
                     self.homeCollectionDataSource.isConnetedToWifi = true
                     self.yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
                         if let result = result{

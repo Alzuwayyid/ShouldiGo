@@ -95,6 +95,10 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 1{
             if autoCompleteRegion.count > 0{
+
+                let location = self.autoCompleteRegion[indexPath.row].name.replacingOccurrences(of: " ", with: "-", options: .regularExpression, range: nil).replacingOccurrences(of: ",", with: "-", options: .regularExpression, range: nil)
+                
+                let yelpUrl = getBusinessByLocation(location: location)
                 networkManager?.startListening(onUpdatePerforming: { (status) in
                     switch status{
                         case .unknown:
@@ -111,11 +115,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                             print("Not reachable")
                         case .reachable(_):
                             self.homeCollectionDataSource.isConnetedToWifi = true
-                            #warning("Last: You are heres")
-//                            let yelpUrl = getBusinessByLocation(location: self.autoCompleteRegion[indexPath.row].name)
-                            let yelpUrl = URL(string: "https://api.yelp.com/v3/businesses/search?&location=NYC")
-                            print("vrfn: \(yelpUrl)")
-                            self.yelpFetcher.fetchYelpResults(url: yelpUrl!) { (result, error) in
+                            self.yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
                                 if let result = result{
                                     self.homeCollectionDataSource.yelpData = result.businesses!
                                     self.yelpData = result.businesses!
