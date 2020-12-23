@@ -70,7 +70,7 @@ class YelpFetcher{
                 }
                 
             } catch{
-                print("Fetching Yelp data results error:  \(error.localizedDescription)")
+                print("Fetching Yelp data results error:  \(error)")
             }
             
         }.resume()
