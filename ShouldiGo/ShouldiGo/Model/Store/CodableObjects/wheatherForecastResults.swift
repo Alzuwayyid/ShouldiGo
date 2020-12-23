@@ -212,7 +212,7 @@ import Foundation
 // MARK: - WheatherForecastResults
 struct WheatherForecastResults: Codable {
     let location: ForcastedLocation
-    let current: CurrentForcasted
+    let current: CurrentForcasted?
     let forecast: Forecast?
     let alert: Alert
 }
@@ -233,7 +233,7 @@ struct CurrentForcasted: Codable {
     let windDir: String
     let pressureMB: Int
     let pressureIn: Double
-    let precipMm, precipIn, humidity, cloud: Int
+    let humidity, cloud: Int
     let feelslikeC, feelslikeF: Double
     let visKM, visMiles, uv: Int
     let gustMph, gustKph: Double
@@ -251,8 +251,8 @@ struct CurrentForcasted: Codable {
         case windDir = "wind_dir"
         case pressureMB = "pressure_mb"
         case pressureIn = "pressure_in"
-        case precipMm = "precip_mm"
-        case precipIn = "precip_in"
+//        case precipMm = "precip_mm"
+//        case precipIn = "precip_in"
         case humidity, cloud
         case feelslikeC = "feelslike_c"
         case feelslikeF = "feelslike_f"
