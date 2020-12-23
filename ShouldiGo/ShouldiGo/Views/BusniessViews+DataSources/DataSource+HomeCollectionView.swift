@@ -63,11 +63,13 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
                 yelpFetcher.fetchBusniessDetails(url: yelpResultById) {(response, error) in
                     Passedcell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
                     if let response = response?.photos{
-                        let smallLargePreviewImageURL = URL(string: response[0])
-                        let smallPreviewImage2URL = URL(string: response[1])
-                        DispatchQueue.main.async {
-                            Passedcell.smallLargePreviewImage.kf.setImage(with: smallLargePreviewImageURL)
-                            Passedcell.smallPreviewImage2.kf.setImage(with: smallPreviewImage2URL)
+                        if response.count > 1{
+                            let smallLargePreviewImageURL = URL(string: response[1])
+                            let smallPreviewImage2URL = URL(string: response[2])
+                            DispatchQueue.main.async {
+                                Passedcell.smallLargePreviewImage.kf.setImage(with: smallLargePreviewImageURL)
+                                Passedcell.smallPreviewImage2.kf.setImage(with: smallPreviewImage2URL)
+                            }
                         }
                     }
                 }
