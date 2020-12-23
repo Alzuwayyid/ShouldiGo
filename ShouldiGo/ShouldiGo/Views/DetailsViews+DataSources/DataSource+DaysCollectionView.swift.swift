@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DaysCollectionViewDataSourceAndDelegate: NSObject,UICollectionViewDataSource, UICollectionViewDelegate{
     // MARK: - Properties
@@ -22,7 +23,8 @@ class DaysCollectionViewDataSourceAndDelegate: NSObject,UICollectionViewDataSour
         
         cell.maxTemp.text = "\(details[indexPath.row].day.maxtempC)c"
         cell.minTemp.text = "\(details[indexPath.row].day.mintempC)c"
-        cell.wheatherIcon.setImageFromURL(url: getWheatherImageURL(imageURL: (details[indexPath.row].day.condition.icon)))
+        cell.wheatherIcon.kf.setImage(with: URL(string: getWheatherImageURL(imageURL: (details[indexPath.row].day.condition.icon))))
+//        cell.wheatherIcon.setImageFromURL(url: getWheatherImageURL(imageURL: (details[indexPath.row].day.condition.icon)))
         cell.DayLabel.text = "\(details[indexPath.row].date.suffix(5))"
 
                 

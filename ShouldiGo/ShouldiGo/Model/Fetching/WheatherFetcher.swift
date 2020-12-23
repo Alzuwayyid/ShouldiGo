@@ -55,12 +55,12 @@ class WheatherFetcher{
                     let wheatherFeed = try decoder.decode(WheatherForecastResults.self, from: data)
                     
                     DispatchQueue.global(qos: .background).async {
-                        completion(wheatherFeed.forecast.forecastday, error)
+                        completion(wheatherFeed.forecast?.forecastday, error)
                     }
                 }
                 
             } catch{
-                print("Fetching forcasted Wheather results error:  \(error.localizedDescription)")
+                print("Fetching forcasted Wheather results error:  \(error)")
             }
             
         }.resume()

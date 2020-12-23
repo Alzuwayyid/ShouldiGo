@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//
 //// MARK: - WheatherForecastResults
 //struct WheatherForecastResults: Codable {
 //    let location: WheatherLocation
@@ -202,13 +202,18 @@ import Foundation
 //        case gustKph = "gust_kph"
 //    }
 //}
+//
+
+
+
+
 
 
 // MARK: - WheatherForecastResults
 struct WheatherForecastResults: Codable {
     let location: ForcastedLocation
     let current: CurrentForcasted
-    let forecast: Forecast
+    let forecast: Forecast?
     let alert: Alert
 }
 
@@ -278,7 +283,7 @@ enum Text: String, Codable {
 
 // MARK: - Forecast
 struct Forecast: Codable {
-    let forecastday: [Forecastday]
+    let forecastday: [Forecastday]?
 }
 
 // MARK: - Forecastday
@@ -313,7 +318,7 @@ struct Day: Codable {
     let maxtempC, maxtempF, mintempC, mintempF: Double
     let avgtempC, avgtempF, maxwindMph, maxwindKph: Double
     let totalprecipMm, totalprecipIn: Double
-    let avgvisKM, avgvisMiles, avghumidity, dailyWillItRain: Int
+    let avgvisKM, avgvisMiles, avghumidity: Double?
     let dailyChanceOfRain: String
     let dailyWillItSnow: Int
     let dailyChanceOfSnow: String
@@ -334,7 +339,6 @@ struct Day: Codable {
         case avgvisKM = "avgvis_km"
         case avgvisMiles = "avgvis_miles"
         case avghumidity
-        case dailyWillItRain = "daily_will_it_rain"
         case dailyChanceOfRain = "daily_chance_of_rain"
         case dailyWillItSnow = "daily_will_it_snow"
         case dailyChanceOfSnow = "daily_chance_of_snow"
