@@ -11,11 +11,27 @@ import Alamofire
 extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionsName[section]
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard autoCompleteArr.count > 0 else{
-            return 0
+        if section == 0{
+            guard autoCompleteArr.count > 0 else{
+                return 0
+            }
         }
-        return autoCompleteArr.count
+        else if section == 1{
+            guard autoCompleteRegion.count > 0 else{
+                return 0
+            }
+            return autoCompleteRegion.count
+        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -23,7 +39,9 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         let reuseIdentifier = "searchTable"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
-        cell.textLabel?.text = "\(autoCompleteArr[indexPath.row].text)"
+        if indexPath.section == 0{
+            cell.textLabel?.text = "\(autoCompleteArr[indexPath.row].text)"
+        }
         return cell
     }
     

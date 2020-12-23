@@ -23,11 +23,13 @@ class HomeController: UIViewController{
     let categoryCollectionDataSourceAndDelegate = CategoryCollectionDataSource()
     let modifiyViews = modifyLayersFunctions()
     let tags = ["Bakeries","Bars","Resturant","Cafee","Autorepair","Grocery"]
+    let sectionsName = ["Categories", "Regions"]
     var yelpFetcher = YelpFetcher()
     var wheatherFetcher = WheatherFetcher()
     var dataStore =  DataStore()
     var yelpData = [Business]()
     var autoCompleteArr = [Term]()
+    var autoCompleteRegion = [CountryAutoCompletionResult]()
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -52,7 +54,6 @@ class HomeController: UIViewController{
         // MARK: - Check internt connectivity
         let networkManager = NetworkReachabilityManager()
 
-        
         networkManager?.startListening(onUpdatePerforming: { (status) in
             switch status{
                 case .unknown:
@@ -68,6 +69,14 @@ class HomeController: UIViewController{
                     
                     print("Not reachable")
                 case .reachable(_):
+                    
+                    
+                    let deleteThisURL = URL(string: "http://api.weatherapi.com/v1/search.json?key=2897f5267bb74f0cb0b133633201612&q=usa")
+                    self.wheatherFetcher.fetchAutoCompletedResults(url: deleteThisURL!) { (result, error) in
+                        print("lonr: \(result![5].name) long \(result![0].lat)")
+                    }
+                    
+                    
                     self.homeCollectionDataSource.isConnetedToWifi = true
                     self.yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
                         if let result = result{
