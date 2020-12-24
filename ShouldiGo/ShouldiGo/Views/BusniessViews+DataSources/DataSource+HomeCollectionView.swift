@@ -77,7 +77,7 @@ extension HomeCollectionDataSource{
                 }
         // If response contain images and more than one, set them to the current small imageViews
                 if let response = response?.photos{
-                    if response.count > 1{
+                    if response.count > 2{
                         let smallLargePreviewImageURL = URL(string: response[1])
                         let smallPreviewImage2URL = URL(string: response[2])
                         DispatchQueue.main.async {
