@@ -27,7 +27,6 @@ class CategoryCollectionDataSource: NSObject, UICollectionViewDataSource, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCollectionViewCell
         
         cell.contentView.layer.backgroundColor = UIColor(named: colorsArr.randomElement()!)?.cgColor
-        print("bregbrw: \(tagsCounter)")
         cell.categoryTags.text = tags[indexPath.row]
 
         

@@ -19,7 +19,6 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
     var isConnetedToWifi = false
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
         return yelpData.count
     }
     
@@ -51,33 +50,44 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
         return 1
     }
     
+    
+}
+
+// MARK: - Passing cells
+// If the device is not connected to Wifi, data will be loaded from the Disk
+extension HomeCollectionDataSource{
+   
     func configureCellIfConnected(_ Passedcell: HomeCollectionViewCell, indexPath: IndexPath)->UICollectionViewCell{
+        let yelpResultById = getBusinessIdURL(id: yelpData[indexPath.row].id)
         let largePreviewImageURL = URL(string: yelpData[indexPath.row].imageURL)
+        // URL for current business Longitude+Latitude
+        let wheatherUrl = getWheatherURL(lon: yelpData[indexPath.row].coordinates.longitude, lat: yelpData[indexPath.row].coordinates.latitude, days: 3)
+        
+        // Place activity indicator in the imageViews
         DispatchQueue.main.async{
             Passedcell.largePreviewImage.kf.indicatorType = .activity
             Passedcell.smallLargePreviewImage.kf.indicatorType = .activity
             Passedcell.smallPreviewImage2.kf.indicatorType = .activity
-            
-            DispatchQueue.main.async(group: .none, qos: .background, flags: .assignCurrentContext) { [self] in
-                let yelpResultById = getBusinessIdURL(id: yelpData[indexPath.row].id)
-                yelpFetcher.fetchBusniessDetails(url: yelpResultById) {(response, error) in
-                    DispatchQueue.main.async {
-                        Passedcell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
-                    }
-                    if let response = response?.photos{
-                        if response.count > 1{
-                            let smallLargePreviewImageURL = URL(string: response[1])
-                            let smallPreviewImage2URL = URL(string: response[2])
-                            DispatchQueue.main.async {
-                                Passedcell.smallLargePreviewImage.kf.setImage(with: smallLargePreviewImageURL)
-                                Passedcell.smallPreviewImage2.kf.setImage(with: smallPreviewImage2URL)
-                            }
+        }
+        // Fetch new businesses in the Backgorund queue
+        DispatchQueue.global(qos:.background).async {
+            self.yelpFetcher.fetchBusniessDetails(url: yelpResultById) {(response, error) in
+                DispatchQueue.main.async {
+                    Passedcell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
+                }
+        // If response contain images and more than one, set them to the current small imageViews
+                if let response = response?.photos{
+                    if response.count > 1{
+                        let smallLargePreviewImageURL = URL(string: response[1])
+                        let smallPreviewImage2URL = URL(string: response[2])
+                        DispatchQueue.main.async {
+                            Passedcell.smallLargePreviewImage.kf.setImage(with: smallLargePreviewImageURL)
+                            Passedcell.smallPreviewImage2.kf.setImage(with: smallPreviewImage2URL)
                         }
                     }
                 }
             }
         }
-        let wheatherUrl = getWheatherURL(lon: yelpData[indexPath.row].coordinates.longitude, lat: yelpData[indexPath.row].coordinates.latitude, days: 7)
         
         // Download wheather status image
             wheatherFetcher.fetchWheatherResults(url: wheatherUrl) { (results, error) in
@@ -90,9 +100,7 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
         Passedcell.titleOfBusiness.text = yelpData[indexPath.row].name
         Passedcell.ratingNumber.text = "\(yelpData[indexPath.row].rating)"
         Passedcell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) reviews"
-        
-        print("test yelp array: \(dataStore.yelpBusinessData)")
-        
+                
         return Passedcell
     }
     
@@ -113,7 +121,4 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
 
         return cell
     }
-    
 }
-
-

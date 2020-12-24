@@ -88,21 +88,7 @@ class SavingLoadingOpearion: Operation{
             print("Could not save to the disk")
         }
     }
-    
-    // MARK: - SaveImages
-//    func saveYelpImagesData(){
-//        let encoder = PropertyListEncoder()
-//        do{
-//        let data = try encoder.encode(imagesArr)
-//        try data.write(to: imagesArchiveURL, options: [.atomic])
-//            print("-----> Saved yelpBusinessDataArchive")
-//        }
-//        catch{
-//            print("Could not save to the disk")
-//        }
-//    }
-    
-    
+ 
     // MARK: - Save Forcasted Wheather
     func saveForcastedWheatherHourly(){
         let encoder = PropertyListEncoder()
@@ -156,7 +142,6 @@ class SavingLoadingOpearion: Operation{
             print("forcastedWheatherHourly: Encountered some error while loading: \(error)")
         }
         
-        print("all forcastedWheatherHourly items were loaded sucressfully")
     }
     
     // MARK: - Load Comments
@@ -171,7 +156,6 @@ class SavingLoadingOpearion: Operation{
             print("reviewsData: Encountered some error while loading: \(error)")
         }
         
-        print("all reviewsData items were loaded sucressfully")
     }
     
     override func start() {
