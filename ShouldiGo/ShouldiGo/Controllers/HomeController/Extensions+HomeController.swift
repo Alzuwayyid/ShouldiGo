@@ -44,25 +44,28 @@ extension HomeController: UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("textChanged: \(searchText)")
-        
-        let autoCompleteURL = getAutoCompleteURL(text: searchText.replacingOccurrences(of: " ", with: "-", options: .regularExpression, range: nil))
-        let regionAutoComleteURL = getAutoCompleteURL(locationName: searchText.replacingOccurrences(of: " ", with: "-", options: .regularExpression, range: nil))
-        self.wheatherFetcher.fetchAutoCompletedResults(url: regionAutoComleteURL) { (result, error) in
-            self.autoCompleteRegion = result!
-            DispatchQueue.main.async {
-                self.searchResultsTableView.reloadSections(IndexSet(integer: 1), with: .right)
-            }
-        }
-        
-        DispatchQueue.main.async { [self] in
-            yelpFetcher.fetchAutoCompleteResults(url: autoCompleteURL) { (result, error) in
-                self.autoCompleteArr = result!.terms
+        // Start auto completing the text when user types more than three words to mimimize requests
+        if searchText.count > 3{
+            let autoCompleteURL = getAutoCompleteURL(text: searchText.replacingOccurrences(of: " ", with: "-", options: .regularExpression, range: nil))
+            let regionAutoComleteURL = getAutoCompleteURL(locationName: searchText.replacingOccurrences(of: " ", with: "-", options: .regularExpression, range: nil))
+            self.wheatherFetcher.fetchAutoCompletedResults(url: regionAutoComleteURL) { (result, error) in
+                self.autoCompleteRegion = result!
                 DispatchQueue.main.async {
-                    self.searchResultsTableView.reloadSections(IndexSet(integer: 0), with: .right)
+                    self.searchResultsTableView.reloadSections(IndexSet(integer: 1), with: .right)
+                }
+            }
+            
+            DispatchQueue.main.async { [self] in
+                yelpFetcher.fetchAutoCompleteResults(url: autoCompleteURL) { (result, error) in
+                    self.autoCompleteArr = result!.terms
+                    DispatchQueue.main.async {
+                        self.searchResultsTableView.reloadSections(IndexSet(integer: 0), with: .right)
+                    }
                 }
             }
         }
     }
+    
 }
 
 extension HomeController: UICollectionViewDelegate{
