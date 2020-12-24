@@ -13,7 +13,7 @@ class CategoryCollectionDataSource: NSObject, UICollectionViewDataSource, UIColl
     var yelpData = [Business]()
     var yelpFetcher = YelpFetcher()
     var wheatherFetcher = WheatherFetcher()
-    let colorsArr = ["LightBlue", "LightRed", "MiskDarkBlue", "MiskPurple"]
+    let colorsArr = ["LightBlue", "LightRed", "MiskDarkBlue", "MiskPurple","LightBlue", "LightRed"]
     let tags = ["Bakeries","Mall","Resturant","Cafee","Autorepair","Grocery"]
     var tagsCounter = 0
     
@@ -26,7 +26,7 @@ class CategoryCollectionDataSource: NSObject, UICollectionViewDataSource, UIColl
         let reuseIdentifier = "CategoryCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCollectionViewCell
         
-        cell.contentView.layer.backgroundColor = UIColor(named: colorsArr.randomElement()!)?.cgColor
+        cell.contentView.layer.backgroundColor = UIColor(named: colorsArr[indexPath.row])?.cgColor
         cell.categoryTags.text = tags[indexPath.row]
 
         

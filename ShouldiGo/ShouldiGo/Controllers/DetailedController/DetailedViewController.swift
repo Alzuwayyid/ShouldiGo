@@ -48,6 +48,7 @@ class DetailedViewController: UIViewController {
         // MARK: - Adding Lines
         addLines()
         
+        // MARK: - Assigning values to views
         phoneNumber.text = phoneNumberText
         titleLabel.text = titleText
         addressLabel.text = addressText
@@ -58,6 +59,7 @@ class DetailedViewController: UIViewController {
         largeImage.layer.masksToBounds = true
         largeImage.layer.cornerRadius = 15
         
+        // MARK: - Update wheather results
         let ForcastTodayURL = getForcastedWheatherURL(lon: longitude, lat: latitude ,days: 3)
         wheatherFetcher.fetchForcatedWheatherResults(url: ForcastTodayURL) { (result, error) in
             var forecast = [ForecastHour]()
@@ -79,7 +81,7 @@ class DetailedViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
+    // MARK: - Open location in apple maps
     @IBAction func openAppleMaps(_ sender: UIButton) {
         let regionDistance:CLLocationDistance = 10000
         let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
@@ -94,7 +96,7 @@ class DetailedViewController: UIViewController {
         mapItem.openInMaps(launchOptions: options)
     }
     
-    
+    // Drawing lines in the super view
     func addLines(){
         let horzLineView = UIView(frame: CGRect(x: 50, y: 265, width: 273, height: 1.0))
         horzLineView.layer.borderWidth = 1.0
@@ -121,7 +123,7 @@ extension DetailedViewController: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let ForcastTodayURL = getForcastedWheatherURL(lon: -122.399972, lat: 37.786882 ,days: 3)
+        let ForcastTodayURL = getForcastedWheatherURL(lon: longitude, lat: latitude ,days: 3)
         
         wheatherFetcher.fetchForcatedWheatherResults(url: ForcastTodayURL) { (result, error) in
             

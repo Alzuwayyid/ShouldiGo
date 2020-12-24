@@ -39,7 +39,6 @@ class HomeController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // MARK: - Delegation
         homeCollectionView.dataSource = homeCollectionDataSource
         categoryCollectionView.dataSource = categoryCollectionDataSourceAndDelegate
@@ -50,7 +49,6 @@ class HomeController: UIViewController{
         
         searchResultsTableView.isHidden = true
 
-        // Build Yelp URL
         if currentCategory == ""{
             currentCategory = "Bakeries"
         }
@@ -58,11 +56,13 @@ class HomeController: UIViewController{
             currentLocation = "NYC"
         }
         
+        // Build Yelp URL
         let yelpUrl = getBusinessByLocation(location: currentLocation, category: currentCategory)
 
         // MARK: - Check internt connectivity
         let networkManager = NetworkReachabilityManager()
 
+        // If Wifi is off, load data from the disk
         networkManager?.startListening(onUpdatePerforming: { (status) in
             switch status{
                 case .unknown:
@@ -75,7 +75,6 @@ class HomeController: UIViewController{
                             self.homeCollectionView.reloadSections(IndexSet(integer: 0))
                         }
                     }
-                    
                     print("Not reachable")
                 case .reachable(_):
                     self.homeCollectionDataSource.isConnetedToWifi = true
