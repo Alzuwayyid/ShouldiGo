@@ -59,7 +59,6 @@ class DetailedViewController: UIViewController {
         largeImage.layer.cornerRadius = 15
         
         let ForcastTodayURL = getForcastedWheatherURL(lon: longitude, lat: latitude ,days: 3)
-        print("GGggre: \(ForcastTodayURL)")
         wheatherFetcher.fetchForcatedWheatherResults(url: ForcastTodayURL) { (result, error) in
             var forecast = [ForecastHour]()
             if let result = result{

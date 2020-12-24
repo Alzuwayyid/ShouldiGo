@@ -19,6 +19,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         return sectionsName[section]
     }
     
+    // Section 0 is the categories while 1 is the location
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             guard autoCompleteArr.count > 0 else{
@@ -154,7 +155,6 @@ extension HomeController: UISearchBarDelegate{
         }
     
         func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-            print("Yo")
             if(searchBar.text ?? "" != ""){
 
             }
@@ -177,7 +177,6 @@ extension HomeController: UISearchBarDelegate{
         
         let autoCompleteURL = getAutoCompleteURL(text: searchText.replacingOccurrences(of: " ", with: "-", options: .regularExpression, range: nil))
         let regionAutoComleteURL = getAutoCompleteURL(locationName: searchText.replacingOccurrences(of: " ", with: "-", options: .regularExpression, range: nil))
-        print("vregbetgbet: \(regionAutoComleteURL)")
         self.wheatherFetcher.fetchAutoCompletedResults(url: regionAutoComleteURL) { (result, error) in
             self.autoCompleteRegion = result!
             DispatchQueue.main.async {
