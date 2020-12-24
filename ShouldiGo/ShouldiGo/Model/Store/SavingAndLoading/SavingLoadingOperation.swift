@@ -11,8 +11,8 @@ class SavingLoadingOpearion: Operation{
     var reviewsData = [Review]()
     var forcastedWheatherHourly = [ForecastHour]()
     var yelpBusinessData = [Business]()
-    var imagesArr = [UIImageView]()
 
+    
     enum State: String {
         case isReady
         case isExecuting
