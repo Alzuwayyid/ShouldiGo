@@ -47,7 +47,6 @@ class HomeController: UIViewController{
         searchBar.delegate = self
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
-        
         searchResultsTableView.isHidden = true
 
         if currentCategory == ""{
