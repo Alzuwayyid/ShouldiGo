@@ -10,6 +10,7 @@ import UIKit
 class SavingLoadingOpearion: Operation{
     var reviewsData = [Review]()
     var forcastedWheatherHourly = [ForecastHour]()
+    var forcastedWheatherDay = [Forecastday]()
     var yelpBusinessData = [Business]()
 
     
@@ -53,6 +54,13 @@ class SavingLoadingOpearion: Operation{
         return documentDirectory.appendingPathComponent("ForcastedWheatherHourly.plist")
     }()
     
+    // MARK: - Daily Wheather
+    let forcastedWheatherDayURL: URL = {
+        let documentsDirecorty = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = documentsDirecorty.first!
+        return documentDirectory.appendingPathComponent("forcastedWheatherDay.plist")
+    }()
+    
     // MARK: - Comments
     let reviewsDataArchiveURL: URL = {
         let documentsDirecorty = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -89,6 +97,19 @@ class SavingLoadingOpearion: Operation{
         }
     }
  
+    // MARK: - Save Forcasted daily Wheather
+    func saveForcastedWheatherDay(){
+        let encoder = PropertyListEncoder()
+        do{
+        let data = try encoder.encode(forcastedWheatherDay)
+        try data.write(to: forcastedWheatherDayURL, options: [.atomic])
+            print("-----> Saved forcastedWheatherDay")
+        }
+        catch{
+            print("Could not save to the disk")
+        }
+    }
+    
     // MARK: - Save Forcasted Wheather
     func saveForcastedWheatherHourly(){
         let encoder = PropertyListEncoder()
@@ -131,15 +152,31 @@ class SavingLoadingOpearion: Operation{
     }
     
     // MARK: - Load Hourly Wheather
-    func loadForcastedWheatherHourly(){
+    func loadForcastedWheatherHourly(completion: @escaping([ForecastHour])->()){
         do{
             let data = try Data(contentsOf: forcastedWheatherHourlyArchiveURL)
             let unArchive = PropertyListDecoder()
             let hourlyWheather = try unArchive.decode([ForecastHour].self, from: data)
             forcastedWheatherHourly = hourlyWheather
+            completion(hourlyWheather)
         }
         catch{
             print("forcastedWheatherHourly: Encountered some error while loading: \(error)")
+        }
+        
+    }
+    
+    // MARK: - Load Daily Wheather
+    func loadForcastedWheatherDay(completion: @escaping([Forecastday])->()){
+        do{
+            let data = try Data(contentsOf: forcastedWheatherDayURL)
+            let unArchive = PropertyListDecoder()
+            let dailyWheather = try unArchive.decode([Forecastday].self, from: data)
+            forcastedWheatherDay = dailyWheather
+            completion(dailyWheather)
+        }
+        catch{
+            print("ForecastHour: Encountered some error while loading: \(error)")
         }
         
     }

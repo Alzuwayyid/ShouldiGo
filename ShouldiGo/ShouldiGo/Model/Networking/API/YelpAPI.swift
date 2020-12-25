@@ -50,7 +50,7 @@ enum YelpEndPoints{
     }
     
 }
-
+ 
 func getYelpURL(lat: Double, lon: Double, category: String)->URL{
     return YelpEndPoints.searchURLString(lat, lon, category).url
 }

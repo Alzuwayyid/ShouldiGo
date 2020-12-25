@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DaysDetailsCollectionViewDataSourceAndDelegate: NSObject,UICollectionViewDataSource ,UICollectionViewDelegate{
     
@@ -21,9 +22,11 @@ class DaysDetailsCollectionViewDataSourceAndDelegate: NSObject,UICollectionViewD
         let reuseIdentifier = "detailsCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DetailedDaysCollectionViewCell
         
+        let whatherImageURL = URL(string: getWheatherImageURL(imageURL: (details[indexPath.row].condition.icon)))
+
         cell.tempeNum.text = "\(details[indexPath.row].tempC)c"
         cell.timeLabel.text = "\(details[indexPath.row].time.suffix(5))"
-        cell.conditionImage.setImageFromURL(url: getWheatherImageURL(imageURL: (details[indexPath.row].condition.icon)))
+        cell.conditionImage.kf.setImage(with: whatherImageURL)
 
         return cell
     }

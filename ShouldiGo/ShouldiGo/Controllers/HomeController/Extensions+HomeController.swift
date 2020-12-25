@@ -23,13 +23,7 @@ extension HomeController: UISearchBarDelegate{
         searchResultsTableView.isHidden = true
         
     }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        if(searchBar.text ?? "" != ""){
-            
-        }
-    }
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         if let cancelButton : UIButton = searchBar.value(forKey: "cancelButton") as? UIButton{
@@ -38,11 +32,9 @@ extension HomeController: UISearchBarDelegate{
         searchResultsTableView.isHidden = false
     }
     
-    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
-        print("Searchbutton Clicker")
-    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchResultsTableView.isHidden = false
         print("textChanged: \(searchText)")
         // Start auto completing the text when user types more than three words to mimimize requests
         if searchText.count > 3{
@@ -102,7 +94,7 @@ extension HomeController: UICollectionViewDelegate{
                             self.homeCollectionDataSource.yelpData = result.businesses!
                             self.yelpData = result.businesses!
                             self.dataStore.yelpBusinessData = result.businesses!
-                            self.dataStore.saveChanges()
+                            self.dataStore.saveChangesToYelp()
                         }
                         DispatchQueue.main.async {
                             self.homeCollectionView.reloadSections(IndexSet(integer: 0))
@@ -238,7 +230,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                                     self.homeCollectionDataSource.yelpData = result.businesses!
                                     self.yelpData = result.businesses!
                                     self.dataStore.yelpBusinessData = result.businesses!
-                                    self.dataStore.saveChanges()
+                                    self.dataStore.saveChangesToYelp()
                                 }
                                 DispatchQueue.main.async {
                                     self.homeCollectionView.reloadSections(IndexSet(integer: 0))
@@ -259,7 +251,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                                     self.homeCollectionDataSource.yelpData = result.businesses!
                                     self.yelpData = result.businesses!
                                     self.dataStore.yelpBusinessData = result.businesses!
-                                    self.dataStore.saveChanges()
+                                    self.dataStore.saveChangesToYelp()
                                 }
                                 DispatchQueue.main.async {
                                     self.homeCollectionView.reloadSections(IndexSet(integer: 0))
