@@ -35,6 +35,7 @@ class HomeController: UIViewController{
     var currentCategory = ""
     var currentLocation = ""
     
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -48,8 +49,8 @@ class HomeController: UIViewController{
         searchBar.delegate = self
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
-        
-        // MARK: - Properities configuration
+
+      // MARK: - Properities configuration
         animationView = .init(name: "purpleLoadingLottie")
         animationView!.frame = view.bounds
         animationView!.contentMode = .scaleAspectFit
@@ -57,6 +58,7 @@ class HomeController: UIViewController{
         animationView!.animationSpeed = 0.5
         view.addSubview(animationView!)
         animationView!.play()
+
         searchResultsTableView.isHidden = true
 
         if currentCategory == ""{
