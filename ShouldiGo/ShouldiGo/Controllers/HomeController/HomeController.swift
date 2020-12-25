@@ -20,6 +20,7 @@ class HomeController: UIViewController{
     
     // MARK: - Properties
     private var animationView: AnimationView?
+    private var noWifiView: AnimationView?
     let homeCollectionDataSource = HomeCollectionDataSource()
     let homeCollectionDelegate = HomeCollectionDelegate()
     let categoryCollectionDataSourceAndDelegate = CategoryCollectionDataSource()
