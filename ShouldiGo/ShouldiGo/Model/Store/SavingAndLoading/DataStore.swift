@@ -19,8 +19,6 @@ class DataStore{
         let operation = SavingLoadingOpearion()
         
         operation.loadReviewsData()
-//        operation.loadYelpBusinessData()
-//        operation.loadForcastedWheatherHourly()
         
         opearionQueue.addOperation(operation)
         
