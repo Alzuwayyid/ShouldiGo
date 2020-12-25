@@ -4,29 +4,23 @@ PODS:
     - Kingfisher/Core (= 5.15.7)
   - Kingfisher/Core (5.15.7)
   - lottie-ios (3.1.9)
-  - SDWebImage (5.10.1):
-    - SDWebImage/Core (= 5.10.1)
-  - SDWebImage/Core (5.10.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - Kingfisher (~> 5.0)
   - lottie-ios
-  - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Kingfisher
     - lottie-ios
-    - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: 2c792affbdc2f18016e08fdbcacd60aebe1ba593
   Kingfisher: 6e1a13523fcb1c86924ce53affe4ac957e544d59
   lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
-  SDWebImage: f66a16b95183b92ed6b965ad21d33167bc07612d
 
-PODFILE CHECKSUM: a12232a1eb61580a20b8e4fe3e57f7422e0736df
+PODFILE CHECKSUM: 97adc3988a7f575c9ecb8fe1d34e3017ed278915
 
 COCOAPODS: 1.10.0

@@ -57,7 +57,6 @@ class HomeController: UIViewController{
         animationView!.animationSpeed = 0.5
         view.addSubview(animationView!)
         animationView!.play()
-
         searchResultsTableView.isHidden = true
 
         if currentCategory == ""{
