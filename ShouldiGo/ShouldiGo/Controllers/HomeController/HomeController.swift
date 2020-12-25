@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import Lottie
 
 class HomeController: UIViewController{
     
@@ -18,6 +19,7 @@ class HomeController: UIViewController{
     @IBOutlet var searchResultsTableView: UITableView!
     
     // MARK: - Properties
+    private var animationView: AnimationView?
     let homeCollectionDataSource = HomeCollectionDataSource()
     let homeCollectionDelegate = HomeCollectionDelegate()
     let categoryCollectionDataSourceAndDelegate = CategoryCollectionDataSource()
@@ -47,6 +49,14 @@ class HomeController: UIViewController{
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
         
+        // MARK: - Properities configuration
+        animationView = .init(name: "purpleLoadingLottie")
+        animationView!.frame = view.bounds
+        animationView!.contentMode = .scaleAspectFit
+        animationView!.loopMode = .loop
+        animationView!.animationSpeed = 0.5
+        view.addSubview(animationView!)
+        animationView!.play()
         searchResultsTableView.isHidden = true
 
         if currentCategory == ""{
@@ -72,10 +82,12 @@ class HomeController: UIViewController{
                     self.dataStore.loadYelpData { (result) in
                         self.homeCollectionDataSource.yelpData = result
                         DispatchQueue.main.async {
+                            self.animationView!.stop()
+                            self.animationView!.isHidden = true
                             self.homeCollectionView.reloadSections(IndexSet(integer: 0))
                         }
-                    }
-                    print("Not reachable")
+                  }
+                    print("HomeController: Not reachable")
                 case .reachable(_):
                     self.homeCollectionDataSource.isConnetedToWifi = true
                     self.yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
@@ -83,14 +95,15 @@ class HomeController: UIViewController{
                             self.homeCollectionDataSource.yelpData = result.businesses!
                             self.yelpData = result.businesses!
                             self.dataStore.yelpBusinessData = result.businesses!
-                            self.dataStore.saveChanges()
+                            self.dataStore.saveChangesToYelp()
                         }
                         DispatchQueue.main.async {
+                            self.animationView!.stop()
+                            self.animationView!.isHidden = true
                             self.homeCollectionView.reloadSections(IndexSet(integer: 0))
                         }
-
                     }
-                    print("reachable")
+                    print("HomeController: reachable")
             }
         })
                 
