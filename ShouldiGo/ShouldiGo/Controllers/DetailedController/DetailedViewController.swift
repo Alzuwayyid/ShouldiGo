@@ -77,13 +77,15 @@ class DetailedViewController: UIViewController {
                 case .notReachable:
                     self.dataStore.loadForcastedDailyData { (result) in
                         var forecast = [ForecastHour]()
-                        for index in 0...result.count-1{
-                            forecast.append(contentsOf: result[index].hour)
-                            self.dayDetailsCollectionViewDD.details = forecast
-                            self.daysCollectionViewDD.details = result
-                            DispatchQueue.main.async {
-                                self.daysDetailsCollectionView.reloadSections(IndexSet(integer: 0))
-                                self.daysCollectionView.reloadSections(IndexSet(integer: 0))
+                        if !result.isEmpty{
+                            for index in 0...result.count-1{
+                                forecast.append(contentsOf: result[index].hour)
+                                self.dayDetailsCollectionViewDD.details = forecast
+                                self.daysCollectionViewDD.details = result
+                                DispatchQueue.main.async {
+                                    self.daysDetailsCollectionView.reloadSections(IndexSet(integer: 0))
+                                    self.daysCollectionView.reloadSections(IndexSet(integer: 0))
+                                }
                             }
                         }
                         DispatchQueue.main.async {

@@ -13,7 +13,6 @@ enum PhotoError: Error{
 }
 
 class YelpFetcher{
-    private let imageStore = ImageStore()
 
     
     func fetchYelpResults(url: URL, completion: @escaping (YelpResults?, Error?) -> ()){

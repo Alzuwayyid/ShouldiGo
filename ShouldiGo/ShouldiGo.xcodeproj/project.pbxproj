@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1013D3D1259687EF00888FBE /* noWifi.json in Resources */ = {isa = PBXBuildFile; fileRef = 1013D3D0259687EF00888FBE /* noWifi.json */; };
 		105ADD29258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD28258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift */; };
 		105ADD36258CE16D00CDC7F1 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD35258CE16D00CDC7F1 /* CategoryCell.swift */; };
 		105ADD3B258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD3A258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift */; };
-		105ADD48258D219E00CDC7F1 /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD47258D219E00CDC7F1 /* PhotoStore.swift */; };
 		105ADD7E258E72F000CDC7F1 /* AutoCompleteJsonResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD7D258E72F000CDC7F1 /* AutoCompleteJsonResults.swift */; };
 		105ADD83258E912E00CDC7F1 /* Extensions+HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD82258E912E00CDC7F1 /* Extensions+HomeController.swift */; };
 		105ADD9E258FAAD400CDC7F1 /* wheatherForecastResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ADD9D258FAAD400CDC7F1 /* wheatherForecastResults.swift */; };
@@ -71,10 +71,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1013D3D0259687EF00888FBE /* noWifi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noWifi.json; sourceTree = "<group>"; };
 		105ADD28258CE13D00CDC7F1 /* DataSource+CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+CategoryCollectionView.swift"; sourceTree = "<group>"; };
 		105ADD35258CE16D00CDC7F1 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		105ADD3A258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewLayout.swift; sourceTree = "<group>"; };
-		105ADD47258D219E00CDC7F1 /* PhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
 		105ADD7D258E72F000CDC7F1 /* AutoCompleteJsonResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteJsonResults.swift; sourceTree = "<group>"; };
 		105ADD82258E912E00CDC7F1 /* Extensions+HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+HomeController.swift"; sourceTree = "<group>"; };
 		105ADD9D258FAAD400CDC7F1 /* wheatherForecastResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wheatherForecastResults.swift; sourceTree = "<group>"; };
@@ -281,7 +281,6 @@
 			isa = PBXGroup;
 			children = (
 				109F5F49258A30BE00B5E31C /* Store */,
-				105ADD47258D219E00CDC7F1 /* PhotoStore.swift */,
 				109F5F48258A304200B5E31C /* Fetching */,
 				109F5F3E258A12E200B5E31C /* Networking */,
 			);
@@ -386,6 +385,7 @@
 				105ADD3A258CE82800CDC7F1 /* CategoryCollectionViewLayout.swift */,
 				105ADDFE2591466700CDC7F1 /* CommentsCollectionViewLayout.swift */,
 				10E37DB32596480E00D9B5F3 /* purpleLoadingLottie.json */,
+				1013D3D0259687EF00888FBE /* noWifi.json */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -515,6 +515,7 @@
 				109F5F12258A0F1400B5E31C /* Assets.xcassets in Resources */,
 				109F5F10258A0F1300B5E31C /* Main.storyboard in Resources */,
 				10E37DB42596480E00D9B5F3 /* purpleLoadingLottie.json in Resources */,
+				1013D3D1259687EF00888FBE /* noWifi.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,7 +664,6 @@
 				105ADDC9258FB34900CDC7F1 /* DetailedViewController.swift in Sources */,
 				10A385E7258A6C0A00B4E14C /* HomeController.swift in Sources */,
 				105ADE102592238100CDC7F1 /* DataStore.swift in Sources */,
-				105ADD48258D219E00CDC7F1 /* PhotoStore.swift in Sources */,
 				105ADDB0258FB20900CDC7F1 /* DataSource+DayDetailsCollectionView.swift in Sources */,
 				10A385FB258A6DD400B4E14C /* Delegate+HomeCollectionView.swift in Sources */,
 				109F5F63258A46A600B5E31C /* WheatherAPI.swift in Sources */,
