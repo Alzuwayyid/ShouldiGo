@@ -33,6 +33,7 @@ class HomeController: UIViewController{
     var currentCategory = ""
     var currentLocation = ""
     
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
