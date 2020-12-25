@@ -10,12 +10,9 @@ import Foundation
 // MARK: - YelpReviewsResult
 struct YelpReviewsResult: Codable {
     let reviews: [Review]
-//    let total: Int
-//    let possibleLanguages: [String]
-
+    
     enum CodingKeys: String, CodingKey {
-        case reviews//, total
-//        case possibleLanguages = "possible_languages"
+        case reviews
     }
 }
 

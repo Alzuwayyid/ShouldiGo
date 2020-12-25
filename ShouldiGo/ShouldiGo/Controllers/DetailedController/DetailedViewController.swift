@@ -169,11 +169,16 @@ extension DetailedViewController: UICollectionViewDelegate{
         wheatherFetcher.fetchForcatedWheatherResults(url: ForcastTodayURL) { (result, error) in
             
             var forecast = [ForecastHour]()
-            forecast.append(contentsOf: result![indexPath.row].hour)
-            self.dayDetailsCollectionViewDD.details = forecast
-            self.daysCollectionViewDD.details = result!
-            DispatchQueue.main.async {
-                self.daysDetailsCollectionView.reloadSections(IndexSet(integer: 0))
+            // will avoid crashing in offline mode if no value was passed from forcaste api to a particular business, by unrawpping and checking emptiness.
+            if let result = result{
+                if !result.isEmpty{
+                    forecast.append(contentsOf: result[indexPath.row].hour)
+                    self.dayDetailsCollectionViewDD.details = forecast
+                    self.daysCollectionViewDD.details = result
+                    DispatchQueue.main.async {
+                        self.daysDetailsCollectionView.reloadSections(IndexSet(integer: 0))
+                    }
+                }
             }
         }
     }
