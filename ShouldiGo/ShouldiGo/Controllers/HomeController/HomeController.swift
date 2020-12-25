@@ -75,7 +75,7 @@ class HomeController: UIViewController{
                             self.homeCollectionView.reloadSections(IndexSet(integer: 0))
                         }
                     }
-                    print("Not reachable")
+                    print("HomeController: Not reachable")
                 case .reachable(_):
                     self.homeCollectionDataSource.isConnetedToWifi = true
                     self.yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
@@ -83,14 +83,14 @@ class HomeController: UIViewController{
                             self.homeCollectionDataSource.yelpData = result.businesses!
                             self.yelpData = result.businesses!
                             self.dataStore.yelpBusinessData = result.businesses!
-                            self.dataStore.saveChanges()
+                            self.dataStore.saveChangesToYelp()
                         }
                         DispatchQueue.main.async {
                             self.homeCollectionView.reloadSections(IndexSet(integer: 0))
                         }
 
                     }
-                    print("reachable")
+                    print("HomeController: reachable")
             }
         })
                 

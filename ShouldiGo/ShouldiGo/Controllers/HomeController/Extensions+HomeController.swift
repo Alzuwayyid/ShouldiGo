@@ -102,7 +102,7 @@ extension HomeController: UICollectionViewDelegate{
                             self.homeCollectionDataSource.yelpData = result.businesses!
                             self.yelpData = result.businesses!
                             self.dataStore.yelpBusinessData = result.businesses!
-                            self.dataStore.saveChanges()
+                            self.dataStore.saveChangesToYelp()
                         }
                         DispatchQueue.main.async {
                             self.homeCollectionView.reloadSections(IndexSet(integer: 0))
@@ -238,7 +238,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                                     self.homeCollectionDataSource.yelpData = result.businesses!
                                     self.yelpData = result.businesses!
                                     self.dataStore.yelpBusinessData = result.businesses!
-                                    self.dataStore.saveChanges()
+                                    self.dataStore.saveChangesToYelp()
                                 }
                                 DispatchQueue.main.async {
                                     self.homeCollectionView.reloadSections(IndexSet(integer: 0))
@@ -259,7 +259,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                                     self.homeCollectionDataSource.yelpData = result.businesses!
                                     self.yelpData = result.businesses!
                                     self.dataStore.yelpBusinessData = result.businesses!
-                                    self.dataStore.saveChanges()
+                                    self.dataStore.saveChangesToYelp()
                                 }
                                 DispatchQueue.main.async {
                                     self.homeCollectionView.reloadSections(IndexSet(integer: 0))

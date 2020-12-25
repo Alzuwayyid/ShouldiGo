@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import MapKit
+import Alamofire
 
 class DetailedViewController: UIViewController {
 
@@ -20,6 +21,8 @@ class DetailedViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var phoneNumber: UILabel!
     @IBOutlet var categoryLabel: UILabel!
+    @IBOutlet var locationButton: UIButton!
+    @IBOutlet var commentsButton: UIButton!
     
     // MARK: - Properties
     let dayDetailsCollectionViewDD = DaysDetailsCollectionViewDataSourceAndDelegate()
@@ -35,6 +38,7 @@ class DetailedViewController: UIViewController {
     var phoneNumberText = ""
     var categoryText = ""
     var busID = ""
+    var dataStore =  DataStore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,26 +59,61 @@ class DetailedViewController: UIViewController {
         ratingLabel.text = ratingText
         categoryLabel.text = categoryText
         largeImage.kf.setImage(with: URL(string: largeImageURL))
+        
+        
         largeImage.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMinXMaxYCorner]
         largeImage.layer.masksToBounds = true
         largeImage.layer.cornerRadius = 15
         
-        // MARK: - Update wheather results
-        let ForcastTodayURL = getForcastedWheatherURL(lon: longitude, lat: latitude ,days: 3)
-        wheatherFetcher.fetchForcatedWheatherResults(url: ForcastTodayURL) { (result, error) in
-            var forecast = [ForecastHour]()
-            if let result = result{
-                for index in 0...result.count-1{
-                    forecast.append(contentsOf: result[index].hour)
-                }
-                self.dayDetailsCollectionViewDD.details = forecast
-                self.daysCollectionViewDD.details = result
-                DispatchQueue.main.async {
-                    self.daysDetailsCollectionView.reloadSections(IndexSet(integer: 0))
-                    self.daysCollectionView.reloadSections(IndexSet(integer: 0))
-                }
+        // MARK: - Check internt connectivity
+        let networkManager = NetworkReachabilityManager()
+        
+        // Fetch data for categories and location
+        networkManager?.startListening(onUpdatePerforming: { (status) in
+            switch status{
+                
+                case .unknown:
+                    print("Unknown")
+                case .notReachable:
+                    self.dataStore.loadForcastedDailyData { (result) in
+                        var forecast = [ForecastHour]()
+                        for index in 0...result.count-1{
+                            forecast.append(contentsOf: result[index].hour)
+                            self.dayDetailsCollectionViewDD.details = forecast
+                            self.daysCollectionViewDD.details = result
+                            DispatchQueue.main.async {
+                                self.daysDetailsCollectionView.reloadSections(IndexSet(integer: 0))
+                                self.daysCollectionView.reloadSections(IndexSet(integer: 0))
+                            }
+                        }
+                        DispatchQueue.main.async {
+                            self.commentsButton.backgroundColor = .black
+                            self.commentsButton.isEnabled = false
+                        }
+                    }
+                case .reachable(_):
+                    // MARK: - Update wheather results
+                    let ForcastTodayURL = getForcastedWheatherURL(lon: self.longitude, lat: self.latitude ,days: 3)
+                    self.wheatherFetcher.fetchForcatedWheatherResults(url: ForcastTodayURL) { (result, error) in
+                        var forecast = [ForecastHour]()
+                        if let result = result{
+                            for index in 0...result.count-1{
+                                forecast.append(contentsOf: result[index].hour)
+                            }
+                            self.dayDetailsCollectionViewDD.details = forecast
+                            self.daysCollectionViewDD.details = result
+                            self.dataStore.forcastedWheatherDay = result
+                            self.dataStore.saveChangesToWheather()
+                            DispatchQueue.main.async {
+                                self.daysDetailsCollectionView.reloadSections(IndexSet(integer: 0))
+                                self.daysCollectionView.reloadSections(IndexSet(integer: 0))
+                            }
+                        }
+                    }
             }
-        }
+        })
+        
+
     }
     
     @IBAction func dismissController(_ sender: UIButton) {
