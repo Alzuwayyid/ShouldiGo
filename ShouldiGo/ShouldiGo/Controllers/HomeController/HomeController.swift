@@ -59,6 +59,12 @@ class HomeController: UIViewController{
         animationView!.animationSpeed = 0.5
         view.addSubview(animationView!)
         animationView!.play()
+        
+        noWifiView = .init(name: "noWifi")
+        noWifiView!.frame = CGRect(x: 150, y: 30, width: 80, height: 80)
+        noWifiView!.contentMode = .scaleAspectFit
+        noWifiView!.loopMode = .loop
+        noWifiView!.animationSpeed = 0.5
 
         searchResultsTableView.isHidden = true
 
@@ -81,6 +87,9 @@ class HomeController: UIViewController{
                 case .unknown:
                     print("-Unknown")
                 case .notReachable:
+                    self.view.addSubview(self.noWifiView!)
+                    self.noWifiView!.play()
+                    self.searchBar.isHidden = true
                     self.homeCollectionDataSource.isConnetedToWifi = false
                     self.dataStore.loadYelpData { (result) in
                         self.homeCollectionDataSource.yelpData = result
