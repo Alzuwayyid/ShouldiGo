@@ -14,7 +14,6 @@ enum PhotoError: Error{
 
 class YelpFetcher{
 
-    
     func fetchYelpResults(url: URL, completion: @escaping (YelpResults?, Error?) -> ()){
         
         // Creating request

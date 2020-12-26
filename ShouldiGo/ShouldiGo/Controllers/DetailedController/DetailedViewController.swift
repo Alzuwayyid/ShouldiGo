@@ -169,7 +169,7 @@ extension DetailedViewController: UICollectionViewDelegate{
         wheatherFetcher.fetchForcatedWheatherResults(url: ForcastTodayURL) { (result, error) in
             
             var forecast = [ForecastHour]()
-            // will avoid crashing in offline mode if no value was passed from forcaste api to a particular business, by unrawpping and checking emptiness.
+            // will avoid crashing in offline mode if no value was passed from forcaste api to a partircular business, by unrawpping and checking emptiness.
             if let result = result{
                 if !result.isEmpty{
                     forecast.append(contentsOf: result[indexPath.row].hour)
