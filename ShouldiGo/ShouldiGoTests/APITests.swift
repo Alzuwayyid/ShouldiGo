@@ -36,4 +36,31 @@ class ShouldiGoAPITest: XCTestCase{
         wait(for: [completionExpectation], timeout: 6)
     }
     
+    
+    func testPhotosHTTPResponse() {
+        let url = getBusinessByLocation(location: "NYC", category: "Bakeries")
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(YelpAPI.apiKey)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "GET"
+        
+      let promise = expectation(description: "Status code: 200")
+
+      let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+
+        if let error = error {
+          XCTFail("Error: \(error.localizedDescription)")
+          return
+        } else if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+          if statusCode == 200 {
+
+            promise.fulfill()
+          } else {
+            XCTFail("Status code: \(statusCode)")
+          }
+        }
+      }
+      dataTask.resume()
+        wait(for: [promise], timeout: 7.0)
+    }
+    
 }
