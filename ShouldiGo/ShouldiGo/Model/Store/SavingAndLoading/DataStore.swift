@@ -28,6 +28,16 @@ class DataStore{
         
     }
     
+    public func loadingBasedOnURL(forKey key: String) -> URL {
+        
+        let documentsDirectories =
+            FileManager.default.urls(for: .documentDirectory,
+            in: .userDomainMask)
+        let documentDirectory = documentsDirectories.first!
+        
+        return documentDirectory.appendingPathComponent(key)
+    }
+    
     func addYelpBusiness(_ data: Business){
         yelpBusinessData.append(data)
     }
@@ -134,6 +144,5 @@ class DataStore{
         }
         return true
     }
-    
 }
 

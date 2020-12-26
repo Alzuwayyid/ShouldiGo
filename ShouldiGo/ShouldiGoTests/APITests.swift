@@ -37,6 +37,7 @@ class ShouldiGoAPITest: XCTestCase{
     }
     
     
+    
     func testPhotosHTTPResponse() {
         let url = getBusinessByLocation(location: "NYC", category: "Bakeries")
         var request = URLRequest(url: url)
@@ -62,5 +63,7 @@ class ShouldiGoAPITest: XCTestCase{
       dataTask.resume()
         wait(for: [promise], timeout: 7.0)
     }
+    
+    
     
 }
