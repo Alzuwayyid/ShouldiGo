@@ -17,5 +17,16 @@ class ShouldiGoStoreTest: XCTestCase{
         XCTAssertNotNil(fetchBusinessURL)
     }
     
+    func testloadingBusinessFromtheDisk(){
+        dataStore.loadYelpData { (result) in
+            XCTAssertNotNil(result)
+        }
+    }
+    
+    func testForcastedFromtheDisk(){
+        dataStore.loadForcastedData { (result) in
+            XCTAssertNotNil(result)
+        }
+    }
     
 }
