@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - AutoCompleteResults
 struct AutoCompleteResults: Codable {
-  let categories: [Category] // Found in YelpSearchResponse
+  let categories: [Category]
   let terms: [Term]
 }
 // MARK: - Term

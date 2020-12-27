@@ -22,7 +22,6 @@ class HomeController: UIViewController{
     private var animationView: AnimationView?
     private var noWifiView: AnimationView?
     let homeCollectionDataSource = HomeCollectionDataSource()
-    let homeCollectionDelegate = HomeCollectionDelegate()
     let categoryCollectionDataSourceAndDelegate = CategoryCollectionDataSource()
     let modifiyViews = modifyLayersFunctions()
     let tags = ["Bakeries","Mall","Resturant","Cafee","Autorepair","Grocery"]
@@ -59,13 +58,11 @@ class HomeController: UIViewController{
         animationView!.animationSpeed = 0.5
         view.addSubview(animationView!)
         animationView!.play()
-        
         noWifiView = .init(name: "noWifi")
         noWifiView!.frame = CGRect(x: 150, y: 30, width: 80, height: 80)
         noWifiView!.contentMode = .scaleAspectFit
         noWifiView!.loopMode = .loop
         noWifiView!.animationSpeed = 0.5
-
         searchResultsTableView.isHidden = true
 
         if currentCategory == ""{
@@ -118,7 +115,6 @@ class HomeController: UIViewController{
                     print("HomeController: reachable")
             }
         })
-                
     }
 }
 

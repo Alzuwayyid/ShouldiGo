@@ -26,17 +26,14 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
         let reuseIdentifier = "homeCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
         
-
         // Animation with borderWidth
         let layer = cell.layer
         let animetion = CABasicAnimation(keyPath: #keyPath(CALayer.borderWidth))
         animetion.fromValue = NSNumber(50)
         animetion.toValue = -50
         animetion.duration = 0.90
-
         layer.add(animetion, forKey: "disappear")
         
-
         if isConnetedToWifi{
             return configureCellIfConnected(cell, indexPath: indexPath)
         }
@@ -56,7 +53,7 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
 // MARK: - Passing cells
 // If the device is not connected to Wifi, data will be loaded from the Disk
 extension HomeCollectionDataSource{
-   
+    
     func configureCellIfConnected(_ Passedcell: HomeCollectionViewCell, indexPath: IndexPath)->UICollectionViewCell{
         let yelpResultById = getBusinessIdURL(id: yelpData[indexPath.row].id)
         let largePreviewImageURL = URL(string: yelpData[indexPath.row].imageURL)
@@ -75,7 +72,7 @@ extension HomeCollectionDataSource{
                 DispatchQueue.main.async {
                     Passedcell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
                 }
-        // If response contain images and more than one, set them to the current small imageViews
+                // If response contain images and more than one, set them to the current small imageViews
                 if let response = response?.photos{
                     if response.count > 2{
                         let smallLargePreviewImageURL = URL(string: response[1])
@@ -90,17 +87,17 @@ extension HomeCollectionDataSource{
         }
         
         // Download wheather status image
-            wheatherFetcher.fetchWheatherResults(url: wheatherUrl) { (results, error) in
-                DispatchQueue.main.async { [self] in
-                    Passedcell.temperatureNum.text = "\(String((results?.current.tempC)!))c"
-                    Passedcell.temperatureImage.setImageFromURL(url: getWheatherImageURL(imageURL: (results?.current.condition.icon)!))
-                }
+        wheatherFetcher.fetchWheatherResults(url: wheatherUrl) { (results, error) in
+            DispatchQueue.main.async { [self] in
+                Passedcell.temperatureNum.text = "\(String((results?.current.tempC)!))c"
+                Passedcell.temperatureImage.kf.setImage(with: URL(string: getWheatherImageURL(imageURL: (results?.current.condition.icon)!)))
             }
+        }
         
         Passedcell.titleOfBusiness.text = yelpData[indexPath.row].name
         Passedcell.ratingNumber.text = "\(yelpData[indexPath.row].rating)"
         Passedcell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) reviews"
-                
+        
         return Passedcell
     }
     
@@ -113,12 +110,12 @@ extension HomeCollectionDataSource{
         DispatchQueue.main.async {
             cell.largePreviewImage.kf.indicatorType = .activity
         }
-            cell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
+        cell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
         
         cell.titleOfBusiness.text = yelpData[indexPath.row].name
         cell.ratingNumber.text = "\(yelpData[indexPath.row].rating)"
         cell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) reviews"
-
+        
         return cell
     }
 }
