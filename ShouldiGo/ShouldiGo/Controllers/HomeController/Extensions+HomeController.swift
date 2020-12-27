@@ -32,7 +32,6 @@ extension HomeController: UISearchBarDelegate{
         searchResultsTableView.isHidden = false
     }
     
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchResultsTableView.isHidden = false
         print("textChanged: \(searchText)")
@@ -60,6 +59,7 @@ extension HomeController: UISearchBarDelegate{
     
 }
 
+// Category collection delegate
 extension HomeController: UICollectionViewDelegate{
     
     // Update HomeCollectionView based on selected category
@@ -68,7 +68,7 @@ extension HomeController: UICollectionViewDelegate{
             categoryCollectionDataSourceAndDelegate.tagsCounter = indexPath.row
         }
         
-        let yelpUrl = getYelpURL(lat: 37.786882, lon: -122.399972, category: "\(tags[indexPath.row])")
+        let yelpUrl = getBusinessByLocation(location: self.currentLocation, category: "\(tags[indexPath.row])")
         
         // MARK: - Check internt connectivity
         let networkManager = NetworkReachabilityManager()

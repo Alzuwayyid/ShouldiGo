@@ -44,7 +44,6 @@
 		109F5F63258A46A600B5E31C /* WheatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F5F62258A46A600B5E31C /* WheatherAPI.swift */; };
 		10A385E7258A6C0A00B4E14C /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A385E6258A6C0A00B4E14C /* HomeController.swift */; };
 		10A385F3258A6DC000B4E14C /* DataSource+HomeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A385F2258A6DC000B4E14C /* DataSource+HomeCollectionView.swift */; };
-		10A385FB258A6DD400B4E14C /* Delegate+HomeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A385FA258A6DD400B4E14C /* Delegate+HomeCollectionView.swift */; };
 		10A38600258A6E7500B4E14C /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A385FF258A6E7500B4E14C /* HomeCell.swift */; };
 		10A38609258A77C500B4E14C /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A38608258A77C500B4E14C /* CollectionViewLayout.swift */; };
 		10A38615258A8CF400B4E14C /* ModifyLayersFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A38614258A8CF400B4E14C /* ModifyLayersFunctions.swift */; };
@@ -117,7 +116,6 @@
 		109F5F62258A46A600B5E31C /* WheatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheatherAPI.swift; sourceTree = "<group>"; };
 		10A385E6258A6C0A00B4E14C /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		10A385F2258A6DC000B4E14C /* DataSource+HomeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+HomeCollectionView.swift"; sourceTree = "<group>"; };
-		10A385FA258A6DD400B4E14C /* Delegate+HomeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Delegate+HomeCollectionView.swift"; sourceTree = "<group>"; };
 		10A385FF258A6E7500B4E14C /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		10A38608258A77C500B4E14C /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 		10A38614258A8CF400B4E14C /* ModifyLayersFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyLayersFunctions.swift; sourceTree = "<group>"; };
@@ -380,7 +378,6 @@
 			isa = PBXGroup;
 			children = (
 				10A385F2258A6DC000B4E14C /* DataSource+HomeCollectionView.swift */,
-				10A385FA258A6DD400B4E14C /* Delegate+HomeCollectionView.swift */,
 				10A385FF258A6E7500B4E14C /* HomeCell.swift */,
 			);
 			path = "BusniessViews+DataSources";
@@ -674,7 +671,6 @@
 				10A385E7258A6C0A00B4E14C /* HomeController.swift in Sources */,
 				105ADE102592238100CDC7F1 /* DataStore.swift in Sources */,
 				105ADDB0258FB20900CDC7F1 /* DataSource+DayDetailsCollectionView.swift in Sources */,
-				10A385FB258A6DD400B4E14C /* Delegate+HomeCollectionView.swift in Sources */,
 				109F5F63258A46A600B5E31C /* WheatherAPI.swift in Sources */,
 				10A38615258A8CF400B4E14C /* ModifyLayersFunctions.swift in Sources */,
 				109F5F09258A0F1300B5E31C /* AppDelegate.swift in Sources */,

@@ -25,7 +25,6 @@ struct Business: Codable {
     let rating: Double
     let coordinates: Center
     let transactions: [Transaction]
-//    let price: Price?
     let location: Location?
     let phone, displayPhone: String
     let distance: Double
@@ -81,11 +80,6 @@ enum Country: String, Codable {
 enum State: String, Codable {
     case ca = "CA"
 }
-
-//enum Price: String, Codable {
-//    case empty = "$"
-//    case price = "$$"
-//}
 
 enum Transaction: String, Codable {
     case delivery = "delivery"

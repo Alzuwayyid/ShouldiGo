@@ -11,7 +11,7 @@ import MapKit
 import Alamofire
 
 class DetailedViewController: UIViewController {
-
+    
     // MARK: - IBOutlets
     @IBOutlet var daysDetailsCollectionView: UICollectionView!
     @IBOutlet var daysCollectionView: UICollectionView!
@@ -39,7 +39,7 @@ class DetailedViewController: UIViewController {
     var categoryText = ""
     var busID = ""
     var dataStore =  DataStore()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,8 +59,6 @@ class DetailedViewController: UIViewController {
         ratingLabel.text = ratingText
         categoryLabel.text = categoryText
         largeImage.kf.setImage(with: URL(string: largeImageURL))
-        
-        
         largeImage.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMinXMaxYCorner]
         largeImage.layer.masksToBounds = true
         largeImage.layer.cornerRadius = 15
@@ -114,8 +112,6 @@ class DetailedViewController: UIViewController {
                     }
             }
         })
-        
-
     }
     
     @IBAction func dismissController(_ sender: UIButton) {
@@ -150,13 +146,11 @@ class DetailedViewController: UIViewController {
         let vertLineView = UIView(frame: CGRect(x: 180, y: 275, width: 1, height: 55.0))
         vertLineView.layer.borderWidth = 1.0
         vertLineView.layer.borderColor = UIColor.white.cgColor
-
+        
         self.view.addSubview(horzLineView)
         self.view.addSubview(secondHorzLineView)
         self.view.addSubview(vertLineView)
     }
-    
-
 }
 
 
@@ -196,7 +190,5 @@ extension DetailedViewController{
             default:
                 print("Could not prefrom segue")
         }
-
     }
-    
 }

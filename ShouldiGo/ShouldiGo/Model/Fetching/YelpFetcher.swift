@@ -15,8 +15,8 @@ enum PhotoError: Error{
 class YelpFetcher{
 
     func fetchYelpResults(url: URL, completion: @escaping (YelpResults?, Error?) -> ()){
-        
         // Creating request
+        let decoder = JSONDecoder()
         var request = URLRequest(url: url)
         request.setValue("Bearer \(YelpAPI.apiKey)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
@@ -26,9 +26,6 @@ class YelpFetcher{
             if let error = error{
                 completion(nil,error)
             }
-            
-            let decoder = JSONDecoder()
-            
             do{
                 if let data = data{
                     let yelpFeed = try decoder.decode(YelpResults.self, from: data)
@@ -40,7 +37,8 @@ class YelpFetcher{
                     completion(nil, error)
                 }
                 
-            } catch{
+            }
+            catch{
                 print("Fetching Yelp results error:  \(error)")
             }
             
@@ -48,6 +46,8 @@ class YelpFetcher{
     }
      
     func fetchBusniessDetails(url: URL, completion: @escaping (BusniessDetailsResponse?, Error?) -> ()){
+        // Creating request
+        let decoder = JSONDecoder()
         var request = URLRequest(url: url)
         request.setValue("Bearer \(YelpAPI.apiKey)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
@@ -57,29 +57,23 @@ class YelpFetcher{
             if let error = error{
                 completion(nil,error)
             }
-            
-            let decoder = JSONDecoder()
-            
             do{
                 let yelpByIdFeed = try decoder.decode(BusniessDetailsResponse.self, from: data!)
-                
                 DispatchQueue.global(qos: .background).async {
                     completion(yelpByIdFeed, error)
                 }
-                
-            } catch{
+            }
+            catch{
                 print("Fetching Yelp data results error:  \(error)")
             }
             
         }.resume()
         
     }
-  
-    
-    
+
     func fetchYelpReviewsResults(url: URL, completion: @escaping (YelpReviewsResult?, Error?) -> ()){
-        
         // Creating request
+        let decoder = JSONDecoder()
         var request = URLRequest(url: url)
         request.setValue("Bearer \(YelpAPI.apiKey)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
@@ -89,17 +83,13 @@ class YelpFetcher{
             if let error = error{
                 completion(nil,error)
             }
-            
-            let decoder = JSONDecoder()
-            
             do{
                 let yelpFeed = try decoder.decode(YelpReviewsResult.self, from: data!)
-                
                 DispatchQueue.global(qos: .background).async {
                     completion(yelpFeed, error)
                 }
-                
-            } catch{
+            }
+            catch{
                 print("Fetching Yelp Reviews results error:  \(error)")
             }
             
@@ -108,6 +98,8 @@ class YelpFetcher{
     
     
     func fetchAutoCompleteResults(url: URL, completion: @escaping (AutoCompleteResults?, Error?) -> ()){
+        // Creating request
+        let decoder = JSONDecoder()
         var request = URLRequest(url: url)
         request.setValue("Bearer \(YelpAPI.apiKey)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
@@ -117,22 +109,16 @@ class YelpFetcher{
             if let error = error{
                 completion(nil,error)
             }
-            
-            let decoder = JSONDecoder()
-            
             do{
                 let yelpByIdFeed = try decoder.decode(AutoCompleteResults.self, from: data!)
-                
                 DispatchQueue.global(qos: .background).async {
                     completion(yelpByIdFeed, error)
                 }
-                
-            } catch{
+            }
+            catch{
                 print("Fetching AutoComplete results error:  \(error)")
             }
-            
         }.resume()
-        
     }
     
 }
