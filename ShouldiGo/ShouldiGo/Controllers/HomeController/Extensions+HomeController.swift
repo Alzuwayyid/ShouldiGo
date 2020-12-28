@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 
+// MARK: - SearchBar delegate
 extension HomeController: UISearchBarDelegate{
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -23,7 +24,7 @@ extension HomeController: UISearchBarDelegate{
         searchResultsTableView.isHidden = true
         
     }
-
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         if let cancelButton : UIButton = searchBar.value(forKey: "cancelButton") as? UIButton{
@@ -45,7 +46,7 @@ extension HomeController: UISearchBarDelegate{
                     self.searchResultsTableView.reloadSections(IndexSet(integer: 1), with: .right)
                 }
             }
-            
+            // Fetching and updating autocompleted results in the tableView
             DispatchQueue.main.async { [self] in
                 yelpFetcher.fetchAutoCompleteResults(url: autoCompleteURL) { (result, error) in
                     self.autoCompleteArr = result!.terms
@@ -56,10 +57,9 @@ extension HomeController: UISearchBarDelegate{
             }
         }
     }
-    
 }
 
-// Category collection delegate
+// MARK: - Category collectionView delegate
 extension HomeController: UICollectionViewDelegate{
     
     // Update HomeCollectionView based on selected category
@@ -68,10 +68,9 @@ extension HomeController: UICollectionViewDelegate{
             categoryCollectionDataSourceAndDelegate.tagsCounter = indexPath.row
         }
         
-        let yelpUrl = getBusinessByLocation(location: self.currentLocation, category: "\(tags[indexPath.row])")
-        
         // MARK: - Check internt connectivity
         let networkManager = NetworkReachabilityManager()
+        let yelpUrl = getBusinessByLocation(location: self.currentLocation, category: "\(tags[indexPath.row])")
         
         networkManager?.startListening(onUpdatePerforming: { (status) in
             switch status{
@@ -85,7 +84,6 @@ extension HomeController: UICollectionViewDelegate{
                             self.homeCollectionView.reloadSections(IndexSet(integer: 0))
                         }
                     }
-                    
                     print("Not reachable")
                 case .reachable(_):
                     self.homeCollectionDataSource.isConnetedToWifi = true
@@ -104,10 +102,10 @@ extension HomeController: UICollectionViewDelegate{
                     print("reachable")
             }
         })
-        
     }
 }
 
+// MARK: - preapre for segue extension
 extension HomeController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier{
@@ -140,10 +138,8 @@ extension HomeController{
     }
 }
 
-
-// MARK: - SearchBar tableView
+// MARK: - SearchBarTableView delegate
 extension HomeController: UITableViewDelegate, UITableViewDataSource {
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -215,7 +211,6 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                                     self.homeCollectionView.reloadSections(IndexSet(integer: 0))
                                 }
                             }
-                            
                         }
                     }
                     print("Not reachable")
@@ -238,7 +233,6 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                                 
                             }
                         }
-                        
                         self.searchResultsTableView.isHidden = true
                     }
                     if indexPath.section == 1{
@@ -256,12 +250,10 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                                 DispatchQueue.main.async {
                                     self.homeCollectionView.reloadSections(IndexSet(integer: 0))
                                 }
-                                
                             }
                             self.searchResultsTableView.isHidden = true
                         }
                     }
-                    
                     print("reachable")
             }
         })

@@ -19,9 +19,9 @@ class CommentsCollectionView: NSObject, UICollectionViewDataSource{
         let reuseIdentifier = "reviewsCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CommentsCollectionViewCell
         
-        cell.userName.text = reviewsData[indexPath.row].user.name
+        cell.userName.text = reviewsData[indexPath.row].user?.name
         cell.commentTextView.text = reviewsData[indexPath.row].text
-        cell.userLogo.kf.setImage(with: reviewsData[indexPath.row].user.imageURL)
+        cell.userLogo.kf.setImage(with: reviewsData[indexPath.row].user?.imageURL)
         
         return cell
     }
