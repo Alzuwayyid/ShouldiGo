@@ -23,7 +23,7 @@ struct Review: Codable {
     let text: String
     let rating: Int
     let timeCreated: String
-    let user: User
+    let user: User?
 
     enum CodingKeys: String, CodingKey {
         case id, url, text, rating
@@ -34,10 +34,10 @@ struct Review: Codable {
 
 // MARK: - User
 struct User: Codable {
-    let id: String
-    let profileURL: URL
-    let imageURL: URL
-    let name: String
+    let id: String?
+    let profileURL: URL?
+    let imageURL: URL?
+    let name: String?
 
     enum CodingKeys: String, CodingKey {
         case id
