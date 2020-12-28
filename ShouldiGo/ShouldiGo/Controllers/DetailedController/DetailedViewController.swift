@@ -209,14 +209,38 @@ extension DetailedViewController{
         let animation = CABasicAnimation(keyPath: "position.x")
         animation.fromValue = view.bounds.size.width - 440
         animation.toValue = CGPoint(x: 45, y: 45)
-        animation.duration = 0.4
+        animation.duration = 0.6
         animation.beginTime = CACurrentMediaTime() + 0.0
         animation.repeatCount = 1
         animation.autoreverses = false
         
+        let hiddenAnimation = CABasicAnimation(keyPath: "hidden")
+        hiddenAnimation.fromValue = 1
+        hiddenAnimation.toValue = 0
+        hiddenAnimation.duration = 1.0
+        hiddenAnimation.beginTime = CACurrentMediaTime() + 0.1
+        hiddenAnimation.repeatCount = 1
+        hiddenAnimation.autoreverses = false
+
         largeImage.layer.add(animation, forKey: nil)
         phoneLogoImage.layer.add(animation, forKey: nil)
         addressLogoImage.layer.add(animation, forKey: nil)
         ratingLogoImage.layer.add(animation, forKey: nil)
+        phoneNumber.layer.add(hiddenAnimation, forKey: nil)
+        ratingLabel.layer.add(hiddenAnimation, forKey: nil)
+        addressLabel.layer.add(hiddenAnimation, forKey: nil)
+        titleLabel.layer.add(hiddenAnimation, forKey: nil)
+        categoryLabel.layer.add(hiddenAnimation, forKey: nil)
+        
+        let jump = CASpringAnimation(keyPath: "transform.scale")
+        jump.damping = 9
+        jump.mass = 1
+        jump.initialVelocity = 50
+        jump.stiffness = 500.0
+        
+        jump.fromValue = 5.0
+        jump.toValue = 1.0
+        jump.duration = jump.settlingDuration
+        largeImage.layer.add(jump, forKey: nil)
     }
 }
