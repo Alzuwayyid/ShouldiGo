@@ -21,7 +21,6 @@ class DaysDetailsCollectionViewDataSourceAndDelegate: NSObject,UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let reuseIdentifier = "detailsCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DetailedDaysCollectionViewCell
-        
         let whatherImageURL = URL(string: getWheatherImageURL(imageURL: (details[indexPath.row].condition.icon)))
 
         cell.tempeNum.text = "\(details[indexPath.row].tempC)c"

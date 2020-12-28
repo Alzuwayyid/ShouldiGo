@@ -93,7 +93,6 @@ extension HomeCollectionDataSource{
                 Passedcell.temperatureImage.kf.setImage(with: URL(string: getWheatherImageURL(imageURL: (results?.current.condition.icon)!)))
             }
         }
-        
         Passedcell.titleOfBusiness.text = yelpData[indexPath.row].name
         Passedcell.ratingNumber.text = "\(yelpData[indexPath.row].rating)"
         Passedcell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) reviews"
@@ -101,17 +100,14 @@ extension HomeCollectionDataSource{
         return Passedcell
     }
     
-    
-    
     func configureCellIfNOTConnected(_ Passedcell: HomeCollectionViewCell, indexPath: IndexPath)->UICollectionViewCell{
         let cell = Passedcell
-        
         let largePreviewImageURL = URL(string: yelpData[indexPath.row].imageURL)
+        
         DispatchQueue.main.async {
             cell.largePreviewImage.kf.indicatorType = .activity
         }
         cell.largePreviewImage.kf.setImage(with: largePreviewImageURL)
-        
         cell.titleOfBusiness.text = yelpData[indexPath.row].name
         cell.ratingNumber.text = "\(yelpData[indexPath.row].rating)"
         cell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) reviews"
