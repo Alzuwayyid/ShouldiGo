@@ -464,14 +464,17 @@
                     </view>
                     <connections>
                         <outlet property="addressLabel" destination="SzD-d5-NFx" id="Hcz-Hu-wc1"/>
+                        <outlet property="addressLogoImage" destination="J4L-8N-XK7" id="B89-cK-QVg"/>
                         <outlet property="categoryLabel" destination="akG-7e-AMd" id="tMB-Gx-8PE"/>
                         <outlet property="commentsButton" destination="OJZ-kt-nE0" id="X2G-lk-3Hr"/>
                         <outlet property="daysCollectionView" destination="Mke-bI-VuA" id="1Wh-OH-PCn"/>
                         <outlet property="daysDetailsCollectionView" destination="DGF-ga-RSa" id="j4S-eV-3u7"/>
                         <outlet property="largeImage" destination="Kpp-8K-6Ba" id="hnR-io-M03"/>
                         <outlet property="locationButton" destination="f0p-tT-v9f" id="1Sc-zz-cNR"/>
+                        <outlet property="phoneLogoImage" destination="khn-6b-8sw" id="oYV-JU-YAq"/>
                         <outlet property="phoneNumber" destination="QRc-wZ-YdY" id="gJn-0Y-fGx"/>
                         <outlet property="ratingLabel" destination="gOE-Fp-PZc" id="KxQ-FC-Njp"/>
+                        <outlet property="ratingLogoImage" destination="gbM-su-P1B" id="LQ0-05-i3x"/>
                         <outlet property="titleLabel" destination="Y4T-gD-BbP" id="mXo-Ub-XM4"/>
                     </connections>
                 </viewController>

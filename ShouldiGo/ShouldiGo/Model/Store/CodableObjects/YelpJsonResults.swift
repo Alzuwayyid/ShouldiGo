@@ -10,7 +10,7 @@ import UIKit
 // MARK: - YelpResults
 struct YelpResults: Codable {
     let businesses: [Business]?
-    let total: Int
+//    let total: Int
     let region: Region
 }
 

@@ -23,6 +23,9 @@ class DetailedViewController: UIViewController {
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var locationButton: UIButton!
     @IBOutlet var commentsButton: UIButton!
+    @IBOutlet var phoneLogoImage: UIImageView!
+    @IBOutlet var addressLogoImage: UIImageView!
+    @IBOutlet var ratingLogoImage: UIImageView!
     
     // MARK: - Properties
     let dayDetailsCollectionViewDD = DaysDetailsCollectionViewDataSourceAndDelegate()
@@ -116,6 +119,7 @@ class DetailedViewController: UIViewController {
     
     @IBAction func dismissController(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+        
     }
     
     // MARK: - Open location in apple maps
@@ -151,6 +155,12 @@ class DetailedViewController: UIViewController {
         self.view.addSubview(secondHorzLineView)
         self.view.addSubview(vertLineView)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animateViews()
+    }
+    
 }
 
 
@@ -190,5 +200,23 @@ extension DetailedViewController{
             default:
                 print("Could not prefrom segue")
         }
+    }
+}
+
+
+extension DetailedViewController{
+    func animateViews(){
+        let animation = CABasicAnimation(keyPath: "position.x")
+        animation.fromValue = view.bounds.size.width - 440
+        animation.toValue = CGPoint(x: 45, y: 45)
+        animation.duration = 0.4
+        animation.beginTime = CACurrentMediaTime() + 0.0
+        animation.repeatCount = 1
+        animation.autoreverses = false
+        
+        largeImage.layer.add(animation, forKey: nil)
+        phoneLogoImage.layer.add(animation, forKey: nil)
+        addressLogoImage.layer.add(animation, forKey: nil)
+        ratingLogoImage.layer.add(animation, forKey: nil)
     }
 }
