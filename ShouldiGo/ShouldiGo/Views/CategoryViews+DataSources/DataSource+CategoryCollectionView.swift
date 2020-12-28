@@ -21,7 +21,6 @@ class CategoryCollectionDataSource: NSObject, UICollectionViewDataSource, UIColl
         return 6
     }
     
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let reuseIdentifier = "CategoryCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCollectionViewCell
@@ -29,7 +28,6 @@ class CategoryCollectionDataSource: NSObject, UICollectionViewDataSource, UIColl
         cell.contentView.layer.backgroundColor = UIColor(named: colorsArr[indexPath.row])?.cgColor
         cell.categoryTags.text = tags[indexPath.row]
 
-        
         return cell
     }
     

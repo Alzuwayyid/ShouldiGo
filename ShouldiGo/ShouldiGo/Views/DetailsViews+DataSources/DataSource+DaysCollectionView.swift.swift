@@ -26,7 +26,6 @@ class DaysCollectionViewDataSourceAndDelegate: NSObject,UICollectionViewDataSour
         cell.wheatherIcon.kf.setImage(with: URL(string: getWheatherImageURL(imageURL: (details[indexPath.row].day.condition.icon))))
         cell.DayLabel.text = "\(details[indexPath.row].date.suffix(5))"
 
-                
         return cell
     }
 }

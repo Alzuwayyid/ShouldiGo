@@ -33,12 +33,10 @@ extension DetailedViewController: UICollectionViewDelegate{
             }
         }
     }
-    
 }
 
 // MARK: - Prepare for segue
 extension DetailedViewController{
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier{
             case "commentSegue":
@@ -70,7 +68,6 @@ extension DetailedViewController{
         hiddenAnimation.repeatCount = 1
         hiddenAnimation.autoreverses = false
         
-        largeImage.layer.add(animation, forKey: nil)
         phoneLogoImage.layer.add(animation, forKey: nil)
         addressLogoImage.layer.add(animation, forKey: nil)
         ratingLogoImage.layer.add(animation, forKey: nil)
@@ -87,8 +84,7 @@ extension DetailedViewController{
         jump.mass = 1
         jump.initialVelocity = 50
         jump.stiffness = 500.0
-        
-        jump.fromValue = 5.0
+        jump.fromValue = 4.0
         jump.toValue = 1.0
         jump.duration = jump.settlingDuration
         largeImage.layer.add(jump, forKey: nil)
@@ -96,20 +92,12 @@ extension DetailedViewController{
     
     // Drawing lines in the super view
     func addLines(){
-        let horzLineView = UIView(frame: CGRect(x: 50, y: 265, width: 273, height: 1.0))
-        horzLineView.layer.borderWidth = 1.0
-        horzLineView.layer.borderColor = UIColor.white.cgColor
+        let arrOfLines = [UIView(frame: CGRect(x: 50, y: 265, width: 273, height: 1.0)), UIView(frame: CGRect(x: 40, y: 340, width: 300, height: 1.0)), UIView(frame: CGRect(x: 180, y: 275, width: 1, height: 55.0))]
         
-        let secondHorzLineView = UIView(frame: CGRect(x: 40, y: 340, width: 300, height: 1.0))
-        secondHorzLineView.layer.borderWidth = 1.0
-        secondHorzLineView.layer.borderColor = UIColor.white.cgColor
-        
-        let vertLineView = UIView(frame: CGRect(x: 180, y: 275, width: 1, height: 55.0))
-        vertLineView.layer.borderWidth = 1.0
-        vertLineView.layer.borderColor = UIColor.white.cgColor
-        
-        self.view.addSubview(horzLineView)
-        self.view.addSubview(secondHorzLineView)
-        self.view.addSubview(vertLineView)
+        for line in arrOfLines{
+            line.layer.borderWidth = 1.0
+            line.layer.borderColor = UIColor.white.cgColor
+            self.view.addSubview(line)
+        }
     }
 }
