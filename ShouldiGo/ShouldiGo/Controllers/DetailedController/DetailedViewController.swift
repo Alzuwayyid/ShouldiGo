@@ -217,11 +217,11 @@ extension DetailedViewController{
         let hiddenAnimation = CABasicAnimation(keyPath: "hidden")
         hiddenAnimation.fromValue = 1
         hiddenAnimation.toValue = 0
-        hiddenAnimation.duration = 1.0
+        hiddenAnimation.duration = 1.1
         hiddenAnimation.beginTime = CACurrentMediaTime() + 0.1
         hiddenAnimation.repeatCount = 1
         hiddenAnimation.autoreverses = false
-
+        
         largeImage.layer.add(animation, forKey: nil)
         phoneLogoImage.layer.add(animation, forKey: nil)
         addressLogoImage.layer.add(animation, forKey: nil)
@@ -231,6 +231,8 @@ extension DetailedViewController{
         addressLabel.layer.add(hiddenAnimation, forKey: nil)
         titleLabel.layer.add(hiddenAnimation, forKey: nil)
         categoryLabel.layer.add(hiddenAnimation, forKey: nil)
+        daysCollectionView.layer.add(hiddenAnimation, forKey: nil)
+        daysDetailsCollectionView.layer.add(hiddenAnimation, forKey: nil)
         
         let jump = CASpringAnimation(keyPath: "transform.scale")
         jump.damping = 9
