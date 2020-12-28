@@ -23,6 +23,9 @@ class DetailedViewController: UIViewController {
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var locationButton: UIButton!
     @IBOutlet var commentsButton: UIButton!
+    @IBOutlet var phoneLogoImage: UIImageView!
+    @IBOutlet var addressLogoImage: UIImageView!
+    @IBOutlet var ratingLogoImage: UIImageView!
     
     // MARK: - Properties
     let dayDetailsCollectionViewDD = DaysDetailsCollectionViewDataSourceAndDelegate()
@@ -116,6 +119,7 @@ class DetailedViewController: UIViewController {
     
     @IBAction func dismissController(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+        
     }
     
     // MARK: - Open location in apple maps
@@ -151,6 +155,12 @@ class DetailedViewController: UIViewController {
         self.view.addSubview(secondHorzLineView)
         self.view.addSubview(vertLineView)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animateViews()
+    }
+    
 }
 
 
@@ -190,5 +200,49 @@ extension DetailedViewController{
             default:
                 print("Could not prefrom segue")
         }
+    }
+}
+
+
+extension DetailedViewController{
+    func animateViews(){
+        let animation = CABasicAnimation(keyPath: "position.x")
+        animation.fromValue = view.bounds.size.width - 440
+        animation.toValue = CGPoint(x: 45, y: 45)
+        animation.duration = 0.6
+        animation.beginTime = CACurrentMediaTime() + 0.0
+        animation.repeatCount = 1
+        animation.autoreverses = false
+        
+        let hiddenAnimation = CABasicAnimation(keyPath: "hidden")
+        hiddenAnimation.fromValue = 1
+        hiddenAnimation.toValue = 0
+        hiddenAnimation.duration = 1.1
+        hiddenAnimation.beginTime = CACurrentMediaTime() + 0.1
+        hiddenAnimation.repeatCount = 1
+        hiddenAnimation.autoreverses = false
+        
+        largeImage.layer.add(animation, forKey: nil)
+        phoneLogoImage.layer.add(animation, forKey: nil)
+        addressLogoImage.layer.add(animation, forKey: nil)
+        ratingLogoImage.layer.add(animation, forKey: nil)
+        phoneNumber.layer.add(hiddenAnimation, forKey: nil)
+        ratingLabel.layer.add(hiddenAnimation, forKey: nil)
+        addressLabel.layer.add(hiddenAnimation, forKey: nil)
+        titleLabel.layer.add(hiddenAnimation, forKey: nil)
+        categoryLabel.layer.add(hiddenAnimation, forKey: nil)
+        daysCollectionView.layer.add(hiddenAnimation, forKey: nil)
+        daysDetailsCollectionView.layer.add(hiddenAnimation, forKey: nil)
+        
+        let jump = CASpringAnimation(keyPath: "transform.scale")
+        jump.damping = 9
+        jump.mass = 1
+        jump.initialVelocity = 50
+        jump.stiffness = 500.0
+        
+        jump.fromValue = 5.0
+        jump.toValue = 1.0
+        jump.duration = jump.settlingDuration
+        largeImage.layer.add(jump, forKey: nil)
     }
 }
