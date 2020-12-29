@@ -48,7 +48,7 @@ extension HomeCollectionDataSource{
         let yelpResultById = getBusinessIdURL(id: yelpData[indexPath.row].id)
         let largePreviewImageURL = URL(string: yelpData[indexPath.row].imageURL)
         // URL for current business Longitude+Latitude
-        let wheatherUrl = getWheatherURL(lon: yelpData[indexPath.row].coordinates.longitude, lat: yelpData[indexPath.row].coordinates.latitude, days: 3)
+        let wheatherUrl = getWheatherURL(lon: yelpData[indexPath.row].coordinates.longitude!, lat: yelpData[indexPath.row].coordinates.latitude!, days: 3)
         
         // Place activity indicator in the imageViews
         DispatchQueue.main.async{

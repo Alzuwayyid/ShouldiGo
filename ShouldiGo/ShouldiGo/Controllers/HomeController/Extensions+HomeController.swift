@@ -122,8 +122,8 @@ extension HomeController{
                     let longitude = homeCollectionDataSource.yelpData[selectedIndexPath.row].coordinates.longitude
                     
                     let decVC = segue.destination as! DetailedViewController
-                    decVC.latitude = latitude
-                    decVC.longitude = longitude
+                    decVC.latitude = latitude!
+                    decVC.longitude = longitude!
                     decVC.phoneNumberText = phoneNumber
                     decVC.titleText = busTitle
                     decVC.addressText = address!
