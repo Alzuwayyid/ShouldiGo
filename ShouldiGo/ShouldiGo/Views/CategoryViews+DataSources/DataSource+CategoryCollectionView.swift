@@ -31,9 +31,7 @@ class CategoryCollectionDataSource: NSObject, UICollectionViewDataSource, UIColl
         return cell
     }
     
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
 }

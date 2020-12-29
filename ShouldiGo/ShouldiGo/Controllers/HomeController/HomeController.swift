@@ -12,7 +12,6 @@ import Lottie
 class HomeController: UIViewController{
     
     // MARK: - Outlets
-    
     @IBOutlet var homeCollectionView: UICollectionView!
     @IBOutlet var categoryCollectionView: UICollectionView!
     @IBOutlet var searchBar: UISearchBar!
@@ -49,7 +48,7 @@ class HomeController: UIViewController{
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
 
-      // MARK: - Properities configuration
+        // MARK: - Properities configuration
         animationView = .init(name: "purpleLoadingLottie")
         animationView!.frame = view.bounds
         animationView!.contentMode = .scaleAspectFit

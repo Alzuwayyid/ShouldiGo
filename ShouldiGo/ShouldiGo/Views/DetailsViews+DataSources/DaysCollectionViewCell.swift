@@ -13,7 +13,6 @@ class DaysCollectionViewCell: UICollectionViewCell {
     @IBOutlet var wheatherIcon: UIImageView!
     @IBOutlet var maxTemp: UILabel!
     @IBOutlet var minTemp: UILabel!
-    
 }
     
 

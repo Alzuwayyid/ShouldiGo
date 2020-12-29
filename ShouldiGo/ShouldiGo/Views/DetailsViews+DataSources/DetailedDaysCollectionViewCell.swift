@@ -11,5 +11,4 @@ class DetailedDaysCollectionViewCell: UICollectionViewCell {
     @IBOutlet var conditionImage: UIImageView!
     @IBOutlet var tempeNum: UILabel!
     @IBOutlet var timeLabel: UILabel!
-    
 }
