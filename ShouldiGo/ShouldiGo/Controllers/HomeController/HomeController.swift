@@ -99,9 +99,11 @@ class HomeController: UIViewController{
                     self.homeCollectionDataSource.isConnetedToWifi = true
                     self.yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
                         if let result = result{
-                            self.homeCollectionDataSource.yelpData = result.businesses!
-                            self.yelpData = result.businesses!
-                            self.dataStore.yelpBusinessData = result.businesses!
+                            if let resultBusiness = result.businesses{
+                                self.homeCollectionDataSource.yelpData = resultBusiness
+                                self.yelpData = resultBusiness
+                                self.dataStore.yelpBusinessData = resultBusiness
+                            }
                             self.dataStore.saveChangesToYelp()
                         }
                         DispatchQueue.main.async {
