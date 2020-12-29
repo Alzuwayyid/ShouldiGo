@@ -112,9 +112,12 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                             self.homeCollectionDataSource.isConnetedToWifi = true
                             self.yelpFetcher.fetchYelpResults(url: yelpUrl) { (result, error) in
                                 if let result = result{
-                                    self.homeCollectionDataSource.yelpData = result.businesses!
-                                    self.yelpData = result.businesses!
-                                    self.dataStore.yelpBusinessData = result.businesses!
+                                    // Unrappwing businesses because some countries are not covered in Yelp.
+                                    if let resultBusiness = result.businesses{
+                                        self.homeCollectionDataSource.yelpData = resultBusiness
+                                        self.yelpData = resultBusiness
+                                        self.dataStore.yelpBusinessData = resultBusiness
+                                    }
                                     self.dataStore.saveChangesToYelp()
                                 }
                                 DispatchQueue.main.async {

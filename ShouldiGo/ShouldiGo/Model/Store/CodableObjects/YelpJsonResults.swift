@@ -11,7 +11,7 @@ import UIKit
 struct YelpResults: Codable {
     let businesses: [Business]?
 //    let total: Int
-    let region: Region
+    let region: Region?
 }
 
 // MARK: - Business
@@ -47,7 +47,7 @@ struct Category: Codable {
 
 // MARK: - Center
 struct Center: Codable {
-    let latitude, longitude: Double
+    let latitude, longitude: Double?
 }
 
 // MARK: - Location
@@ -82,7 +82,7 @@ enum State: String, Codable {
 
 // MARK: - Region
 struct Region: Codable {
-    let center: Center
+    let center: Center?
 }
 
 
