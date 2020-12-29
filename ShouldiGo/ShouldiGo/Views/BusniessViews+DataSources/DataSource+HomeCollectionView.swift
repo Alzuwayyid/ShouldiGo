@@ -22,38 +22,28 @@ class HomeCollectionDataSource: NSObject ,UICollectionViewDataSource{
         return yelpData.count
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let reuseIdentifier = "homeCell"
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
-        
-        // Animation with borderWidth
-        let layer = cell.layer
-        let animetion = CABasicAnimation(keyPath: #keyPath(CALayer.borderWidth))
-        animetion.fromValue = NSNumber(50)
-        animetion.toValue = -50
-        animetion.duration = 0.90
-        layer.add(animetion, forKey: "disappear")
-        
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
+        animateWithBorders(&cell)
+
         if isConnetedToWifi{
             return configureCellIfConnected(cell, indexPath: indexPath)
         }
         else{
             return configureCellIfNOTConnected(cell, indexPath: indexPath)
         }
-        
     }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    
 }
 
-// MARK: - Passing cells
-// If the device is not connected to Wifi, data will be loaded from the Disk
+// MARK: - Methods
 extension HomeCollectionDataSource{
-    
+    // MARK: - Passing cells
+    // If the device is not connected to Wifi, data will be loaded from the Disk
     func configureCellIfConnected(_ Passedcell: HomeCollectionViewCell, indexPath: IndexPath)->UICollectionViewCell{
         let yelpResultById = getBusinessIdURL(id: yelpData[indexPath.row].id)
         let largePreviewImageURL = URL(string: yelpData[indexPath.row].imageURL)
@@ -113,5 +103,15 @@ extension HomeCollectionDataSource{
         cell.numberOfReviews.text = "\(yelpData[indexPath.row].reviewCount) reviews"
         
         return cell
+    }
+    
+    func animateWithBorders(_ cell: inout HomeCollectionViewCell){
+        // Animation with borderWidth
+        let layer = cell.layer
+        let animetion = CABasicAnimation(keyPath: #keyPath(CALayer.borderWidth))
+        animetion.fromValue = NSNumber(50)
+        animetion.toValue = -50
+        animetion.duration = 0.90
+        layer.add(animetion, forKey: "disappear")
     }
 }
