@@ -33,7 +33,6 @@ class HomeController: UIViewController{
     var autoCompleteRegion = [CountryAutoCompletionResult]()
     var currentCategory = ""
     var currentLocation = ""
-    
     override var prefersStatusBarHidden: Bool {
         return true
     }
